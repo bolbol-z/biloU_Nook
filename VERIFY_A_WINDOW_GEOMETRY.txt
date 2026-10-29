@@ -1,0 +1,113 @@
+VERIFY_A_WINDOW_GEOMETRY
+Date: Sat Oct 25 2026
+Machine: macOS (darwin), built-in Retina Display 1470x956, scale likely 2x
+---
+
+W1 Click-through
+ID: W1
+verdict: FAIL
+file:line evidence: BilouNook/Notch/NotchRootView.swift:8-38 (ZStack with Color.clear contentShape(Rectangle()) but no ignoresMouseEvents/hitTest override on panel/root hosting view); BilouNook/Window/NotchPanel.swift:4-31 (NSPanel only sets flags, no ignoresMouseEvents set anywhere)
+quote:
+  - "Color.clear
+       .contentShape(Rectangle())" (NotchRootView:8-10)
+  - "final class NotchPanel: NSPanel { ... }" with no ignoresMouseEvents assignment (NotchPanel:4-31)
+  - "let hosting = NSHostingView(rootView: root)
+        hosting.frame = panel.contentView?.bounds ?? .zero
+        hosting.autoresizingMask = [.width, .height]
+        panel.contentView = hosting" (NotchPanelController:39-45)
+
+explanation: Mouse events go through NSPanel/NSHostingView as normal; outside the black shape nothing nils hitTest. ignoresMouseEvents is never set, and no HitTestNSView is used. The HitTestNSView class exists (NotchRootView:83-94) but is never instantiated/installed. The black shape is just a drawn Shape; transparent areas of the 700x320 panel will receive mouse events and block clicks to apps below (menu bar/browser tabs under transparent area will NOT pass through). There is no code updating ignoresMouseEvents during animation or when open.
+
+manual test:
+- steps: Run app, move cursor over transparent area outside black notch shape (left/right of 520px wide open shape in 700px panel) over a browser tab/menu bar area; click.
+- expected: Click should reach underlying app. Current code does NOT guarantee this -> will FAIL.
+
+W2 Exact collectionBehavior value used
+ID: W2
+verdict: FAIL
+file:line evidence: BilouNook/Window/NotchPanel.swift:21
+quote: "collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]"
+explanation: Value is [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary] — .ignoresCycle is NOT included. It may appear on Spaces but behavior not guaranteed same as including ignoresCycle; also requirement states "include [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary, .ignoreCycle]" (note typo in text says ignoreCycle vs ignoresCycle) but code uses ignoresCycle? Actually Apple constant is .ignoresCycle (older) or different; code has no .ignoresCycle/.ignoresCycle equivalent. Missing it.
+
+manual test:
+- steps: Switch Spaces (Mission Control), enter full-screen app, check panel visibility
+- expected: Should be visible; missing constant may cause cycle/space issues -> FAIL per requirement
+
+W3 canBecomeKey/canBecomeMain false
+ID: W3
+verdict: PASS (as implemented)
+file:line evidence: BilouNook/Window/NotchPanel.swift:29-30
+quote: "override var canBecomeKey: Bool { false }\n    override var canBecomeMain: Bool { false }"
+explanation: Prevents activation/stealing focus (good for LSUIElement). Text fields in step 9 will not receive keyboard focus; need to make panel key only when needed or use NSTextField that can become first responder via window becoming key temporarily, or change canBecomeKey based on state/open content requiring input.
+
+proposed change (not applied): When opening UI with text input, set becomesKeyOnlyIfNeeded appropriately and/or override canBecomeKey to true in that state, or use a separate keyable window. Minimal: add a property to allow keying and override canBecomeKey based on it.
+
+W4 Screen targeting
+ID: W4
+verdict: FAIL
+file:line evidence: BilouNook/Window/NotchPanel.swift:6,43-46; BilouNook/Notch/NotchRootView.swift:53-65
+quote: "let screen = NSScreen.main ?? NSScreen.screens.first!" (NotchPanel:6), "guard let screen = NSScreen.main ?? NSScreen.screens.first else { return }" (NotchPanelController:44), "if let screen = NSScreen.main { ... }" (NotchRootView:53)
+explanation: Always uses NSScreen.main. On external display built-in may not be main; mouse could be on different screen; clamshell mode behavior depends on main. Should target screen containing mouse or screen with notch/where panel is placed.
+
+manual test:
+- external display: move mouse to external, app uses built-in main screen -> panel may appear on wrong screen or not follow
+- sleep/wake/resolution: reposition called on didChangeScreenParametersNotification but uses main
+- clamshell: main may change
+
+W5 Coordinate systems
+ID: W5
+verdict: UNKNOWN
+file:line evidence: BilouNook/Interaction/MouseMonitor.swift:33-53
+quote: "let mouse = NSEvent.mouseLocation
+        let panelTop = screen.frame.maxY
+        let hotRect = NSRect(x: screen.frame.midX - hotWidth/2, y: panelTop - hotHeight, width: hotWidth, height: hotHeight)
+        if hotRect.contains(mouse) { ... }"
+explanation: NSEvent.mouseLocation is in screen coordinates with origin at bottom-left of the primary display (global). screen.frame uses same coordinate system. Converting to top-left of shape rect: shape rect is positioned in panel coordinates (panel is at top of screen). Worked example: 1470x956 screen, mouse at top-center -> mouse.y near 956, screen.frame.maxY ~956, panelTop~956, hotRect y = 956 - hotHeight. This matches AppKit coordinates (bottom-left origin). No explicit conversion shown; uses mouseLocation directly against screen.frame rects - correct for AppKit. However no proof of shape rect top-left conversion in hitTest; HitTestNSView not used.
+
+worked example: screen (0,0,1470,956), maxY=956, top-center mouse ~ (735, 955), hotHeight~notch.height+3, hotRect y = 956 - hotHeight contains it. Correct.
+
+W6 App lifecycle
+ID: W6
+verdict: PASS
+file:line evidence: BilouNook/App/BilouNookApp.swift:1-22; BilouNook/Info.plist:1-30
+quote: "@main
+struct BilouNookApp {
+    static func main() {
+        let app = NSApplication.shared
+        let delegate = AppDelegate()
+        app.delegate = delegate
+        app.run()
+    }
+}" and "LSUIElement" = YES in Info.plist
+explanation: NSApplication.main + AppDelegate creates panel and shows it. LSUIElement YES means no Dock icon. "Settings…" button does nothing (empty closure).
+
+G1 NotchGeometry
+ID: G1
+verdict: PASS
+file:line evidence: BilouNook/Notch/NotchGeometry.swift:21-48
+quote formulas:
+  - if auxiliaryTopLeftArea/right exist: width = abs(right.minX - left.maxX) + fineTuneWidth; height = max(left.height, right.height) + fineTuneHeight
+  - else if safeAreaInsets.top > 0: width = 200 + fineTuneWidth, height = safeAreaInsets.top + fineTuneHeight
+  - else: handler rect (184,8) adjusted
+
+computed on this machine (Built-in Retina Display 1470x956): left=(0,924,646,32), right=(825,924,645,32). width = abs(825-646)=179? 825-646=179, so abs(right.minX-left.maxX)=|825-646|=179, +fineTuneWidth (0) = 179. height = max(32,32)=32. Returns NotchRect(179,32). safeAreaInsets.top=32 also present. auxiliary areas used first -> 179x32.
+
+G2 Settings storage
+ID: G2
+verdict: FAIL
+file:line evidence: BilouNook/Settings/NotchSettings.swift:1-10; BilouNook/Notch/NotchGeometry.swift:9-12; BilouNook/Notch/NotchRootView.swift:53-65
+quote: "@AppStorage in struct NotchSettings (static) but NotchGeometry.shared stores fineTuneWidth/Height/handler as regular vars copied once in onAppear (NotchRootView:57-63). Changing @AppStorage values later does NOT update NotchGeometry.shared vars or shape live."
+explanation: No @Observable class uses @AppStorage directly; values copied to NotchGeometry.shared on appear only. No @ObservationIgnored needed. Changes won't update shape without relaunch/re-reading.
+
+G3 NotchShape
+ID: G3
+verdict: PASS
+file:line evidence: BilouNook/Notch/NotchShape.swift:4-62
+quote: animatableData = AnimatablePair(AnimatablePair(width,height), AnimatablePair(topCornerRadius,bottomCornerRadius)). Path draws concave top via arcs/quad curves, bottom rounded arcs. Top edge is at y=0 line from left to right edge of shape - positioned at y = notchHeight/2 in panel so top stays at panel top edge (NotchRootView:27-28).
+
+G4 Debug overlay and Animation Lab
+ID: G4
+verdict: FAIL
+file:line evidence: BilouNook/Notch/DebugOverlay.swift:45-60; BilouNook/Notch/NotchRootView.swift:66,75; BilouNook/Debug/AnimationLab.swift:1-110
+quote: KeyMonitor uses NSEvent.addLocalMonitorForEvents (local monitor). DebugOverlayWindow and AnimationLabWindow are plain classes, hotkeys registered via addLocalMonitorForEvents in KeyMonitor.start() and startAll() called from NotchRootView.onAppear (runs when panel/root is in view hierarchy). No Carbon RegisterEventHotKey, no global monitor for hotkeys. No #if DEBUG. Local monitor works only when app receives events (panel cannot become key but local monitor still works if event comes through app; global hotkeys need global monitor or CGEvent tap). LSUIElement app can use local/global monitors if no special permissions; Accessibility permission not required for NSEvent monitors in most cases but global monitors may need permissions in some contexts. They will NOT work reliably when another app is frontmost unless using global monitor or CGEvent tap.
+---

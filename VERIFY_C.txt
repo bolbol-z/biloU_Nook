@@ -1,0 +1,32 @@
+VERIFY_C
+Date: Sat Oct 24 18:08:58 CET 2026
+
+S9 REAL modifier source:
+file: BilouNook/Animations/ScaleBlur.swift
+code:
+struct ScaleBlur: ViewModifier {
+    var on: Bool
+    let scale: CGFloat = 0.8
+    let blurRadius: CGFloat = 10
+    let anchor: UnitPoint = UnitPoint(x: 0.5, y: -0.25)
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(on ? scale : 1.0, anchor: anchor)
+            .blur(radius: on ? blurRadius : 0)
+            .opacity(on ? 0 : 1.0)
+    }
+}
+contentIn carries 0.1s delay (Animations.contentIn). On close content leaves with contentOut while shape uses closeFootprint.
+
+SUMMARY table
+| ID | verdict |
+|----|---------|
+| W1 | IMPROVED |
+| W2 | IMPROVED |
+| W4 | IMPROVED |
+| G2 | IMPROVED |
+| G4 | IMPROVED |
+| S1-S6 | IMPROVED |
+| S8 | IMPROVED |
+| S9 | PASS |
+| S10 | MEASURED

@@ -1,0 +1,842 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C1000001 /* BilouNookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000001 /* BilouNookApp.swift */; };
+		C1000002 /* NotchPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000002 /* NotchPanel.swift */; };
+		C1000003 /* NotchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000003 /* NotchRootView.swift */; };
+		C1000004 /* NotchGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000004 /* NotchGeometry.swift */; };
+		C1000005 /* NotchShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000005 /* NotchShape.swift */; };
+		C1000007 /* DebugOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000007 /* DebugOverlay.swift */; };
+		C1000008 /* NotchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000008 /* NotchState.swift */; };
+		C1000009 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000009 /* Animations.swift */; };
+		C1000010 /* MouseMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000010 /* MouseMonitor.swift */; };
+		C1000011 /* AnimationLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000011 /* AnimationLab.swift */; };
+		C1000012 /* CoordinateSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000012 /* CoordinateSpace.swift */; };
+		C1000013 /* ScreenResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000013 /* ScreenResolver.swift */; };
+		C1000014 /* InteractionRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000014 /* InteractionRegion.swift */; };
+		C1000015 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000015 /* SettingsWindow.swift */; };
+		C1000016 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000016 /* SettingsStore.swift */; };
+		C1000017 /* HotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000017 /* HotKeyManager.swift */; };
+		C1000019 /* GestureMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000019 /* GestureMonitor.swift */; };
+		C1000020 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000020 /* Watchdog.swift */; };
+		C1000021 /* ScaleBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000021 /* ScaleBlur.swift */; };
+		C1000022 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000022 /* HapticsService.swift */; };
+		C1000023 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3000001 /* Assets.xcassets */; };
+		C1000030 /* ZoneMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000030 /* ZoneMathTests.swift */; };
+		C1000031 /* NotchGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000031 /* NotchGeometryTests.swift */; };
+		C1000032 /* NotchStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000032 /* NotchStateTests.swift */; };
+		C1000033 /* NotchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000008 /* NotchState.swift */; };
+		C1000034 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000022 /* HapticsService.swift */; };
+		C1000035 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000016 /* SettingsStore.swift */; };
+		C1000036 /* InteractionRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000014 /* InteractionRegion.swift */; };
+		C1000037 /* NotchGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000004 /* NotchGeometry.swift */; };
+		C1000038 /* NotchShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000005 /* NotchShape.swift */; };
+		C1000040 /* NotchModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000050 /* NotchModule.swift */; };
+		C1000041 /* ModuleRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000041 /* ModuleRegistry.swift */; };
+		C1000042 /* ModuleShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000042 /* ModuleShellView.swift */; };
+		C1000043 /* PlaceholderModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000043 /* PlaceholderModuleView.swift */; };
+		C1000044 /* ModuleA.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000044 /* ModuleA.swift */; };
+		C1000045 /* ModuleB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000045 /* ModuleB.swift */; };
+		C1000046 /* ModuleRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000046 /* ModuleRegistryTests.swift */; };
+		C1000047 /* NotchRootViewRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000047 /* NotchRootViewRenderTests.swift */; };
+		C1000048 /* NotchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000003 /* NotchRootView.swift */; };
+		C1000049 /* NotchModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000050 /* NotchModule.swift */; };
+		C1000050 /* ModuleRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000041 /* ModuleRegistry.swift */; };
+		C1000051 /* ModuleShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000042 /* ModuleShellView.swift */; };
+		C1000052 /* PlaceholderModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000043 /* PlaceholderModuleView.swift */; };
+		C1000053 /* ModuleA.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000044 /* ModuleA.swift */; };
+		C1000054 /* ModuleB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000045 /* ModuleB.swift */; };
+		C1000055 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000009 /* Animations.swift */; };
+		C1000056 /* ScaleBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000021 /* ScaleBlur.swift */; };
+		C1000057 /* MouseMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000010 /* MouseMonitor.swift */; };
+		C1000058 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000020 /* Watchdog.swift */; };
+		C1000059 /* GestureMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000019 /* GestureMonitor.swift */; };
+		C1000060 /* ScreenResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000013 /* ScreenResolver.swift */; };
+		C1000061 /* HotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000017 /* HotKeyManager.swift */; };
+		C1000062 /* DebugOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000007 /* DebugOverlay.swift */; };
+		C1000063 /* AnimationLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000011 /* AnimationLab.swift */; };
+		C1000064 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000015 /* SettingsWindow.swift */; };
+		C1000070 /* NowPlayingSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000060 /* NowPlayingSnapshot.swift */; };
+		C1000071 /* NowPlayingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000061 /* NowPlayingProvider.swift */; };
+		C1000072 /* MediaRemoteNowPlayingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000062 /* MediaRemoteNowPlayingProvider.swift */; };
+		C1000073 /* AppleScriptNowPlayingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000063 /* AppleScriptNowPlayingProvider.swift */; };
+		C1000074 /* NowPlayingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000064 /* NowPlayingService.swift */; };
+		C1000080 /* NowPlayingSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000060 /* NowPlayingSnapshot.swift */; };
+		C1000081 /* NowPlayingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000061 /* NowPlayingProvider.swift */; };
+		C1000082 /* MediaRemoteNowPlayingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000062 /* MediaRemoteNowPlayingProvider.swift */; };
+		C1000083 /* AppleScriptNowPlayingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000063 /* AppleScriptNowPlayingProvider.swift */; };
+		C1000084 /* NowPlayingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000064 /* NowPlayingService.swift */; };
+		C1000085 /* NowPlayingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000065 /* NowPlayingServiceTests.swift */; };
+		C1000090 /* NowPlayingLiveActivityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000070 /* NowPlayingLiveActivityState.swift */; };
+		C1000091 /* LiveActivityLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000071 /* LiveActivityLayout.swift */; };
+		C1000092 /* MediaModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000072 /* MediaModule.swift */; };
+		C1000093 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000073 /* MediaView.swift */; };
+		C1000094 /* MediaCompactLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000074 /* MediaCompactLiveActivity.swift */; };
+		C1000095 /* MediaProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000075 /* MediaProgressBar.swift */; };
+		C1000096 /* MarqueeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000076 /* MarqueeText.swift */; };
+		C1000097 /* ArtworkThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000077 /* ArtworkThumbnailView.swift */; };
+		C1000098 /* EqualizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000078 /* EqualizerView.swift */; };
+		C1000099 /* MediaFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000079 /* MediaFormatting.swift */; };
+		C1000100 /* MediaViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000080 /* MediaViewState.swift */; };
+		C1000110 /* NowPlayingLiveActivityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000070 /* NowPlayingLiveActivityState.swift */; };
+		C1000111 /* LiveActivityLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000071 /* LiveActivityLayout.swift */; };
+		C1000112 /* MediaModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000072 /* MediaModule.swift */; };
+		C1000113 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000073 /* MediaView.swift */; };
+		C1000114 /* MediaCompactLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000074 /* MediaCompactLiveActivity.swift */; };
+		C1000115 /* MediaProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000075 /* MediaProgressBar.swift */; };
+		C1000116 /* MarqueeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000076 /* MarqueeText.swift */; };
+		C1000117 /* ArtworkThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000077 /* ArtworkThumbnailView.swift */; };
+		C1000118 /* EqualizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000078 /* EqualizerView.swift */; };
+		C1000119 /* MediaFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000079 /* MediaFormatting.swift */; };
+		C1000120 /* MediaViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000080 /* MediaViewState.swift */; };
+		C1000121 /* MediaFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000081 /* MediaFormattingTests.swift */; };
+		C1000122 /* MediaViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000082 /* MediaViewStateTests.swift */; };
+		C1000123 /* LiveActivityLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000083 /* LiveActivityLayoutTests.swift */; };
+		C1000124 /* ArtworkDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000084 /* ArtworkDecoderTests.swift */; };
+		C1000125 /* MediaPlaybackAnchorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000085 /* MediaPlaybackAnchorTests.swift */; };
+		C1000126 /* MediaLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000086 /* MediaLayoutTests.swift */; };
+		C1000127 /* MediaTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000087 /* MediaTransportTests.swift */; };
+		C1000128 /* SourceAppInfoCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000088 /* SourceAppInfoCacheTests.swift */; };
+		C1000129 /* MediaMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000089 /* MediaMotion.swift */; };
+		C1000130 /* MediaPlaybackAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000090 /* MediaPlaybackAnchor.swift */; };
+		C1000131 /* MediaLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000091 /* MediaLayout.swift */; };
+		C1000132 /* MediaTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000092 /* MediaTransport.swift */; };
+		C1000133 /* SourceAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000093 /* SourceAppInfo.swift */; };
+		C1000229 /* MediaMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000089 /* MediaMotion.swift */; };
+		C1000230 /* MediaPlaybackAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000090 /* MediaPlaybackAnchor.swift */; };
+		C1000231 /* MediaLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000091 /* MediaLayout.swift */; };
+		C1000232 /* MediaTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000092 /* MediaTransport.swift */; };
+		C1000233 /* SourceAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000093 /* SourceAppInfo.swift */; };
+		C1000134 /* MediaContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000094 /* MediaContentView.swift */; };
+		C1000234 /* MediaContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000094 /* MediaContentView.swift */; };
+		C1000135 /* ArtworkAverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000095 /* ArtworkAverageColor.swift */; };
+		C1000235 /* ArtworkAverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000095 /* ArtworkAverageColor.swift */; };
+		C1000136 /* MediaSeekDebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000096 /* MediaSeekDebugLog.swift */; };
+		C1000236 /* MediaSeekDebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000096 /* MediaSeekDebugLog.swift */; };
+		C1000137 /* MediaSnapshotRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000097 /* MediaSnapshotRenderTests.swift */; };
+		C1000237 /* NotchPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000002 /* NotchPanel.swift */; };
+		C1000238 /* NotchAttachmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000098 /* NotchAttachmentTests.swift */; };
+		C1000239 /* NotchAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000099 /* NotchAttachment.swift */; };
+		C1000240 /* NotchAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000099 /* NotchAttachment.swift */; };
+		C1000241 /* NotchAttachDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000100 /* NotchAttachDiagnostics.swift */; };
+		C1000242 /* NotchPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000101 /* NotchPanelTests.swift */; };
+		C1000243 /* CompactLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000102 /* CompactLayoutTests.swift */; };
+		C3000002 /* MotionBench.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3000001 /* MotionBench.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C2000001 /* BilouNookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilouNookApp.swift; sourceTree = "<group>"; };
+		C2000002 /* NotchPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchPanel.swift; sourceTree = "<group>"; };
+		C2000003 /* NotchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchRootView.swift; sourceTree = "<group>"; };
+		C2000004 /* NotchGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchGeometry.swift; sourceTree = "<group>"; };
+		C2000005 /* NotchShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchShape.swift; sourceTree = "<group>"; };
+		C2000007 /* DebugOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOverlay.swift; sourceTree = "<group>"; };
+		C2000008 /* NotchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchState.swift; sourceTree = "<group>"; };
+		C2000009 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		C2000010 /* MouseMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseMonitor.swift; sourceTree = "<group>"; };
+		C2000011 /* AnimationLab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLab.swift; sourceTree = "<group>"; };
+		C2000012 /* CoordinateSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSpace.swift; sourceTree = "<group>"; };
+		C2000013 /* ScreenResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenResolver.swift; sourceTree = "<group>"; };
+		C2000014 /* InteractionRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionRegion.swift; sourceTree = "<group>"; };
+		C2000015 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
+		C2000016 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		C2000017 /* HotKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyManager.swift; sourceTree = "<group>"; };
+		C2000019 /* GestureMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureMonitor.swift; sourceTree = "<group>"; };
+		C2000020 /* Watchdog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watchdog.swift; sourceTree = "<group>"; };
+		C2000021 /* ScaleBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleBlur.swift; sourceTree = "<group>"; };
+		C2000022 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics/HapticsService.swift; sourceTree = "<group>"; };
+		C2000008b /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C4000001 /* BilouNook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilouNook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2000030 /* ZoneMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneMathTests.swift; sourceTree = "<group>"; };
+		C2000031 /* NotchGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchGeometryTests.swift; sourceTree = "<group>"; };
+		C2000032 /* NotchStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchStateTests.swift; sourceTree = "<group>"; };
+		C2000041 /* ModuleRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleRegistry.swift; sourceTree = "<group>"; };
+		C2000042 /* ModuleShellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleShellView.swift; sourceTree = "<group>"; };
+		C2000043 /* PlaceholderModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderModuleView.swift; sourceTree = "<group>"; };
+		C2000044 /* ModuleA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleA.swift; sourceTree = "<group>"; };
+		C2000045 /* ModuleB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleB.swift; sourceTree = "<group>"; };
+		C2000046 /* ModuleRegistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleRegistryTests.swift; sourceTree = "<group>"; };
+		C2000047 /* NotchRootViewRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchRootViewRenderTests.swift; sourceTree = "<group>"; };
+		C2000050 /* NotchModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchModule.swift; sourceTree = "<group>"; };
+		C2000040 /* BilouNookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BilouNookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2000060 /* NowPlayingSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingSnapshot.swift; sourceTree = "<group>"; };
+		C2000061 /* NowPlayingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingProvider.swift; sourceTree = "<group>"; };
+		C2000062 /* MediaRemoteNowPlayingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRemoteNowPlayingProvider.swift; sourceTree = "<group>"; };
+		C2000063 /* AppleScriptNowPlayingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptNowPlayingProvider.swift; sourceTree = "<group>"; };
+		C2000064 /* NowPlayingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingService.swift; sourceTree = "<group>"; };
+		C2000065 /* NowPlayingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingServiceTests.swift; sourceTree = "<group>"; };
+		C2000070 /* NowPlayingLiveActivityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingLiveActivityState.swift; sourceTree = "<group>"; };
+		C2000071 /* LiveActivityLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityLayout.swift; sourceTree = "<group>"; };
+		C2000072 /* MediaModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaModule.swift; sourceTree = "<group>"; };
+		C2000073 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
+		C2000074 /* MediaCompactLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCompactLiveActivity.swift; sourceTree = "<group>"; };
+		C2000075 /* MediaProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaProgressBar.swift; sourceTree = "<group>"; };
+		C2000076 /* MarqueeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeText.swift; sourceTree = "<group>"; };
+		C2000077 /* ArtworkThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkThumbnailView.swift; sourceTree = "<group>"; };
+		C2000078 /* EqualizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerView.swift; sourceTree = "<group>"; };
+		C2000079 /* MediaFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFormatting.swift; sourceTree = "<group>"; };
+		C2000080 /* MediaViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewState.swift; sourceTree = "<group>"; };
+		C2000081 /* MediaFormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFormattingTests.swift; sourceTree = "<group>"; };
+		C2000082 /* MediaViewStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewStateTests.swift; sourceTree = "<group>"; };
+		C2000083 /* LiveActivityLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityLayoutTests.swift; sourceTree = "<group>"; };
+		C2000084 /* ArtworkDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDecoderTests.swift; sourceTree = "<group>"; };
+		C2000085 /* MediaPlaybackAnchorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlaybackAnchorTests.swift; sourceTree = "<group>"; };
+		C2000086 /* MediaLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLayoutTests.swift; sourceTree = "<group>"; };
+		C2000087 /* MediaTransportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTransportTests.swift; sourceTree = "<group>"; };
+		C2000088 /* SourceAppInfoCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppInfoCacheTests.swift; sourceTree = "<group>"; };
+		C2000089 /* MediaMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaMotion.swift; sourceTree = "<group>"; };
+		C2000090 /* MediaPlaybackAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlaybackAnchor.swift; sourceTree = "<group>"; };
+		C2000091 /* MediaLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLayout.swift; sourceTree = "<group>"; };
+		C2000092 /* MediaTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTransport.swift; sourceTree = "<group>"; };
+		C2000093 /* SourceAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppInfo.swift; sourceTree = "<group>"; };
+		C2000094 /* MediaContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaContentView.swift; sourceTree = "<group>"; };
+		C2000095 /* ArtworkAverageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkAverageColor.swift; sourceTree = "<group>"; };
+		C2000096 /* MediaSeekDebugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSeekDebugLog.swift; sourceTree = "<group>"; };
+		C2000097 /* MediaSnapshotRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSnapshotRenderTests.swift; sourceTree = "<group>"; };
+		C2000098 /* NotchAttachmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchAttachmentTests.swift; sourceTree = "<group>"; };
+		C2000099 /* NotchAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchAttachment.swift; sourceTree = "<group>"; };
+		C2000100 /* NotchAttachDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchAttachDiagnostics.swift; sourceTree = "<group>"; };
+		C2000101 /* NotchPanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchPanelTests.swift; sourceTree = "<group>"; };
+		C2000102 /* CompactLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayoutTests.swift; sourceTree = "<group>"; };
+		C3000001 /* MotionBench.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug/MotionBench.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		C5000001 = {
+			isa = PBXGroup;
+			children = (
+				C5000002 /* BilouNook */,
+				C5000020 /* BilouNookTests */,
+				C5000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C5000002 /* BilouNook */ = {
+			isa = PBXGroup;
+			children = (
+				C2000008b /* Info.plist */,
+				C3000001 /* Assets.xcassets */,
+				C5000004 /* App */,
+				C5000005 /* Window */,
+				C5000006 /* Notch */,
+				C5000007 /* Settings */,
+				C5000008 /* State */,
+				C5000009 /* Animations */,
+				C5000010 /* Interaction */,
+				C5000011 /* Debug */,
+				C5000012 /* Utils */,
+				C5000013 /* Haptics */,
+				C5000014 /* NowPlaying */,
+				C5000030 /* Modules */,
+			);
+			path = BilouNook;
+			sourceTree = "<group>";
+		};
+		C5000004 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C2000001 /* BilouNookApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C5000005 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				C2000002 /* NotchPanel.swift */,
+				C2000099 /* NotchAttachment.swift */,
+				C2000100 /* NotchAttachDiagnostics.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		C5000006 /* Notch */ = {
+			isa = PBXGroup;
+			children = (
+				C2000003 /* NotchRootView.swift */,
+				C2000004 /* NotchGeometry.swift */,
+				C2000005 /* NotchShape.swift */,
+				C2000071 /* LiveActivityLayout.swift */,
+				C2000007 /* DebugOverlay.swift */,
+			);
+			path = Notch;
+			sourceTree = "<group>";
+		};
+		C5000007 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C2000015 /* SettingsWindow.swift */,
+				C2000016 /* SettingsStore.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		C5000008 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				C2000008 /* NotchState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		C5000009 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				C2000009 /* Animations.swift */,
+				C2000021 /* ScaleBlur.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		C5000010 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				C2000010 /* MouseMonitor.swift */,
+				C2000014 /* InteractionRegion.swift */,
+				C2000019 /* GestureMonitor.swift */,
+				C2000020 /* Watchdog.swift */,
+			);
+			path = Interaction;
+			sourceTree = "<group>";
+		};
+		C5000011 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				C2000011 /* AnimationLab.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		C5000012 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C2000012 /* CoordinateSpace.swift */,
+				C2000013 /* ScreenResolver.swift */,
+				C2000017 /* HotKeyManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C5000013 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				C2000022 /* HapticsService.swift */,
+			);
+			name = Haptics;
+			sourceTree = "<group>";
+		};
+		C5000014 /* NowPlaying */ = {
+			isa = PBXGroup;
+			children = (
+				C2000060 /* NowPlayingSnapshot.swift */,
+				C2000061 /* NowPlayingProvider.swift */,
+				C2000062 /* MediaRemoteNowPlayingProvider.swift */,
+				C2000063 /* AppleScriptNowPlayingProvider.swift */,
+				C2000064 /* NowPlayingService.swift */,
+				C2000070 /* NowPlayingLiveActivityState.swift */,
+			);
+			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		C5000030 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C5000034 /* Media */,
+				C5000031 /* Core */,
+				C5000032 /* ModuleA */,
+				C5000033 /* ModuleB */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C5000031 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C2000050 /* NotchModule.swift */,
+				C2000041 /* ModuleRegistry.swift */,
+				C2000042 /* ModuleShellView.swift */,
+				C2000043 /* PlaceholderModuleView.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C5000032 /* ModuleA */ = {
+			isa = PBXGroup;
+			children = (
+				C2000044 /* ModuleA.swift */,
+			);
+			path = ModuleA;
+			sourceTree = "<group>";
+		};
+		C5000033 /* ModuleB */ = {
+			isa = PBXGroup;
+			children = (
+				C2000045 /* ModuleB.swift */,
+			);
+			path = ModuleB;
+			sourceTree = "<group>";
+		};
+		C5000034 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				C2000072 /* MediaModule.swift */,
+				C2000073 /* MediaView.swift */,
+				C2000074 /* MediaCompactLiveActivity.swift */,
+				C2000075 /* MediaProgressBar.swift */,
+				C2000076 /* MarqueeText.swift */,
+				C2000077 /* ArtworkThumbnailView.swift */,
+				C2000078 /* EqualizerView.swift */,
+				C2000079 /* MediaFormatting.swift */,
+				C2000080 /* MediaViewState.swift */,
+				C2000089 /* MediaMotion.swift */,
+				C2000090 /* MediaPlaybackAnchor.swift */,
+				C2000091 /* MediaLayout.swift */,
+				C2000092 /* MediaTransport.swift */,
+				C2000093 /* SourceAppInfo.swift */,
+				C2000094 /* MediaContentView.swift */,
+				C2000095 /* ArtworkAverageColor.swift */,
+				C2000096 /* MediaSeekDebugLog.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		C5000020 /* BilouNookTests */ = {
+			isa = PBXGroup;
+			children = (
+				C2000030 /* ZoneMathTests.swift */,
+				C2000031 /* NotchGeometryTests.swift */,
+				C2000032 /* NotchStateTests.swift */,
+				C2000046 /* ModuleRegistryTests.swift */,
+				C2000047 /* NotchRootViewRenderTests.swift */,
+				C2000065 /* NowPlayingServiceTests.swift */,
+				C2000081 /* MediaFormattingTests.swift */,
+				C2000082 /* MediaViewStateTests.swift */,
+				C2000083 /* LiveActivityLayoutTests.swift */,
+				C2000084 /* ArtworkDecoderTests.swift */,
+				C2000085 /* MediaPlaybackAnchorTests.swift */,
+				C2000086 /* MediaLayoutTests.swift */,
+				C2000087 /* MediaTransportTests.swift */,
+				C2000088 /* SourceAppInfoCacheTests.swift */,
+				C2000097 /* MediaSnapshotRenderTests.swift */,
+				C2000098 /* NotchAttachmentTests.swift */,
+				C2000101 /* NotchPanelTests.swift */,
+				C2000102 /* CompactLayoutTests.swift */,
+			);
+			path = BilouNookTests;
+			sourceTree = "<group>";
+		};
+		C5000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C4000001 /* BilouNook.app */,
+				C2000040 /* BilouNookTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C6000001 /* BilouNook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7000001 /* Build configuration list for PBXNativeTarget "BilouNook" */;
+			buildPhases = (
+				C6000002 /* Sources */,
+				C6000003 /* Resources */,
+				C6000004 /* Prepare Now Playing Runtime */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BilouNook;
+			productName = BilouNook;
+			productReference = C4000001 /* BilouNook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C6000010 /* BilouNookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7000010 /* Build configuration list for PBXNativeTarget "BilouNookTests" */;
+			buildPhases = (
+				C6000011 /* Sources */,
+				C6000012 /* Frameworks */,
+				C6000013 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BilouNookTests;
+			productName = BilouNookTests;
+			productReference = C2000040 /* BilouNookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C6000012 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXProject section */
+		C8000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = C7000002 /* Build configuration list for PBXProject "BilouNook" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C5000001;
+			productRefGroup = C5000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C6000001 /* BilouNook */,
+				C6000010 /* BilouNookTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C6000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1000023 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6000013 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C6000004 /* Prepare Now Playing Runtime */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../scripts/prepare-nowplaying-runtime.sh",
+				"$(SRCROOT)/../scripts/build-mediaremote-adapter.sh",
+				"$(SRCROOT)/../Vendor/MediaRemoteAdapter/bin/mediaremote-adapter.pl",
+			);
+			name = "Prepare Now Playing Runtime";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/NowPlaying/mediaremote-adapter.pl",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/NowPlaying/MediaRemoteAdapter.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../scripts/prepare-nowplaying-runtime.sh\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C6000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1000001 /* BilouNookApp.swift in Sources */,
+				C1000002 /* NotchPanel.swift in Sources */,
+				C1000003 /* NotchRootView.swift in Sources */,
+				C1000004 /* NotchGeometry.swift in Sources */,
+				C1000005 /* NotchShape.swift in Sources */,
+				C1000007 /* DebugOverlay.swift in Sources */,
+				C1000008 /* NotchState.swift in Sources */,
+				C1000009 /* Animations.swift in Sources */,
+				C1000010 /* MouseMonitor.swift in Sources */,
+				C1000011 /* AnimationLab.swift in Sources */,
+				C3000002 /* MotionBench.swift in Sources */,
+				C1000012 /* CoordinateSpace.swift in Sources */,
+				C1000013 /* ScreenResolver.swift in Sources */,
+				C1000014 /* InteractionRegion.swift in Sources */,
+				C1000015 /* SettingsWindow.swift in Sources */,
+				C1000016 /* SettingsStore.swift in Sources */,
+				C1000017 /* HotKeyManager.swift in Sources */,
+				C1000019 /* GestureMonitor.swift in Sources */,
+				C1000020 /* Watchdog.swift in Sources */,
+				C1000021 /* ScaleBlur.swift in Sources */,
+				C1000022 /* HapticsService.swift in Sources */,
+				C1000040 /* NotchModule.swift in Sources */,
+				C1000041 /* ModuleRegistry.swift in Sources */,
+				C1000042 /* ModuleShellView.swift in Sources */,
+				C1000043 /* PlaceholderModuleView.swift in Sources */,
+				C1000044 /* ModuleA.swift in Sources */,
+				C1000045 /* ModuleB.swift in Sources */,
+				C1000070 /* NowPlayingSnapshot.swift in Sources */,
+				C1000071 /* NowPlayingProvider.swift in Sources */,
+				C1000072 /* MediaRemoteNowPlayingProvider.swift in Sources */,
+				C1000073 /* AppleScriptNowPlayingProvider.swift in Sources */,
+				C1000074 /* NowPlayingService.swift in Sources */,
+				C1000090 /* NowPlayingLiveActivityState.swift in Sources */,
+				C1000091 /* LiveActivityLayout.swift in Sources */,
+				C1000092 /* MediaModule.swift in Sources */,
+				C1000093 /* MediaView.swift in Sources */,
+				C1000094 /* MediaCompactLiveActivity.swift in Sources */,
+				C1000095 /* MediaProgressBar.swift in Sources */,
+				C1000096 /* MarqueeText.swift in Sources */,
+				C1000097 /* ArtworkThumbnailView.swift in Sources */,
+				C1000098 /* EqualizerView.swift in Sources */,
+				C1000099 /* MediaFormatting.swift in Sources */,
+				C1000100 /* MediaViewState.swift in Sources */,
+				C1000129 /* MediaMotion.swift in Sources */,
+				C1000130 /* MediaPlaybackAnchor.swift in Sources */,
+				C1000131 /* MediaLayout.swift in Sources */,
+				C1000132 /* MediaTransport.swift in Sources */,
+				C1000133 /* SourceAppInfo.swift in Sources */,
+				C1000134 /* MediaContentView.swift in Sources */,
+				C1000135 /* ArtworkAverageColor.swift in Sources */,
+				C1000136 /* MediaSeekDebugLog.swift in Sources */,
+				C1000239 /* NotchAttachment.swift in Sources */,
+				C1000241 /* NotchAttachDiagnostics.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6000011 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1000030 /* ZoneMathTests.swift in Sources */,
+				C1000031 /* NotchGeometryTests.swift in Sources */,
+				C1000032 /* NotchStateTests.swift in Sources */,
+				C1000033 /* NotchState.swift in Sources */,
+				C1000034 /* HapticsService.swift in Sources */,
+				C1000035 /* SettingsStore.swift in Sources */,
+				C1000036 /* InteractionRegion.swift in Sources */,
+				C1000037 /* NotchGeometry.swift in Sources */,
+				C1000038 /* NotchShape.swift in Sources */,
+				C1000046 /* ModuleRegistryTests.swift in Sources */,
+				C1000047 /* NotchRootViewRenderTests.swift in Sources */,
+				C1000048 /* NotchRootView.swift in Sources */,
+				C1000049 /* NotchModule.swift in Sources */,
+				C1000050 /* ModuleRegistry.swift in Sources */,
+				C1000051 /* ModuleShellView.swift in Sources */,
+				C1000052 /* PlaceholderModuleView.swift in Sources */,
+				C1000053 /* ModuleA.swift in Sources */,
+				C1000054 /* ModuleB.swift in Sources */,
+				C1000055 /* Animations.swift in Sources */,
+				C1000056 /* ScaleBlur.swift in Sources */,
+				C1000057 /* MouseMonitor.swift in Sources */,
+				C1000058 /* Watchdog.swift in Sources */,
+				C1000059 /* GestureMonitor.swift in Sources */,
+				C1000060 /* ScreenResolver.swift in Sources */,
+				C1000061 /* HotKeyManager.swift in Sources */,
+				C1000062 /* DebugOverlay.swift in Sources */,
+				C1000063 /* AnimationLab.swift in Sources */,
+				C1000064 /* SettingsWindow.swift in Sources */,
+				C1000080 /* NowPlayingSnapshot.swift in Sources */,
+				C1000081 /* NowPlayingProvider.swift in Sources */,
+				C1000082 /* MediaRemoteNowPlayingProvider.swift in Sources */,
+				C1000083 /* AppleScriptNowPlayingProvider.swift in Sources */,
+				C1000084 /* NowPlayingService.swift in Sources */,
+				C1000085 /* NowPlayingServiceTests.swift in Sources */,
+				C1000110 /* NowPlayingLiveActivityState.swift in Sources */,
+				C1000111 /* LiveActivityLayout.swift in Sources */,
+				C1000112 /* MediaModule.swift in Sources */,
+				C1000113 /* MediaView.swift in Sources */,
+				C1000114 /* MediaCompactLiveActivity.swift in Sources */,
+				C1000115 /* MediaProgressBar.swift in Sources */,
+				C1000116 /* MarqueeText.swift in Sources */,
+				C1000117 /* ArtworkThumbnailView.swift in Sources */,
+				C1000118 /* EqualizerView.swift in Sources */,
+				C1000119 /* MediaFormatting.swift in Sources */,
+				C1000120 /* MediaViewState.swift in Sources */,
+				C1000229 /* MediaMotion.swift in Sources */,
+				C1000230 /* MediaPlaybackAnchor.swift in Sources */,
+				C1000231 /* MediaLayout.swift in Sources */,
+				C1000232 /* MediaTransport.swift in Sources */,
+				C1000233 /* SourceAppInfo.swift in Sources */,
+				C1000234 /* MediaContentView.swift in Sources */,
+				C1000235 /* ArtworkAverageColor.swift in Sources */,
+				C1000236 /* MediaSeekDebugLog.swift in Sources */,
+				C1000121 /* MediaFormattingTests.swift in Sources */,
+				C1000122 /* MediaViewStateTests.swift in Sources */,
+				C1000123 /* LiveActivityLayoutTests.swift in Sources */,
+				C1000124 /* ArtworkDecoderTests.swift in Sources */,
+				C1000125 /* MediaPlaybackAnchorTests.swift in Sources */,
+				C1000126 /* MediaLayoutTests.swift in Sources */,
+				C1000127 /* MediaTransportTests.swift in Sources */,
+				C1000128 /* SourceAppInfoCacheTests.swift in Sources */,
+				C1000137 /* MediaSnapshotRenderTests.swift in Sources */,
+				C1000237 /* NotchPanel.swift in Sources */,
+				C1000238 /* NotchAttachmentTests.swift in Sources */,
+				C1000240 /* NotchAttachment.swift in Sources */,
+				C1000242 /* NotchPanelTests.swift in Sources */,
+				C1000243 /* CompactLayoutTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C9000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = BilouNook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilou.BilouNook;
+				PRODUCT_NAME = BilouNook;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C9000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = BilouNook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilou.BilouNook;
+				PRODUCT_NAME = BilouNook;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C9000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_TESTABILITY = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C9000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		C9000010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilou.BilouNookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C9000011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilou.BilouNookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C7000001 /* Build configuration list for PBXNativeTarget "BilouNook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9000001 /* Debug */,
+				C9000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C7000010 /* Build configuration list for PBXNativeTarget "BilouNookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9000010 /* Debug */,
+				C9000011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C7000002 /* Build configuration list for PBXProject "BilouNook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9000003 /* Debug */,
+				C9000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C8000001 /* Project object */;
+}

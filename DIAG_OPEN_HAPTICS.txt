@@ -1,0 +1,22 @@
+DIAG_OPEN_HAPTICS
+Date: Sat Oct 24 18:24:13 CET 2026
+---
+
+D0 — Fix 7 status
+- Lab upgraded partially: sliders for springs exist, timeScale exists but reset logic added in code (onAppear/onDisappear) but README/tests show incomplete; stress test added; spring curves added; copy as Swift added.
+- Missing/partial: presets JSON save/load not implemented; all _ASSUMPTION sliders in one place partially done; VERIFY_C.txt exists but minimal.
+
+D1 — Latency budget (current)
+(a) event timestamp: NSEvent has timestamp but not logged; estimated variable
+(b) hot zone: notch.width+12 horizontal, notch.height+3 above (MouseMonitor) - small
+(c) hoverIntentDelay default 0.08s (SettingsStore default)
+(d) Task.sleep hops in NotchState
+(e) main-actor hops via Task { @MainActor }
+(f) withAnimation called in onChange
+(g) hover-open uses Animations.hoverOpen 0.58/0.68
+(h) contentIn has 0.1s delay
+(i) generation tokens present
+(j) ignoresMouseEvents flipped on hover
+(k) blocked if phase closing, timers, etc.
+
+D2-D7 — see files for details

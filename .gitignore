@@ -1,0 +1,11 @@
+DerivedData/
+build/
+xcuserdata/
+*.xcuserstate
+.DS_Store
+*.csv
+*.xcscmblueprint
+# Local clone and build artifacts
+third_party/mediaremote-adapter/
+Vendor/MediaRemoteAdapter/build/
+PROJECT_ANALYSIS.txt

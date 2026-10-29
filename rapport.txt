@@ -1,0 +1,47 @@
+STEP 1 - BilouNook project skeleton and notch window
+Date: $(date)
+
+Actions:
+- Created Xcode project BilouNook with SwiftUI lifecycle via NSApplication main + AppDelegate (LSUIElement)
+- Bundle ID: com.bilou.BilouNook, min macOS 14.6, LSUIElement YES
+- App Sandbox disabled (ENABLE_APP_SANDBOX=NO), Hardened Runtime enabled (ENABLE_HARDENED_RUNTIME=YES)
+- NotchPanel subclass of NSPanel: styleMask [.borderless, .nonactivatingPanel], isOpaque false, backgroundColor .clear, hasShadow false, level = mainMenu+3, collectionBehavior [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary], movable false, becomesKeyOnlyIfNeeded true, canBecomeKey/canBecomeMain false
+- Panel fixed 700x320 pinned to top-center of target screen (repositions on NSApplication.didChangeScreenParametersNotification)
+- SwiftUI root NotchRootView with black rounded rectangle placeholder centered at top (shape area x:250,y:0,w:200,h:32 in 700x320 panel)
+- Mouse events outside shape pass through via hitTest returning nil
+- Context menu on right-click with "Settings…" and "Quit BilouNook" (terminates app)
+- Assets.xcassets created
+
+Build:
+- xcodebuild -project BilouNook.xcodeproj -scheme BilouNook -configuration Debug build -> BUILD SUCCEEDED
+
+Test:
+- Run: /Users/bilelzghal/Library/Developer/Xcode/DerivedData/BilouNook-*/Build/Products/Debug/BilouNook.app
+- Should show black placeholder glued to top of screen, visible on Spaces/full-screen apps, right-click shows menu, quit works.
+
+STEP 2 - notch geometry
+Date: $(date)
+
+Actions:
+- NotchGeometry: uses auxiliaryTopLeftArea/auxiliaryTopRightArea for physical notch rect, falls back to safeAreaInsets.top, else returns handler rect (default 184x8). API uniform for notch/no-notch.
+- Added NotchSettings with @AppStorage for fine-tune width/height (-20..+20) and handler width/height, applied in NotchGeometry.
+- NotchShape: SwiftUI Shape with animatableData for width/height/topCornerRadius/bottomCornerRadius, concave/rounded silhouette, renders black at notch size.
+- Debug overlay toggled with ⌥⌘D showing screen name, notch rect, scale, insets.
+- Panel updated to use notch geometry.
+
+Build: xcodebuild BUILD SUCCEEDED
+Test: run app; black notch shape should merge with hardware notch. Toggle debug overlay with Option+Command+D to see rect/scale. Adjust NotchSettings values to fine-tune.
+
+STEP 3 - state machine and open/close animation
+Date: $(date)
+
+Actions:
+- NotchState (@Observable): phases closed/hover/open, intent delay ~80ms, close delay ~150ms with cancellation on return
+- MouseMonitor: NSEvent global+local mouseMoved, hot zone notch inflated by ~6pt horizontally/+3pt above, leave open area +12pt margin triggers close
+- Click toggles, scroll gestures support in state (setting-controlled)
+- Animations: constants as specified, scaled via timeScale (AnimationLab)
+- NotchShape morphs: closed notch rect, open 520x180, bottom corners round more; content uses asymmetric scale(0.8, anchor(0.5,-0.25))+blur(10)+opacity with contentIn/contentOut
+- AnimationLab: ⌥⌘L sliders for response/damping per constant, time-scale 1/0.5/0.25/0.1x, repeat open/close, copy Swift
+
+Build: xcodebuild BUILD SUCCEEDED
+Test: hover in/out rapidly (animations retarget), click during animation, use AnimationLab slow-mo, leave open area to close.

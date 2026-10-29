@@ -1,0 +1,52 @@
+import AppKit
+import XCTest
+
+final class SourceAppInfoCacheTests: XCTestCase {
+    func testRepeatedBundleLookupUsesOneLoaderCall() {
+        var calls = 0
+        let cache = SourceAppInfoCache { bundleIdentifier in
+            calls += 1
+            return MediaSourceApp(
+                bundleIdentifier: bundleIdentifier,
+                name: "Spotify",
+                icon: NSImage(size: NSSize(width: 18, height: 18))
+            )
+        }
+
+        let first = cache.info(for: "com.spotify.client")
+        let second = cache.info(for: "com.spotify.client")
+
+        XCTAssertEqual(first?.name, "Spotify")
+        XCTAssertEqual(second?.name, "Spotify")
+        XCTAssertEqual(calls, 1)
+    }
+
+    func testDifferentBundleIdentifiersUseSeparateLookups() {
+        var calls = 0
+        let cache = SourceAppInfoCache { bundleIdentifier in
+            calls += 1
+            return MediaSourceApp(
+                bundleIdentifier: bundleIdentifier,
+                name: bundleIdentifier,
+                icon: nil
+            )
+        }
+
+        _ = cache.info(for: "com.apple.Music")
+        _ = cache.info(for: "com.spotify.client")
+
+        XCTAssertEqual(calls, 2)
+    }
+
+    func testMissingApplicationIsNotCachedAsAValue() {
+        var calls = 0
+        let cache = SourceAppInfoCache { _ in
+            calls += 1
+            return nil
+        }
+
+        XCTAssertNil(cache.info(for: "com.example.missing"))
+        XCTAssertNil(cache.info(for: "com.example.missing"))
+        XCTAssertEqual(calls, 2)
+    }
+}

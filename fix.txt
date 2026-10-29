@@ -1,0 +1,86 @@
+FIX PASS 0 - evidence + spec
+Date: Sat Oct 25 2026
+
+Actions:
+- Verified docs/ contains 4 files: NotchNook_Complete_Reverse_Engineering.txt, NotchNook_Animation_UX_Audit.txt, VERIFY_A_WINDOW_GEOMETRY.txt, VERIFY_B_STATE_ANIMATION.txt
+- Read all four completely
+- Wrote docs/DESIGN_SPEC.md with PROVEN table, NOT IN FILES table with _ASSUMPTION constants, root cause mapping from VERIFY_A/VERIFY_B to fix steps 1-7, noted S9/S10 invalid
+- Appended evidence-first rules to AGENTS.md
+---
+
+FIX PASS 1 - window, target screen, click-through
+Date: Sat Oct 25 2026
+
+Starting implementation...
+
+FIX PASS 1 completed
+- NotchPanel: larger panel, flush top-center, constrainFrameRect unchanged, animationBehavior .none, hidesOnDeactivate/canHide false, isFloatingPanel true, isMovable false, isReleasedWhenClosed false, collectionBehavior includes .ignoresCycle
+- ScreenResolver: prefers built-in, else mouse, else main; reposition on screen/wake/space changes
+- Click-through: ignoresMouseEvents driven by InteractionRegion from global+local mouseMoved monitors; starts true, reset true on close finish; HitTestNSView removed from usage
+- CoordinateSpace helper added
+- Settings placeholder window "Settings (step 11)"
+- Built successfully
+
+FIX PASS 2 - live settings and debug tooling
+Date: Sat Oct 25 2026
+
+Starting implementation...
+
+FIX PASS 2 completed
+- SettingsStore implemented, NotchGeometry pure function, live updates via onChange
+- DebugOverlay/AnimationLab/HotKeyManager/Haptics wrapped in #if DEBUG
+- Carbon hotkeys registered, right-click debug menu added, windows floating + activated
+- Built successfully
+
+FIX PASS 3 - NotchShape rewrite and layering
+Date: Sat Oct 25 2026
+
+Starting implementation...
+
+FIX PASS 3 completed
+- NotchShape rewritten with top concave ears, bottom rounded, overdraw, clamping, animatableData
+- Layering with mask, shadow, content inset
+- Presets added
+- Built successfully
+
+FIX PASS 3 updated
+- Shape uses exact path spec, overdraw concept, animatableData correct, layering with mask+shadow
+- Built successfully
+
+FIX PASS 4 - state machine rewrite, gestures, stuck-state protection
+Date: Sat Oct 25 2026
+
+Starting implementation...
+
+FIX PASS 4 completed
+- State machine rewritten, gestures added, watchdog added
+- Built successfully
+
+FIX PASS 5 - the animation itself
+Date: Sat Oct 25 2026
+
+Starting implementation...
+
+FIX PASS 5 completed
+- Single NotchMetrics source of truth, spring selection by trigger, content transition in transaction, no DispatchQueue.asyncAfter for content, animations in Animations.swift
+- Built successfully
+
+FIX PASS 6 - haptics
+Date: Sat Oct 25 2026
+
+Starting implementation...
+
+FIX PASS 6 completed
+- HapticsService implemented with patterns, rate limiting, logging, wired to state machine
+- DEBUG test tool added
+- Built successfully
+
+FIX PASS 7 - Animation Lab upgrade, re-verification
+Date: Sat Oct 25 2026
+
+Starting implementation...
+
+FIX PASS 8 - instant open, hot zone separation, haptics hardening
+Date: Sat Oct 25 2026
+
+Starting implementation...

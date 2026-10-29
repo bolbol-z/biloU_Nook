@@ -1,0 +1,21 @@
+import Foundation
+
+enum MediaFormatting {
+    static func time(_ seconds: TimeInterval) -> String {
+        guard seconds.isFinite, seconds > 0 else { return "0:00" }
+        let total = Int(seconds.rounded(.down))
+        let hours = total / 3600
+        let minutes = (total % 3600) / 60
+        let secs = total % 60
+        if hours > 0 {
+            return String(format: "%d:%02d:%02d", hours, minutes, secs)
+        }
+        return String(format: "%d:%02d", minutes, secs)
+    }
+
+    static func remaining(elapsed: TimeInterval, duration: TimeInterval) -> String {
+        guard duration.isFinite, duration > 0 else { return "--:--" }
+        let safeElapsed = elapsed.isFinite ? max(0, elapsed) : 0
+        return "-" + time(max(0, duration - safeElapsed))
+    }
+}
