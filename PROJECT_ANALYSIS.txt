@@ -1,0 +1,1900 @@
+PROJECT ANALYSIS — PART 1: every file (READ-ONLY)
+PROJECT: notchdynamique / BilouNook (macOS notch app)
+BRANCH: recovery
+HEAD: 341c04c98f751ae8d545a6ea793716351a6e0eec
+DATE: Sun Oct 25 11:36:51 CET 2026
+ANALYSIS ROOT: /Users/bilelzghal/Desktop/notchdynamique
+
+================================================================================
+SECTION 1 — INVENTORY
+================================================================================
+
+### 1.1 Raw output: git ls-files | sort
+.gitignore
+analysis/evidence/assets/assets_info.err
+analysis/evidence/assets/assets_info.json
+analysis/evidence/download.html
+analysis/evidence/homepage.html
+analysis/evidence/lottie/click/animations/data.json
+analysis/evidence/lottie/click/manifest.json
+analysis/evidence/lottie/drag/animations/data.json
+analysis/evidence/lottie/drag/manifest.json
+analysis/evidence/lottie/hello/animations/Animation - 1717258176922.json
+analysis/evidence/lottie/hello/manifest.json
+analysis/evidence/lottie/lock/animations/data.json
+analysis/evidence/lottie/lock/manifest.json
+analysis/evidence/lottie/tray/animations/data.json
+analysis/evidence/lottie/tray/manifest.json
+analysis/evidence/lottie/update/animations/data.json
+analysis/evidence/lottie/update/manifest.json
+analysis/evidence/runtime/01-initial-top.ocr.txt
+analysis/evidence/runtime/01-initial-top.png
+analysis/evidence/runtime/02-window-39324.ocr.txt
+analysis/evidence/runtime/02-window-39324.png
+analysis/evidence/runtime/02b-changelog.png
+analysis/evidence/runtime/03-window-39323.ocr.txt
+analysis/evidence/runtime/03-window-39323.png
+analysis/evidence/runtime/04-hover-expanded.ocr.txt
+analysis/evidence/runtime/04-hover-expanded.png
+analysis/evidence/runtime/05-expanded-window.png
+analysis/evidence/runtime/06-after-leave.ocr.txt
+analysis/evidence/runtime/06-after-leave.png
+analysis/evidence/runtime/07-diff-mask.png
+analysis/evidence/runtime/07-hover-again.ocr.txt
+analysis/evidence/runtime/07-hover-again.png
+analysis/evidence/runtime/close_burst/baseline_expanded.png
+analysis/evidence/runtime/close_burst/f00.png
+analysis/evidence/runtime/close_burst/f01.png
+analysis/evidence/runtime/close_burst/f02.png
+analysis/evidence/runtime/close_burst/f03.png
+analysis/evidence/runtime/close_burst/f04.png
+analysis/evidence/runtime/close_burst/f05.png
+analysis/evidence/runtime/close_burst/f06.png
+analysis/evidence/runtime/close_burst/f07.png
+analysis/evidence/runtime/close_burst/f08.png
+analysis/evidence/runtime/close_burst/f09.png
+analysis/evidence/runtime/close_burst/f10.png
+analysis/evidence/runtime/close_burst/f11.png
+analysis/evidence/runtime/close_burst/f12.png
+analysis/evidence/runtime/close_burst/f13.png
+analysis/evidence/runtime/close_burst/f14.png
+analysis/evidence/runtime/close_burst/f15.png
+analysis/evidence/runtime/close_burst/f16.png
+analysis/evidence/runtime/close_burst/f17.png
+analysis/evidence/runtime/close_burst/meta.json
+analysis/evidence/runtime/close_burst/pre.png
+analysis/evidence/runtime/hover_burst/baseline.png
+analysis/evidence/runtime/hover_burst/f00.png
+analysis/evidence/runtime/hover_burst/f01.png
+analysis/evidence/runtime/hover_burst/f02.png
+analysis/evidence/runtime/hover_burst/f03.png
+analysis/evidence/runtime/hover_burst/f04.png
+analysis/evidence/runtime/hover_burst/f05.png
+analysis/evidence/runtime/hover_burst/f06.png
+analysis/evidence/runtime/hover_burst/f07.png
+analysis/evidence/runtime/hover_burst/f08.png
+analysis/evidence/runtime/hover_burst/f09.png
+analysis/evidence/runtime/hover_burst/f10.png
+analysis/evidence/runtime/hover_burst/f11.png
+analysis/evidence/runtime/hover_burst/f12.png
+analysis/evidence/runtime/hover_burst/f13.png
+analysis/evidence/runtime/hover_burst/f14.png
+analysis/evidence/runtime/hover_burst/f15.png
+analysis/evidence/runtime/hover_burst/f16.png
+analysis/evidence/runtime/hover_burst/f17.png
+analysis/evidence/runtime/hover_burst/f18.png
+analysis/evidence/runtime/hover_burst/f19.png
+analysis/evidence/runtime/hover_burst/f20.png
+analysis/evidence/runtime/hover_burst/f21.png
+analysis/evidence/runtime/hover_burst/f22.png
+analysis/evidence/runtime/hover_burst/f23.png
+analysis/evidence/runtime/hover_burst/f24.png
+analysis/evidence/runtime/hover_burst/f25.png
+analysis/evidence/runtime/hover_burst/f26.png
+analysis/evidence/runtime/hover_burst/f27.png
+analysis/evidence/runtime/hover_burst/f28.png
+analysis/evidence/runtime/hover_burst/f29.png
+analysis/evidence/runtime/hover_burst/meta.json
+analysis/evidence/runtime/hover-y16.png
+analysis/evidence/runtime/hover-y2.png
+analysis/evidence/runtime/hover-y28.png
+analysis/evidence/runtime/hover-y40.png
+analysis/evidence/runtime/hover-y8.png
+analysis/evidence/strings/disasm_animationsmodifier.txt
+analysis/evidence/strings/imports.txt
+analysis/evidence/strings/nm_all_demangled.txt
+analysis/evidence/strings/nm_arm64_all.txt
+analysis/evidence/strings/nm_demangled.txt
+analysis/evidence/strings/nm_global_demangled.txt
+analysis/evidence/strings/nm_global.err
+analysis/evidence/strings/nm_global.txt
+analysis/evidence/strings/rizin_info.txt
+analysis/evidence/strings/strings.txt
+BilouNook/BilouNook.xcodeproj/project.pbxproj
+BilouNook/BilouNook/Animations/Animations.swift
+BilouNook/BilouNook/Animations/ScaleBlur.swift
+BilouNook/BilouNook/App/BilouNookApp.swift
+BilouNook/BilouNook/App/Info.plist
+BilouNook/BilouNook/Assets.xcassets/AppIcon.appiconset/Contents.json
+BilouNook/BilouNook/Assets.xcassets/Contents.json
+BilouNook/BilouNook/Debug/AnimationLab.swift
+BilouNook/BilouNook/Haptics/Haptics.swift
+BilouNook/BilouNook/Haptics/HapticsService.swift
+BilouNook/BilouNook/Info.plist
+BilouNook/BilouNook/Interaction/GestureMonitor.swift
+BilouNook/BilouNook/Interaction/InteractionRegion.swift
+BilouNook/BilouNook/Interaction/MouseMonitor.swift
+BilouNook/BilouNook/Interaction/Watchdog.swift
+BilouNook/BilouNook/Notch/DebugOverlay.swift
+BilouNook/BilouNook/Notch/NotchGeometry.swift
+BilouNook/BilouNook/Notch/NotchRootView.swift
+BilouNook/BilouNook/Notch/NotchShape.swift
+BilouNook/BilouNook/Settings/NotchSettings.swift
+BilouNook/BilouNook/Settings/SettingsStore.swift
+BilouNook/BilouNook/Settings/SettingsWindow.swift
+BilouNook/BilouNook/State/NotchState.swift
+BilouNook/BilouNook/Utils/CoordinateSpace.swift
+BilouNook/BilouNook/Utils/HotKeyManager.swift
+BilouNook/BilouNook/Utils/ScreenResolver.swift
+BilouNook/BilouNook/Window/NotchPanel.swift
+DIAG_OPEN_HAPTICS.txt
+docs/HAPTICS_NOTES.md
+docs/MOTION_NOTES.md
+docs/NotchNook_Animation_UX_Audit.txt
+docs/NotchNook_Complete_Reverse_Engineering.txt
+docs/STATE_MACHINE.md
+docs/TESTS.md
+docs/VERIFY_A_WINDOW_GEOMETRY.txt
+docs/VERIFY_B_STATE_ANIMATION.txt
+fix.txt
+NotchNook_Animation_UX_Audit.txt
+NotchNook_Complete_Reverse_Engineering.txt
+rapport.txt
+VERIFY_A_WINDOW_GEOMETRY.txt
+VERIFY_B_STATE_ANIMATION.txt
+VERIFY_C.txt
+
+### 1.2 Raw output: find . -type f -not -path "./.git/*" -not -path "./build/*" | sort
+./.gitignore
+./analysis/evidence/assets/assets_info.err
+./analysis/evidence/assets/assets_info.json
+./analysis/evidence/download.html
+./analysis/evidence/homepage.html
+./analysis/evidence/lottie/click/animations/data.json
+./analysis/evidence/lottie/click/manifest.json
+./analysis/evidence/lottie/drag/animations/data.json
+./analysis/evidence/lottie/drag/manifest.json
+./analysis/evidence/lottie/hello/animations/Animation - 1717258176922.json
+./analysis/evidence/lottie/hello/manifest.json
+./analysis/evidence/lottie/lock/animations/data.json
+./analysis/evidence/lottie/lock/manifest.json
+./analysis/evidence/lottie/tray/animations/data.json
+./analysis/evidence/lottie/tray/manifest.json
+./analysis/evidence/lottie/update/animations/data.json
+./analysis/evidence/lottie/update/manifest.json
+./analysis/evidence/runtime/01-initial-top.ocr.txt
+./analysis/evidence/runtime/01-initial-top.png
+./analysis/evidence/runtime/02-window-39324.ocr.txt
+./analysis/evidence/runtime/02-window-39324.png
+./analysis/evidence/runtime/02b-changelog.png
+./analysis/evidence/runtime/03-window-39323.ocr.txt
+./analysis/evidence/runtime/03-window-39323.png
+./analysis/evidence/runtime/04-hover-expanded.ocr.txt
+./analysis/evidence/runtime/04-hover-expanded.png
+./analysis/evidence/runtime/05-expanded-window.png
+./analysis/evidence/runtime/06-after-leave.ocr.txt
+./analysis/evidence/runtime/06-after-leave.png
+./analysis/evidence/runtime/07-diff-mask.png
+./analysis/evidence/runtime/07-hover-again.ocr.txt
+./analysis/evidence/runtime/07-hover-again.png
+./analysis/evidence/runtime/close_burst/baseline_expanded.png
+./analysis/evidence/runtime/close_burst/f00.png
+./analysis/evidence/runtime/close_burst/f01.png
+./analysis/evidence/runtime/close_burst/f02.png
+./analysis/evidence/runtime/close_burst/f03.png
+./analysis/evidence/runtime/close_burst/f04.png
+./analysis/evidence/runtime/close_burst/f05.png
+./analysis/evidence/runtime/close_burst/f06.png
+./analysis/evidence/runtime/close_burst/f07.png
+./analysis/evidence/runtime/close_burst/f08.png
+./analysis/evidence/runtime/close_burst/f09.png
+./analysis/evidence/runtime/close_burst/f10.png
+./analysis/evidence/runtime/close_burst/f11.png
+./analysis/evidence/runtime/close_burst/f12.png
+./analysis/evidence/runtime/close_burst/f13.png
+./analysis/evidence/runtime/close_burst/f14.png
+./analysis/evidence/runtime/close_burst/f15.png
+./analysis/evidence/runtime/close_burst/f16.png
+./analysis/evidence/runtime/close_burst/f17.png
+./analysis/evidence/runtime/close_burst/meta.json
+./analysis/evidence/runtime/close_burst/pre.png
+./analysis/evidence/runtime/hover_burst/baseline.png
+./analysis/evidence/runtime/hover_burst/f00.png
+./analysis/evidence/runtime/hover_burst/f01.png
+./analysis/evidence/runtime/hover_burst/f02.png
+./analysis/evidence/runtime/hover_burst/f03.png
+./analysis/evidence/runtime/hover_burst/f04.png
+./analysis/evidence/runtime/hover_burst/f05.png
+./analysis/evidence/runtime/hover_burst/f06.png
+./analysis/evidence/runtime/hover_burst/f07.png
+./analysis/evidence/runtime/hover_burst/f08.png
+./analysis/evidence/runtime/hover_burst/f09.png
+./analysis/evidence/runtime/hover_burst/f10.png
+./analysis/evidence/runtime/hover_burst/f11.png
+./analysis/evidence/runtime/hover_burst/f12.png
+./analysis/evidence/runtime/hover_burst/f13.png
+./analysis/evidence/runtime/hover_burst/f14.png
+./analysis/evidence/runtime/hover_burst/f15.png
+./analysis/evidence/runtime/hover_burst/f16.png
+./analysis/evidence/runtime/hover_burst/f17.png
+./analysis/evidence/runtime/hover_burst/f18.png
+./analysis/evidence/runtime/hover_burst/f19.png
+./analysis/evidence/runtime/hover_burst/f20.png
+./analysis/evidence/runtime/hover_burst/f21.png
+./analysis/evidence/runtime/hover_burst/f22.png
+./analysis/evidence/runtime/hover_burst/f23.png
+./analysis/evidence/runtime/hover_burst/f24.png
+./analysis/evidence/runtime/hover_burst/f25.png
+./analysis/evidence/runtime/hover_burst/f26.png
+./analysis/evidence/runtime/hover_burst/f27.png
+./analysis/evidence/runtime/hover_burst/f28.png
+./analysis/evidence/runtime/hover_burst/f29.png
+./analysis/evidence/runtime/hover_burst/meta.json
+./analysis/evidence/runtime/hover-y16.png
+./analysis/evidence/runtime/hover-y2.png
+./analysis/evidence/runtime/hover-y28.png
+./analysis/evidence/runtime/hover-y40.png
+./analysis/evidence/runtime/hover-y8.png
+./analysis/evidence/strings/disasm_animationsmodifier.txt
+./analysis/evidence/strings/imports.txt
+./analysis/evidence/strings/nm_all_demangled.txt
+./analysis/evidence/strings/nm_arm64_all.txt
+./analysis/evidence/strings/nm_demangled.txt
+./analysis/evidence/strings/nm_global_demangled.txt
+./analysis/evidence/strings/nm_global.err
+./analysis/evidence/strings/nm_global.txt
+./analysis/evidence/strings/rizin_info.txt
+./analysis/evidence/strings/strings.txt
+./BilouNook/BilouNook.xcodeproj/project.pbxproj
+./BilouNook/BilouNook.xcodeproj/project.xcworkspace/xcuserdata/bilelzghal.xcuserdatad/UserInterfaceState.xcuserstate
+./BilouNook/BilouNook.xcodeproj/xcuserdata/bilelzghal.xcuserdatad/xcschemes/xcschememanagement.plist
+./BilouNook/BilouNook/Animations/Animations.swift
+./BilouNook/BilouNook/Animations/ScaleBlur.swift
+./BilouNook/BilouNook/App/BilouNookApp.swift
+./BilouNook/BilouNook/App/Info.plist
+./BilouNook/BilouNook/Assets.xcassets/AppIcon.appiconset/Contents.json
+./BilouNook/BilouNook/Assets.xcassets/Contents.json
+./BilouNook/BilouNook/Debug/AnimationLab.swift
+./BilouNook/BilouNook/Haptics/Haptics.swift
+./BilouNook/BilouNook/Haptics/HapticsService.swift
+./BilouNook/BilouNook/Info.plist
+./BilouNook/BilouNook/Interaction/GestureMonitor.swift
+./BilouNook/BilouNook/Interaction/InteractionRegion.swift
+./BilouNook/BilouNook/Interaction/MouseMonitor.swift
+./BilouNook/BilouNook/Interaction/Watchdog.swift
+./BilouNook/BilouNook/Notch/DebugOverlay.swift
+./BilouNook/BilouNook/Notch/NotchGeometry.swift
+./BilouNook/BilouNook/Notch/NotchRootView.swift
+./BilouNook/BilouNook/Notch/NotchShape.swift
+./BilouNook/BilouNook/Settings/NotchSettings.swift
+./BilouNook/BilouNook/Settings/SettingsStore.swift
+./BilouNook/BilouNook/Settings/SettingsWindow.swift
+./BilouNook/BilouNook/State/NotchState.swift
+./BilouNook/BilouNook/Utils/CoordinateSpace.swift
+./BilouNook/BilouNook/Utils/HotKeyManager.swift
+./BilouNook/BilouNook/Utils/ScreenResolver.swift
+./BilouNook/BilouNook/Window/NotchPanel.swift
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook-67ee0c9bca2fe1d6568d904b7b952f26-VFS/all-product-headers.yaml
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-all-non-framework-target-headers.hmap
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-all-target-headers.hmap
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-generated-files.hmap
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-own-target-headers.hmap
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-project-headers.hmap
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.app.xcent
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.app.xcent.der
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.DependencyMetadataFileList
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.DependencyStaticMetadataFileList
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.hmap
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/DerivedSources/BilouNook-Swift.h
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/DerivedSources/Entitlements.plist
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook_const_extract_protocols.json
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook_dependency_info.dat
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-dependencies-1.json
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-linker-args.resp
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-OutputFileMap.json
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-primary-emit-module.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-primary-emit-module.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-primary.priors
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-Swift.h
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.abi.json
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.LinkFileList
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.SwiftConstValuesFileList
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.swiftdoc
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.SwiftFileList
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.swiftmodule
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.swiftsourceinfo
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-1
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-2
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-3
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-4
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-5
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-6
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.d
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.dia
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.o
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.swiftconstvalues
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.swiftdeps
+./BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/SwiftStdLibToolInputDependencies.dep
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/07d9452f74510d8c6007941a282f3747
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/0eb03548cd5285c2fc75906c130cfd42
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/6732ab34fe5e9372c6fd9eaf17f0cd1f
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/86dab7dfcaa198829ab0e920c209716d
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/8bba4233626f64a7ea772bb94a08a1a9
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/a8837f06a943a4dcbf0c27d851e8b1b6
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/b9047772f13f510a6f743c0d9ce66db0
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/d41d8cd98f00b204e9800998ecf8427e
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/f86cbb10517a3bd51f252887359b04af
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/fd8314defc70a8778956f026c0ddfd19
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/build-request.json
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/description.msgpack
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/manifest.json
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/target-graph.txt
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/task-store.msgpack
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/build.db
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/PIFCache/project/PROJECT@v11_mod=71073f1a456643d1557c031e0b76e83c_hash=67ee0c9bca2fe1d6568d904b7b952f26plugins=1OJSG6M1FOV3XYQCBH7Z29RZ0FPR9XDE1-json
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/PIFCache/target/TARGET@v11_hash=f532199bedabbea11cfb6141cd7637e2-json
+./BilouNook/build/Build/Intermediates.noindex/XCBuildData/PIFCache/workspace/WORKSPACE@v11_hash=(null)_subobjects=25347a1113d879cf0b70f8f65cccf07d-json
+./BilouNook/build/Build/Products/Debug/BilouNook.app/Contents/_CodeSignature/CodeResources
+./BilouNook/build/Build/Products/Debug/BilouNook.app/Contents/Info.plist
+./BilouNook/build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook
+./BilouNook/build/Build/Products/Debug/BilouNook.app/Contents/PkgInfo
+./BilouNook/build/Build/Products/Debug/BilouNook.swiftmodule/arm64-apple-macos.abi.json
+./BilouNook/build/Build/Products/Debug/BilouNook.swiftmodule/arm64-apple-macos.swiftdoc
+./BilouNook/build/Build/Products/Debug/BilouNook.swiftmodule/arm64-apple-macos.swiftmodule
+./BilouNook/build/Build/Products/Debug/BilouNook.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo
+./BilouNook/build/CompilationCache.noindex/generic/lock
+./BilouNook/build/CompilationCache.noindex/generic/v1.1/v3.actions
+./BilouNook/build/CompilationCache.noindex/generic/v1.1/v3.actions.shared
+./BilouNook/build/CompilationCache.noindex/generic/v1.1/v8.data
+./BilouNook/build/CompilationCache.noindex/generic/v1.1/v8.data.shared
+./BilouNook/build/CompilationCache.noindex/generic/v1.1/v8.index
+./BilouNook/build/CompilationCache.noindex/generic/v1.1/v8.index.shared
+./BilouNook/build/info.plist
+./BilouNook/build/Logs/Build/11BF5C55-43E9-4DD3-BE9C-19D1146B74E6.xcactivitylog
+./BilouNook/build/Logs/Build/A04447A0-5D39-48B6-A07F-B47B26B22A46.xcactivitylog
+./BilouNook/build/Logs/Build/LogStoreManifest.plist
+./BilouNook/build/Logs/Launch/LogStoreManifest.plist
+./BilouNook/build/Logs/Localization/LogStoreManifest.plist
+./BilouNook/build/Logs/Package/LogStoreManifest.plist
+./BilouNook/build/Logs/Test/LogStoreManifest.plist
+./BilouNook/build/ModuleCache.noindex/_AvailabilityInternal-DE6RLZ3QPTSO79S1BMVWLAKW6.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_float-91R31XNXV175PRGUQHAJ7J2VX.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_intrinsics-3L0PEIOQYSK7J335GU4BKM09Z.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_inttypes-36KJNLSB0TFKIPS5BFWFUTDZ2.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_limits-57V37N5NHL01MTK1SB9XFA9GA.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_stdarg-1BAK9RHUA40XXSO4X75PO8ONQ.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_stdatomic-42E95Z1V3JMG9S5DAFJ1TE7JY.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_stdbool-2F5C0RO0KTOHRIWERIFO0FL9.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_stddef-APB70LJT86OYJ6L5ZU2YHZFXE.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_stdint-5PMMNCGJI0DWNPFZP236B8SF3.pcm
+./BilouNook/build/ModuleCache.noindex/_Builtin_tgmath-5MYI9QWOTH2Y22YDNIE2AB11O.pcm
+./BilouNook/build/ModuleCache.noindex/_DarwinFoundation1-BIFC7EAFY5HK2RRSWI82F1EX6.pcm
+./BilouNook/build/ModuleCache.noindex/_DarwinFoundation2-85P748841AC81AHF606B83VFJ.pcm
+./BilouNook/build/ModuleCache.noindex/_DarwinFoundation3-5A478J3O8GWTURR9REKY3YSM1.pcm
+./BilouNook/build/ModuleCache.noindex/_SwiftConcurrencyShims-330OE8CW5WLWD2AXUZ1CNCUES.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_AvailabilityInternal-2YSBQADOLX02V.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_float-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_intrinsics-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_inttypes-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_limits-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stdarg-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stdatomic-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stdbool-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stddef-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stdint-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_tgmath-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_DarwinFoundation1-2YSBQADOLX02V.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_DarwinFoundation2-3J4ZFA06I5V1P.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_DarwinFoundation3-2NSGASPTSNBVQ.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_SwiftConcurrencyShims-2IMTS4WWRU7VJ.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Accessibility-RCJSN2GG3RAR.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/AppKit-2VI8NB39I5AT6.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ApplicationServices-3NXEUUZF9JJBD.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Carbon-3FMY3B0T5SZYU.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CFNetwork-1PNPO1ORVQZLS.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ColorSync-3EIM4S8RXNRVI.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreData-1KHK1L2CYC2N6.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreFoundation-16SA8WK3L6MQN.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreGraphics-1PSDCAYCIV3T9.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreImage-39ZO87840M5PP.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreServices-39NCTJOEW7PQ2.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreText-3FAL1B4J38DIR.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreTransferable-27T896KGHFB3R.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreVideo-DBBGB2LXU3HG.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CUPS-1HLHMKUB322XA.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Darwin-1FXX23EKWOBA9.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/DataDetection-R5W4QHNMPWVH.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/DeveloperToolsSupport-3SUCMSK9ZS2JA.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/DiskArbitration-3LBJF5I58QD8.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Dispatch-R76HXUP80TVL.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Foundation-24LYWIP48SHNP.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ImageIO-2ZSF831VT29UB.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/IOKit-1IAL9NTK1TABA.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/IOSurface-26455DPS9NDS0.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/launch-3T3BU4MASLMUM.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/libDER-26DYHF6GC6WWA.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/libkern-2KQ0X67RTM1JF.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/MachO-20RPYVQSX341K.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Metal-1GCZV9N85NJOH.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ObjectiveC-1G8H182PQX3QE.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/OpenGL-H89XJT7GTCP.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/os_object-2MV8OP7R98AN8.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/os_workgroup-2MV8OP7R98AN8.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/os-2MV8OP7R98AN8.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/OSLog-218FBXNFJGY61.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ptrauth-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ptrcheck-19KE09ZDXQ6Q3.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/QuartzCore-39A8LQKF980J1.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Security-3QCVXOV25KK54.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/simd-KY25Q80SBOHY.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Spatial-1JZLH83HN83CS.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/SwiftShims-2IMTS4WWRU7VJ.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/SwiftUI-3DCHKT5UWXXCX.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/SwiftUICore-86HIVXUC6WOA.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Symbols-3KC1789KJFX94.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/sys_types-3J4ZFA06I5V1P.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/UniformTypeIdentifiers-1OLJP4K3PLM48.pcm
+./BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/XPC-T0ZXCAST7PE3.pcm
+./BilouNook/build/ModuleCache.noindex/Accessibility-33UGE8587YM0EZSQ0I651HRCS.pcm
+./BilouNook/build/ModuleCache.noindex/AppKit-C16ZT9607G368CA1EX44JWUVS.pcm
+./BilouNook/build/ModuleCache.noindex/ApplicationServices-138LM0IHZEERO6EEAJGJOX3YS.pcm
+./BilouNook/build/ModuleCache.noindex/Carbon-EXQFP8O8V9PEO8Z7RP68PS1C0.pcm
+./BilouNook/build/ModuleCache.noindex/CFNetwork-95XE2LJRZLI65N91LV712200F.pcm
+./BilouNook/build/ModuleCache.noindex/ColorSync-EZF0ZMKQ1IC2950ZJMYA1E98U.pcm
+./BilouNook/build/ModuleCache.noindex/CoreData-D8V7Z4L9XSO8HO4MD6MVBCPGT.pcm
+./BilouNook/build/ModuleCache.noindex/CoreFoundation-4T0SWX3D2TVQYL6AJKQCF73EL.pcm
+./BilouNook/build/ModuleCache.noindex/CoreGraphics-1FR18LCWN81TWRRZUWEJDTPB1.pcm
+./BilouNook/build/ModuleCache.noindex/CoreImage-A89MV6XNI3OSX0T5LHH6V6B84.pcm
+./BilouNook/build/ModuleCache.noindex/CoreServices-9NP753HDCK42DA5PR9BN2KZXM.pcm
+./BilouNook/build/ModuleCache.noindex/CoreText-19ICCY8EJ8WIWVW56YLCAIJZS.pcm
+./BilouNook/build/ModuleCache.noindex/CoreTransferable-D9S95NOTHV8S3BDVNWS2KAZ88.pcm
+./BilouNook/build/ModuleCache.noindex/CoreVideo-CLHPK1DBK34MXFPEYAKPC6T50.pcm
+./BilouNook/build/ModuleCache.noindex/CUPS-EL9NQCKXBTS9369VGI7IEX9AO.pcm
+./BilouNook/build/ModuleCache.noindex/Darwin-2X4K4D04L4XUQH64DHJBLC748.pcm
+./BilouNook/build/ModuleCache.noindex/DataDetection-7F6798T3D6LZ5C6I2APYKX1ZD.pcm
+./BilouNook/build/ModuleCache.noindex/DeveloperToolsSupport-A4S9L9B0Y08UX7T34A90APWD1.pcm
+./BilouNook/build/ModuleCache.noindex/DiskArbitration-C5CX3WW4OMRMBHX5S1YH089ZZ.pcm
+./BilouNook/build/ModuleCache.noindex/Dispatch-R15NAPB9719R80LZXH0EUNPI.pcm
+./BilouNook/build/ModuleCache.noindex/Foundation-77RASY08BKAWDRIK4S4LZLE1Z.pcm
+./BilouNook/build/ModuleCache.noindex/ImageIO-DFOFA2ITASOZZ3C4ZQBU160BE.pcm
+./BilouNook/build/ModuleCache.noindex/IOKit-EJ2MQ7F9JI18IQSC17C9B9GP3.pcm
+./BilouNook/build/ModuleCache.noindex/IOSurface-2E6K7WVICEDCWK8HJFSGDFBVD.pcm
+./BilouNook/build/ModuleCache.noindex/launch-82MVO2ABJ5DZYRTQQB0VGF3R8.pcm
+./BilouNook/build/ModuleCache.noindex/libDER-EYQJOZ425GE3TWNVS7HE0G36A.pcm
+./BilouNook/build/ModuleCache.noindex/libkern-5TG4JHJFQHKRBSD9ITTOE9UK.pcm
+./BilouNook/build/ModuleCache.noindex/MachO-F2AHM8D1IL21D9IMK206P7KWV.pcm
+./BilouNook/build/ModuleCache.noindex/Metal-BJLG83URU9L41W3DT7EV7WFU4.pcm
+./BilouNook/build/ModuleCache.noindex/modules.timestamp
+./BilouNook/build/ModuleCache.noindex/ObjectiveC-8DUNGK4APMICK02HQ1TOW17PN.pcm
+./BilouNook/build/ModuleCache.noindex/OpenGL-DYRO18A9YSBIAH0NQUEGKUBGR.pcm
+./BilouNook/build/ModuleCache.noindex/os_object-88NT3D3QGXAN054FK5NKHEVMH.pcm
+./BilouNook/build/ModuleCache.noindex/os_workgroup-596PQRVG962DTJRD4JS0XKKG9.pcm
+./BilouNook/build/ModuleCache.noindex/os-139DD7WUDOM92RRSVIVPBE0O6.pcm
+./BilouNook/build/ModuleCache.noindex/OSLog-EIOVCIGXSZRRN1O9ISO515OX3.pcm
+./BilouNook/build/ModuleCache.noindex/ptrauth-AGD0O2LZ4VVC12VBDB1QLKOB6.pcm
+./BilouNook/build/ModuleCache.noindex/ptrcheck-23NH5WJJOCMLNQ16XZG8A73X4.pcm
+./BilouNook/build/ModuleCache.noindex/QuartzCore-4ZOCJ3KIKQOE86HZ0SFQROQQ5.pcm
+./BilouNook/build/ModuleCache.noindex/Security-73GA9O45B0TQU6GPF2S3NBDUO.pcm
+./BilouNook/build/ModuleCache.noindex/Session.modulevalidation
+./BilouNook/build/ModuleCache.noindex/simd-DMUMVRTTJGZOKBAEB7CVT10OB.pcm
+./BilouNook/build/ModuleCache.noindex/Spatial-5B95JN7NCWC0A3XJJIP4EQG21.pcm
+./BilouNook/build/ModuleCache.noindex/SwiftShims-CQV9M30O2Y2P5MDSION57JKCY.pcm
+./BilouNook/build/ModuleCache.noindex/SwiftUI-4V7C6IX72J2IA60W3POYG4I4S.pcm
+./BilouNook/build/ModuleCache.noindex/SwiftUICore-CU7GJDQHZMX13MW5KGWSGLYI7.pcm
+./BilouNook/build/ModuleCache.noindex/Symbols-EAVKLAG5NKZE3V213QME0SDCK.pcm
+./BilouNook/build/ModuleCache.noindex/sys_types-C0RL276RS8IK6PP7WXOWN0F0V.pcm
+./BilouNook/build/ModuleCache.noindex/UniformTypeIdentifiers-B3CBCMR2BXHNASAOZMYNWVKG9.pcm
+./BilouNook/build/ModuleCache.noindex/XPC-692JR4P97L2HCLYQNQ1OEIY4P.pcm
+./BilouNook/build/SDKStatCaches.noindex/macosx26.2-25C58-00fa09913b459cbbc988d1f6730289ae.sdkstatcache
+./BilouNook/mediaremote-adapter/.clang-format
+./BilouNook/mediaremote-adapter/.cmake-format
+./BilouNook/mediaremote-adapter/.git/config
+./BilouNook/mediaremote-adapter/.git/description
+./BilouNook/mediaremote-adapter/.git/HEAD
+./BilouNook/mediaremote-adapter/.git/hooks/applypatch-msg.sample
+./BilouNook/mediaremote-adapter/.git/hooks/commit-msg.sample
+./BilouNook/mediaremote-adapter/.git/hooks/fsmonitor-watchman.sample
+./BilouNook/mediaremote-adapter/.git/hooks/post-update.sample
+./BilouNook/mediaremote-adapter/.git/hooks/pre-applypatch.sample
+./BilouNook/mediaremote-adapter/.git/hooks/pre-commit.sample
+./BilouNook/mediaremote-adapter/.git/hooks/pre-merge-commit.sample
+./BilouNook/mediaremote-adapter/.git/hooks/pre-push.sample
+./BilouNook/mediaremote-adapter/.git/hooks/pre-rebase.sample
+./BilouNook/mediaremote-adapter/.git/hooks/pre-receive.sample
+./BilouNook/mediaremote-adapter/.git/hooks/prepare-commit-msg.sample
+./BilouNook/mediaremote-adapter/.git/hooks/push-to-checkout.sample
+./BilouNook/mediaremote-adapter/.git/hooks/sendemail-validate.sample
+./BilouNook/mediaremote-adapter/.git/hooks/update.sample
+./BilouNook/mediaremote-adapter/.git/index
+./BilouNook/mediaremote-adapter/.git/info/exclude
+./BilouNook/mediaremote-adapter/.git/logs/HEAD
+./BilouNook/mediaremote-adapter/.git/logs/refs/heads/master
+./BilouNook/mediaremote-adapter/.git/logs/refs/remotes/origin/HEAD
+./BilouNook/mediaremote-adapter/.git/objects/pack/pack-694ae51acc9634086bc7065577d0e85b95cc68a3.idx
+./BilouNook/mediaremote-adapter/.git/objects/pack/pack-694ae51acc9634086bc7065577d0e85b95cc68a3.pack
+./BilouNook/mediaremote-adapter/.git/objects/pack/pack-694ae51acc9634086bc7065577d0e85b95cc68a3.rev
+./BilouNook/mediaremote-adapter/.git/packed-refs
+./BilouNook/mediaremote-adapter/.git/refs/heads/master
+./BilouNook/mediaremote-adapter/.git/refs/remotes/origin/HEAD
+./BilouNook/mediaremote-adapter/.gitignore
+./BilouNook/mediaremote-adapter/.gitmodules
+./BilouNook/mediaremote-adapter/.perltidyrc
+./BilouNook/mediaremote-adapter/.vscode/extensions.json
+./BilouNook/mediaremote-adapter/.vscode/settings.json
+./BilouNook/mediaremote-adapter/bin/mediaremote-adapter.pl
+./BilouNook/mediaremote-adapter/CMakeLists.txt
+./BilouNook/mediaremote-adapter/include/MediaRemoteAdapter.h
+./BilouNook/mediaremote-adapter/LICENSE
+./BilouNook/mediaremote-adapter/Makefile
+./BilouNook/mediaremote-adapter/README.md
+./BilouNook/mediaremote-adapter/scripts/mediaremote-adapter-dev.sh
+./BilouNook/mediaremote-adapter/scripts/update-readme-badges.py
+./BilouNook/mediaremote-adapter/src/adapter/env.h
+./BilouNook/mediaremote-adapter/src/adapter/env.m
+./BilouNook/mediaremote-adapter/src/adapter/get.h
+./BilouNook/mediaremote-adapter/src/adapter/get.m
+./BilouNook/mediaremote-adapter/src/adapter/globals.h
+./BilouNook/mediaremote-adapter/src/adapter/globals.m
+./BilouNook/mediaremote-adapter/src/adapter/keys.h
+./BilouNook/mediaremote-adapter/src/adapter/keys.m
+./BilouNook/mediaremote-adapter/src/adapter/now_playing.h
+./BilouNook/mediaremote-adapter/src/adapter/now_playing.m
+./BilouNook/mediaremote-adapter/src/adapter/repeat.m
+./BilouNook/mediaremote-adapter/src/adapter/seek.m
+./BilouNook/mediaremote-adapter/src/adapter/send.m
+./BilouNook/mediaremote-adapter/src/adapter/shuffle.m
+./BilouNook/mediaremote-adapter/src/adapter/speed.m
+./BilouNook/mediaremote-adapter/src/adapter/stream.m
+./BilouNook/mediaremote-adapter/src/adapter/test.m
+./BilouNook/mediaremote-adapter/src/private/MediaRemote.h
+./BilouNook/mediaremote-adapter/src/private/MediaRemote.m
+./BilouNook/mediaremote-adapter/src/test/main.m
+./BilouNook/mediaremote-adapter/src/test/NowPlayingTest.h
+./BilouNook/mediaremote-adapter/src/test/NowPlayingTest.m
+./BilouNook/mediaremote-adapter/src/utility/Debounce.h
+./BilouNook/mediaremote-adapter/src/utility/Debounce.m
+./BilouNook/mediaremote-adapter/src/utility/helpers.h
+./BilouNook/mediaremote-adapter/src/utility/helpers.m
+./DIAG_OPEN_HAPTICS.txt
+./docs/HAPTICS_NOTES.md
+./docs/MOTION_NOTES.md
+./docs/NotchNook_Animation_UX_Audit.txt
+./docs/NotchNook_Complete_Reverse_Engineering.txt
+./docs/STATE_MACHINE.md
+./docs/TESTS.md
+./docs/VERIFY_A_WINDOW_GEOMETRY.txt
+./docs/VERIFY_B_STATE_ANIMATION.txt
+./fix.txt
+./NotchNook_Animation_UX_Audit.txt
+./NotchNook_Complete_Reverse_Engineering.txt
+./rapport.txt
+./VERIFY_A_WINDOW_GEOMETRY.txt
+./VERIFY_B_STATE_ANIMATION.txt
+./VERIFY_C.txt
+
+### 1.3 Files not tracked by git (marked)
+COUNT:      389
+BilouNook/BilouNook.xcodeproj/project.xcworkspace/xcuserdata/bilelzghal.xcuserdatad/UserInterfaceState.xcuserstate
+BilouNook/BilouNook.xcodeproj/xcuserdata/bilelzghal.xcuserdatad/xcschemes/xcschememanagement.plist
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook-67ee0c9bca2fe1d6568d904b7b952f26-VFS/all-product-headers.yaml
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-all-non-framework-target-headers.hmap
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-all-target-headers.hmap
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-generated-files.hmap
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-own-target-headers.hmap
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook-project-headers.hmap
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.app.xcent
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.app.xcent.der
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.DependencyMetadataFileList
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.DependencyStaticMetadataFileList
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/BilouNook.hmap
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/DerivedSources/BilouNook-Swift.h
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/DerivedSources/Entitlements.plist
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/AnimationLab.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Animations.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook_const_extract_protocols.json
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook_dependency_info.dat
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-dependencies-1.json
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-linker-args.resp
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-OutputFileMap.json
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-primary-emit-module.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-primary-emit-module.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-primary.priors
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook-Swift.h
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.abi.json
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.LinkFileList
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.SwiftConstValuesFileList
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.swiftdoc
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.SwiftFileList
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.swiftmodule
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNook.swiftsourceinfo
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/BilouNookApp.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/CoordinateSpace.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/DebugOverlay.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/GestureMonitor.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Haptics.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HapticsService.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/HotKeyManager.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/InteractionRegion.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/MouseMonitor.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchGeometry.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchPanel.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchRootView.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchSettings.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchShape.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/NotchState.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScaleBlur.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/ScreenResolver.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsStore.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/SettingsWindow.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-1
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-2
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-3
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-4
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-5
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/supplementaryOutputs-6
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.d
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.dia
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.o
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.swiftconstvalues
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/Objects-normal/arm64/Watchdog.swiftdeps
+BilouNook/build/Build/Intermediates.noindex/BilouNook.build/Debug/BilouNook.build/SwiftStdLibToolInputDependencies.dep
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/07d9452f74510d8c6007941a282f3747
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/0eb03548cd5285c2fc75906c130cfd42
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/6732ab34fe5e9372c6fd9eaf17f0cd1f
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/86dab7dfcaa198829ab0e920c209716d
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/8bba4233626f64a7ea772bb94a08a1a9
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/a8837f06a943a4dcbf0c27d851e8b1b6
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/b9047772f13f510a6f743c0d9ce66db0
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/d41d8cd98f00b204e9800998ecf8427e
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/f86cbb10517a3bd51f252887359b04af
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/attachments/fd8314defc70a8778956f026c0ddfd19
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/build-request.json
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/description.msgpack
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/manifest.json
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/target-graph.txt
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/45346785b2a2587f70982dac722786be.xcbuilddata/task-store.msgpack
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/build.db
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/PIFCache/project/PROJECT@v11_mod=71073f1a456643d1557c031e0b76e83c_hash=67ee0c9bca2fe1d6568d904b7b952f26plugins=1OJSG6M1FOV3XYQCBH7Z29RZ0FPR9XDE1-json
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/PIFCache/target/TARGET@v11_hash=f532199bedabbea11cfb6141cd7637e2-json
+BilouNook/build/Build/Intermediates.noindex/XCBuildData/PIFCache/workspace/WORKSPACE@v11_hash=(null)_subobjects=25347a1113d879cf0b70f8f65cccf07d-json
+BilouNook/build/Build/Products/Debug/BilouNook.app/Contents/_CodeSignature/CodeResources
+BilouNook/build/Build/Products/Debug/BilouNook.app/Contents/Info.plist
+BilouNook/build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook
+BilouNook/build/Build/Products/Debug/BilouNook.app/Contents/PkgInfo
+BilouNook/build/Build/Products/Debug/BilouNook.swiftmodule/arm64-apple-macos.abi.json
+BilouNook/build/Build/Products/Debug/BilouNook.swiftmodule/arm64-apple-macos.swiftdoc
+BilouNook/build/Build/Products/Debug/BilouNook.swiftmodule/arm64-apple-macos.swiftmodule
+BilouNook/build/Build/Products/Debug/BilouNook.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo
+BilouNook/build/CompilationCache.noindex/generic/lock
+BilouNook/build/CompilationCache.noindex/generic/v1.1/v3.actions
+BilouNook/build/CompilationCache.noindex/generic/v1.1/v3.actions.shared
+BilouNook/build/CompilationCache.noindex/generic/v1.1/v8.data
+BilouNook/build/CompilationCache.noindex/generic/v1.1/v8.data.shared
+BilouNook/build/CompilationCache.noindex/generic/v1.1/v8.index
+BilouNook/build/CompilationCache.noindex/generic/v1.1/v8.index.shared
+BilouNook/build/info.plist
+BilouNook/build/Logs/Build/11BF5C55-43E9-4DD3-BE9C-19D1146B74E6.xcactivitylog
+BilouNook/build/Logs/Build/A04447A0-5D39-48B6-A07F-B47B26B22A46.xcactivitylog
+BilouNook/build/Logs/Build/LogStoreManifest.plist
+BilouNook/build/Logs/Launch/LogStoreManifest.plist
+BilouNook/build/Logs/Localization/LogStoreManifest.plist
+BilouNook/build/Logs/Package/LogStoreManifest.plist
+BilouNook/build/Logs/Test/LogStoreManifest.plist
+BilouNook/build/ModuleCache.noindex/_AvailabilityInternal-DE6RLZ3QPTSO79S1BMVWLAKW6.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_float-91R31XNXV175PRGUQHAJ7J2VX.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_intrinsics-3L0PEIOQYSK7J335GU4BKM09Z.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_inttypes-36KJNLSB0TFKIPS5BFWFUTDZ2.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_limits-57V37N5NHL01MTK1SB9XFA9GA.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_stdarg-1BAK9RHUA40XXSO4X75PO8ONQ.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_stdatomic-42E95Z1V3JMG9S5DAFJ1TE7JY.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_stdbool-2F5C0RO0KTOHRIWERIFO0FL9.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_stddef-APB70LJT86OYJ6L5ZU2YHZFXE.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_stdint-5PMMNCGJI0DWNPFZP236B8SF3.pcm
+BilouNook/build/ModuleCache.noindex/_Builtin_tgmath-5MYI9QWOTH2Y22YDNIE2AB11O.pcm
+BilouNook/build/ModuleCache.noindex/_DarwinFoundation1-BIFC7EAFY5HK2RRSWI82F1EX6.pcm
+BilouNook/build/ModuleCache.noindex/_DarwinFoundation2-85P748841AC81AHF606B83VFJ.pcm
+BilouNook/build/ModuleCache.noindex/_DarwinFoundation3-5A478J3O8GWTURR9REKY3YSM1.pcm
+BilouNook/build/ModuleCache.noindex/_SwiftConcurrencyShims-330OE8CW5WLWD2AXUZ1CNCUES.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_AvailabilityInternal-2YSBQADOLX02V.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_float-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_intrinsics-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_inttypes-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_limits-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stdarg-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stdatomic-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stdbool-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stddef-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_stdint-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_Builtin_tgmath-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_DarwinFoundation1-2YSBQADOLX02V.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_DarwinFoundation2-3J4ZFA06I5V1P.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_DarwinFoundation3-2NSGASPTSNBVQ.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/_SwiftConcurrencyShims-2IMTS4WWRU7VJ.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Accessibility-RCJSN2GG3RAR.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/AppKit-2VI8NB39I5AT6.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ApplicationServices-3NXEUUZF9JJBD.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Carbon-3FMY3B0T5SZYU.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CFNetwork-1PNPO1ORVQZLS.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ColorSync-3EIM4S8RXNRVI.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreData-1KHK1L2CYC2N6.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreFoundation-16SA8WK3L6MQN.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreGraphics-1PSDCAYCIV3T9.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreImage-39ZO87840M5PP.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreServices-39NCTJOEW7PQ2.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreText-3FAL1B4J38DIR.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreTransferable-27T896KGHFB3R.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CoreVideo-DBBGB2LXU3HG.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/CUPS-1HLHMKUB322XA.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Darwin-1FXX23EKWOBA9.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/DataDetection-R5W4QHNMPWVH.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/DeveloperToolsSupport-3SUCMSK9ZS2JA.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/DiskArbitration-3LBJF5I58QD8.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Dispatch-R76HXUP80TVL.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Foundation-24LYWIP48SHNP.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ImageIO-2ZSF831VT29UB.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/IOKit-1IAL9NTK1TABA.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/IOSurface-26455DPS9NDS0.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/launch-3T3BU4MASLMUM.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/libDER-26DYHF6GC6WWA.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/libkern-2KQ0X67RTM1JF.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/MachO-20RPYVQSX341K.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Metal-1GCZV9N85NJOH.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ObjectiveC-1G8H182PQX3QE.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/OpenGL-H89XJT7GTCP.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/os_object-2MV8OP7R98AN8.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/os_workgroup-2MV8OP7R98AN8.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/os-2MV8OP7R98AN8.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/OSLog-218FBXNFJGY61.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ptrauth-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/ptrcheck-19KE09ZDXQ6Q3.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/QuartzCore-39A8LQKF980J1.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Security-3QCVXOV25KK54.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/simd-KY25Q80SBOHY.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Spatial-1JZLH83HN83CS.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/SwiftShims-2IMTS4WWRU7VJ.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/SwiftUI-3DCHKT5UWXXCX.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/SwiftUICore-86HIVXUC6WOA.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/Symbols-3KC1789KJFX94.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/sys_types-3J4ZFA06I5V1P.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/UniformTypeIdentifiers-1OLJP4K3PLM48.pcm
+BilouNook/build/ModuleCache.noindex/1TH1FHHODGW6S/XPC-T0ZXCAST7PE3.pcm
+BilouNook/build/ModuleCache.noindex/Accessibility-33UGE8587YM0EZSQ0I651HRCS.pcm
+BilouNook/build/ModuleCache.noindex/AppKit-C16ZT9607G368CA1EX44JWUVS.pcm
+BilouNook/build/ModuleCache.noindex/ApplicationServices-138LM0IHZEERO6EEAJGJOX3YS.pcm
+BilouNook/build/ModuleCache.noindex/Carbon-EXQFP8O8V9PEO8Z7RP68PS1C0.pcm
+BilouNook/build/ModuleCache.noindex/CFNetwork-95XE2LJRZLI65N91LV712200F.pcm
+BilouNook/build/ModuleCache.noindex/ColorSync-EZF0ZMKQ1IC2950ZJMYA1E98U.pcm
+BilouNook/build/ModuleCache.noindex/CoreData-D8V7Z4L9XSO8HO4MD6MVBCPGT.pcm
+BilouNook/build/ModuleCache.noindex/CoreFoundation-4T0SWX3D2TVQYL6AJKQCF73EL.pcm
+BilouNook/build/ModuleCache.noindex/CoreGraphics-1FR18LCWN81TWRRZUWEJDTPB1.pcm
+BilouNook/build/ModuleCache.noindex/CoreImage-A89MV6XNI3OSX0T5LHH6V6B84.pcm
+BilouNook/build/ModuleCache.noindex/CoreServices-9NP753HDCK42DA5PR9BN2KZXM.pcm
+BilouNook/build/ModuleCache.noindex/CoreText-19ICCY8EJ8WIWVW56YLCAIJZS.pcm
+BilouNook/build/ModuleCache.noindex/CoreTransferable-D9S95NOTHV8S3BDVNWS2KAZ88.pcm
+BilouNook/build/ModuleCache.noindex/CoreVideo-CLHPK1DBK34MXFPEYAKPC6T50.pcm
+BilouNook/build/ModuleCache.noindex/CUPS-EL9NQCKXBTS9369VGI7IEX9AO.pcm
+BilouNook/build/ModuleCache.noindex/Darwin-2X4K4D04L4XUQH64DHJBLC748.pcm
+BilouNook/build/ModuleCache.noindex/DataDetection-7F6798T3D6LZ5C6I2APYKX1ZD.pcm
+BilouNook/build/ModuleCache.noindex/DeveloperToolsSupport-A4S9L9B0Y08UX7T34A90APWD1.pcm
+BilouNook/build/ModuleCache.noindex/DiskArbitration-C5CX3WW4OMRMBHX5S1YH089ZZ.pcm
+BilouNook/build/ModuleCache.noindex/Dispatch-R15NAPB9719R80LZXH0EUNPI.pcm
+BilouNook/build/ModuleCache.noindex/Foundation-77RASY08BKAWDRIK4S4LZLE1Z.pcm
+BilouNook/build/ModuleCache.noindex/ImageIO-DFOFA2ITASOZZ3C4ZQBU160BE.pcm
+BilouNook/build/ModuleCache.noindex/IOKit-EJ2MQ7F9JI18IQSC17C9B9GP3.pcm
+BilouNook/build/ModuleCache.noindex/IOSurface-2E6K7WVICEDCWK8HJFSGDFBVD.pcm
+BilouNook/build/ModuleCache.noindex/launch-82MVO2ABJ5DZYRTQQB0VGF3R8.pcm
+BilouNook/build/ModuleCache.noindex/libDER-EYQJOZ425GE3TWNVS7HE0G36A.pcm
+BilouNook/build/ModuleCache.noindex/libkern-5TG4JHJFQHKRBSD9ITTOE9UK.pcm
+BilouNook/build/ModuleCache.noindex/MachO-F2AHM8D1IL21D9IMK206P7KWV.pcm
+BilouNook/build/ModuleCache.noindex/Metal-BJLG83URU9L41W3DT7EV7WFU4.pcm
+BilouNook/build/ModuleCache.noindex/modules.timestamp
+BilouNook/build/ModuleCache.noindex/ObjectiveC-8DUNGK4APMICK02HQ1TOW17PN.pcm
+BilouNook/build/ModuleCache.noindex/OpenGL-DYRO18A9YSBIAH0NQUEGKUBGR.pcm
+BilouNook/build/ModuleCache.noindex/os_object-88NT3D3QGXAN054FK5NKHEVMH.pcm
+BilouNook/build/ModuleCache.noindex/os_workgroup-596PQRVG962DTJRD4JS0XKKG9.pcm
+BilouNook/build/ModuleCache.noindex/os-139DD7WUDOM92RRSVIVPBE0O6.pcm
+BilouNook/build/ModuleCache.noindex/OSLog-EIOVCIGXSZRRN1O9ISO515OX3.pcm
+BilouNook/build/ModuleCache.noindex/ptrauth-AGD0O2LZ4VVC12VBDB1QLKOB6.pcm
+BilouNook/build/ModuleCache.noindex/ptrcheck-23NH5WJJOCMLNQ16XZG8A73X4.pcm
+BilouNook/build/ModuleCache.noindex/QuartzCore-4ZOCJ3KIKQOE86HZ0SFQROQQ5.pcm
+BilouNook/build/ModuleCache.noindex/Security-73GA9O45B0TQU6GPF2S3NBDUO.pcm
+BilouNook/build/ModuleCache.noindex/Session.modulevalidation
+BilouNook/build/ModuleCache.noindex/simd-DMUMVRTTJGZOKBAEB7CVT10OB.pcm
+BilouNook/build/ModuleCache.noindex/Spatial-5B95JN7NCWC0A3XJJIP4EQG21.pcm
+BilouNook/build/ModuleCache.noindex/SwiftShims-CQV9M30O2Y2P5MDSION57JKCY.pcm
+BilouNook/build/ModuleCache.noindex/SwiftUI-4V7C6IX72J2IA60W3POYG4I4S.pcm
+BilouNook/build/ModuleCache.noindex/SwiftUICore-CU7GJDQHZMX13MW5KGWSGLYI7.pcm
+BilouNook/build/ModuleCache.noindex/Symbols-EAVKLAG5NKZE3V213QME0SDCK.pcm
+BilouNook/build/ModuleCache.noindex/sys_types-C0RL276RS8IK6PP7WXOWN0F0V.pcm
+BilouNook/build/ModuleCache.noindex/UniformTypeIdentifiers-B3CBCMR2BXHNASAOZMYNWVKG9.pcm
+BilouNook/build/ModuleCache.noindex/XPC-692JR4P97L2HCLYQNQ1OEIY4P.pcm
+BilouNook/build/SDKStatCaches.noindex/macosx26.2-25C58-00fa09913b459cbbc988d1f6730289ae.sdkstatcache
+BilouNook/mediaremote-adapter/.clang-format
+BilouNook/mediaremote-adapter/.cmake-format
+BilouNook/mediaremote-adapter/.git/config
+BilouNook/mediaremote-adapter/.git/description
+BilouNook/mediaremote-adapter/.git/HEAD
+BilouNook/mediaremote-adapter/.git/hooks/applypatch-msg.sample
+BilouNook/mediaremote-adapter/.git/hooks/commit-msg.sample
+BilouNook/mediaremote-adapter/.git/hooks/fsmonitor-watchman.sample
+BilouNook/mediaremote-adapter/.git/hooks/post-update.sample
+BilouNook/mediaremote-adapter/.git/hooks/pre-applypatch.sample
+BilouNook/mediaremote-adapter/.git/hooks/pre-commit.sample
+BilouNook/mediaremote-adapter/.git/hooks/pre-merge-commit.sample
+BilouNook/mediaremote-adapter/.git/hooks/pre-push.sample
+BilouNook/mediaremote-adapter/.git/hooks/pre-rebase.sample
+BilouNook/mediaremote-adapter/.git/hooks/pre-receive.sample
+BilouNook/mediaremote-adapter/.git/hooks/prepare-commit-msg.sample
+BilouNook/mediaremote-adapter/.git/hooks/push-to-checkout.sample
+BilouNook/mediaremote-adapter/.git/hooks/sendemail-validate.sample
+BilouNook/mediaremote-adapter/.git/hooks/update.sample
+BilouNook/mediaremote-adapter/.git/index
+BilouNook/mediaremote-adapter/.git/info/exclude
+BilouNook/mediaremote-adapter/.git/logs/HEAD
+BilouNook/mediaremote-adapter/.git/logs/refs/heads/master
+BilouNook/mediaremote-adapter/.git/logs/refs/remotes/origin/HEAD
+BilouNook/mediaremote-adapter/.git/objects/pack/pack-694ae51acc9634086bc7065577d0e85b95cc68a3.idx
+BilouNook/mediaremote-adapter/.git/objects/pack/pack-694ae51acc9634086bc7065577d0e85b95cc68a3.pack
+BilouNook/mediaremote-adapter/.git/objects/pack/pack-694ae51acc9634086bc7065577d0e85b95cc68a3.rev
+BilouNook/mediaremote-adapter/.git/packed-refs
+BilouNook/mediaremote-adapter/.git/refs/heads/master
+BilouNook/mediaremote-adapter/.git/refs/remotes/origin/HEAD
+BilouNook/mediaremote-adapter/.gitignore
+BilouNook/mediaremote-adapter/.gitmodules
+BilouNook/mediaremote-adapter/.perltidyrc
+BilouNook/mediaremote-adapter/.vscode/extensions.json
+BilouNook/mediaremote-adapter/.vscode/settings.json
+BilouNook/mediaremote-adapter/bin/mediaremote-adapter.pl
+BilouNook/mediaremote-adapter/CMakeLists.txt
+BilouNook/mediaremote-adapter/include/MediaRemoteAdapter.h
+BilouNook/mediaremote-adapter/LICENSE
+BilouNook/mediaremote-adapter/Makefile
+BilouNook/mediaremote-adapter/README.md
+BilouNook/mediaremote-adapter/scripts/mediaremote-adapter-dev.sh
+BilouNook/mediaremote-adapter/scripts/update-readme-badges.py
+BilouNook/mediaremote-adapter/src/adapter/env.h
+BilouNook/mediaremote-adapter/src/adapter/env.m
+BilouNook/mediaremote-adapter/src/adapter/get.h
+BilouNook/mediaremote-adapter/src/adapter/get.m
+BilouNook/mediaremote-adapter/src/adapter/globals.h
+BilouNook/mediaremote-adapter/src/adapter/globals.m
+BilouNook/mediaremote-adapter/src/adapter/keys.h
+BilouNook/mediaremote-adapter/src/adapter/keys.m
+BilouNook/mediaremote-adapter/src/adapter/now_playing.h
+BilouNook/mediaremote-adapter/src/adapter/now_playing.m
+BilouNook/mediaremote-adapter/src/adapter/repeat.m
+BilouNook/mediaremote-adapter/src/adapter/seek.m
+BilouNook/mediaremote-adapter/src/adapter/send.m
+BilouNook/mediaremote-adapter/src/adapter/shuffle.m
+BilouNook/mediaremote-adapter/src/adapter/speed.m
+BilouNook/mediaremote-adapter/src/adapter/stream.m
+BilouNook/mediaremote-adapter/src/adapter/test.m
+BilouNook/mediaremote-adapter/src/private/MediaRemote.h
+BilouNook/mediaremote-adapter/src/private/MediaRemote.m
+BilouNook/mediaremote-adapter/src/test/main.m
+BilouNook/mediaremote-adapter/src/test/NowPlayingTest.h
+BilouNook/mediaremote-adapter/src/test/NowPlayingTest.m
+BilouNook/mediaremote-adapter/src/utility/Debounce.h
+BilouNook/mediaremote-adapter/src/utility/Debounce.m
+BilouNook/mediaremote-adapter/src/utility/helpers.h
+BilouNook/mediaremote-adapter/src/utility/helpers.m
+
+### 1.4 wc -l for every source file (Swift)
+      48 ./BilouNook/BilouNook/Animations/Animations.swift
+      38 ./BilouNook/BilouNook/Animations/ScaleBlur.swift
+      21 ./BilouNook/BilouNook/App/BilouNookApp.swift
+      87 ./BilouNook/BilouNook/Debug/AnimationLab.swift
+      15 ./BilouNook/BilouNook/Haptics/Haptics.swift
+      71 ./BilouNook/BilouNook/Haptics/HapticsService.swift
+      61 ./BilouNook/BilouNook/Interaction/GestureMonitor.swift
+      29 ./BilouNook/BilouNook/Interaction/InteractionRegion.swift
+      59 ./BilouNook/BilouNook/Interaction/MouseMonitor.swift
+      29 ./BilouNook/BilouNook/Interaction/Watchdog.swift
+      58 ./BilouNook/BilouNook/Notch/DebugOverlay.swift
+      35 ./BilouNook/BilouNook/Notch/NotchGeometry.swift
+     211 ./BilouNook/BilouNook/Notch/NotchRootView.swift
+      65 ./BilouNook/BilouNook/Notch/NotchShape.swift
+       8 ./BilouNook/BilouNook/Settings/NotchSettings.swift
+      99 ./BilouNook/BilouNook/Settings/SettingsStore.swift
+      25 ./BilouNook/BilouNook/Settings/SettingsWindow.swift
+     183 ./BilouNook/BilouNook/State/NotchState.swift
+      23 ./BilouNook/BilouNook/Utils/CoordinateSpace.swift
+      42 ./BilouNook/BilouNook/Utils/HotKeyManager.swift
+      35 ./BilouNook/BilouNook/Utils/ScreenResolver.swift
+      69 ./BilouNook/BilouNook/Window/NotchPanel.swift
+    1311 total
+
+### 1.5 wc -l for non-Swift source/config/doc files
+       7 .gitignore
+     372 BilouNook/BilouNook.xcodeproj/project.pbxproj
+      14 BilouNook/BilouNook.xcodeproj/xcuserdata/bilelzghal.xcuserdatad/xcschemes/xcschememanagement.plist
+      28 BilouNook/BilouNook/Info.plist
+      28 BilouNook/BilouNook/App/Info.plist
+       6 BilouNook/BilouNook/Assets.xcassets/Contents.json
+      58 BilouNook/BilouNook/Assets.xcassets/AppIcon.appiconset/Contents.json
+       6 docs/HAPTICS_NOTES.md
+      12 docs/MOTION_NOTES.md
+      17 docs/STATE_MACHINE.md
+      48 docs/TESTS.md
+     173 docs/NotchNook_Animation_UX_Audit.txt
+     236 docs/NotchNook_Complete_Reverse_Engineering.txt
+     113 docs/VERIFY_A_WINDOW_GEOMETRY.txt
+     216 docs/VERIFY_B_STATE_ANIMATION.txt
+      22 DIAG_OPEN_HAPTICS.txt
+      86 fix.txt
+     173 NotchNook_Animation_UX_Audit.txt
+     236 NotchNook_Complete_Reverse_Engineering.txt
+    1108 PROJECT_ANALYSIS.txt
+      47 rapport.txt
+     113 VERIFY_A_WINDOW_GEOMETRY.txt
+     216 VERIFY_B_STATE_ANIMATION.txt
+      32 VERIFY_C.txt
+    3367 total
+
+### 1.6 One-line project tree (source dirs only)
+. -> analysis/evidence/{assets,lottie,runtime,strings} | BilouNook/BilouNook.xcodeproj | BilouNook/BilouNook/{Animations,App,Assets.xcassets,Core,Debug,Haptics,Interaction,Media,Menu,Notch,Settings,State,Utils,Widgets,Window} | BilouNook/mediaremote-adapter/{bin,include,scripts,src} | docs/
+
+NOTE: dirs Core/, Media/, Menu/, Widgets/ exist but contain no files per 1.2.
+NOTE: AGENTS.md referenced in conversation does not exist at repo root (`wc -l AGENTS.md` -> No such file or directory).
+
+================================================================================
+SECTION 2 — EVERY SWIFT FILE
+================================================================================
+
+FILE: BilouNook/BilouNook/Animations/Animations.swift | LINES: 48 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Holds the app's spring animation presets and scaling helper, plus two SwiftUI content modifiers for scale/blur/opacity entrances. It imports only SwiftUI and has no runtime state of its own except the mutable static timeScale. NotchRootView reads these presets when the phase changes.
+DECLARES:
+- enum Animations — namespace of static Animation presets and timeScale.
+- struct ScaleBlurOpacityContentModifier: ViewModifier — applies scaleEffect(0.8)/blur(10)/opacity(0) and an onAppear withAnimation.
+- struct NotchContentTransitionModifier: ViewModifier — active-driven scale/blur/opacity with animation.
+KEY MEMBERS:
+- hoverOpen / hoverClose / hoverClosePure — spring presets (`spring(response: 0.58, dampingFraction: 0.68/0.65/1.0)`).
+- openFootprint / closeFootprint — spring presets (`response: 0.5, dampingFraction: 0.6` / `0.62, 1.0`).
+- contentIn / contentOut — content transitions (`contentIn = ... .delay(0.1)`).
+- scrubFollow / scrubDrag — interactive springs.
+- timeScale — static mutable Double default `1.0`.
+- scaled(_:) — returns animation unchanged at 1.0 else `animation.speed(1.0 / timeScale)`.
+- ScaleBlurOpacityContentModifier.body — scale 0.8 anchor y -0.25, blur 10, opacity 0; `.onAppear { withAnimation(Animations.scaled(Animations.contentIn)) { } }`.
+- NotchContentTransitionModifier.body — `scaleEffect(active ? 1.0 : 0.8)`, `blur(radius: active ? 0 : 10)`, `opacity(active ? 1.0 : 0)`.
+OWNED BY / CREATED BY: No instances created anywhere; all static. `timeScale` is process-global mutable.
+CALLED BY: NotchRootView.swift:94,95,98,102,108,111; ScaleBlur.swift:34,35; internal Animations.swift:32,46.
+CALLS INTO: SwiftUI.Animation, SwiftUI.ViewModifier.
+RUNTIME SIDE EFFECTS: None directly. ScaleBlurOpacityContentModifier's onAppear starts an animation with an empty body.
+THREADING: SwiftUI/main (no isolation annotations).
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- ScaleBlurOpacityContentModifier is declared at line 25 and never referenced elsewhere (grep shows only the declaration).
+- NotchContentTransitionModifier is declared at line 38 and never referenced elsewhere (grep shows only the declaration).
+- `withAnimation(...) { }` at lines 31-34 has an empty body, so the scale/blur/opacity values set in lines 28-30 are not animated away; the content stays scaled, blurred and transparent.
+- Hard-coded values `0.8`, `10`, `-0.25` (lines 28-29, 44-45) and spring constants quoted above.
+
+FILE: BilouNook/BilouNook/Animations/ScaleBlur.swift | LINES: 38 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Defines a ViewModifier that scales, blurs and fades a view based on a Bool, with defaults pulled from SettingsStore, plus an AnyTransition factory `.scaleBlur()` used by NotchRootView. The two initializers allow either settings-driven or explicit values.
+DECLARES:
+- struct ScaleBlur: ViewModifier — scale/blur/opacity transition based on `on`.
+- extension AnyTransition — static factory `scaleBlur()`.
+KEY MEMBERS:
+- `var on: Bool` — drives insertion/removal state.
+- `let scale/blurRadius/anchor` — effect parameters.
+- `init(on:)` — reads `SettingsStore.shared.contentScale_ASSUMPTION`, `contentBlur_ASSUMPTION`, `contentAnchorY_ASSUMPTION`.
+- `init(on:scale:blurRadius:anchorY:)` — explicit parameters.
+- `body(content:)` — `scaleEffect(on ? scale : 1.0)`, `blur(radius: on ? blurRadius : 0)`, `opacity(on ? 0 : 1.0)`.
+- `AnyTransition.scaleBlur()` — asymmetric modifier transition using contentIn/contentOut.
+OWNED BY / CREATED BY: Created by `AnyTransition.scaleBlur()` at ScaleBlur.swift:34-35; applied at NotchRootView.swift:33 `.transition(.scaleBlur())`.
+CALLED BY: NotchRootView.swift:33.
+CALLS INTO: SettingsStore.shared (3 keys), Animations.contentIn/contentOut, SwiftUI.
+RUNTIME SIDE EFFECTS: Reads SettingsStore global values at initializer time.
+THREADING: SwiftUI/main.
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- Reads global `SettingsStore.shared` inside the modifier initializer rather than injected config (lines 11-13).
+- Hard-coded `1.0` identity and `0` blur/opacity bounds; no FIXME/TODO.
+- The settings keys are named `*_ASSUMPTION`, indicating unverified values.
+
+FILE: BilouNook/BilouNook/App/BilouNookApp.swift | LINES: 21 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Manual AppKit entry point. It creates NSApplication, assigns an AppDelegate, and runs the app loop. The delegate only creates and shows NotchPanelController.
+DECLARES:
+- @main struct BilouNookApp — application entry point.
+- final class AppDelegate: NSObject, NSApplicationDelegate — owns the panel controller.
+KEY MEMBERS:
+- `BilouNookApp.main()` — `let app = NSApplication.shared`, `let delegate = AppDelegate()`, `app.delegate = delegate`, `app.run()`.
+- `AppDelegate.panelController: NotchPanelController?` — strong optional.
+- `applicationDidFinishLaunching(_:)` — `panelController = NotchPanelController()`, `panelController?.show()`.
+OWNED BY / CREATED BY: `delegate` is a local `let` in `main()` (BilouNookApp.swift:8); the controller is created at line 18 and stored strongly in `panelController` (line 15).
+CALLED BY: OS launches `@main`; `applicationDidFinishLaunching` called by AppKit.
+CALLS INTO: NotchPanelController.
+RUNTIME SIDE EFFECTS: Starts NSApplication run loop; creates a panel/window.
+THREADING: Main thread (`applicationDidFinishLaunching`).
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- No strong stored reference to `AppDelegate` outside the local variable in `main()`; lifetime depends on the stack frame that `app.run()` blocks (no `var delegate` property).
+- No `NSApp.setActivationPolicy(...)`; Dock/agent behavior is UNKNOWN from this file.
+- No teardown/termination handling.
+
+FILE: BilouNook/BilouNook/Debug/AnimationLab.swift | LINES: 87 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Debug-only floating window with haptic test buttons, a read-out of spring constants, sliders for assumptions and hot-zone/dwell values, and two no-op buttons. The window is opened from the notch context menu or a hotkey. It is wrapped entirely in `#if DEBUG`.
+DECLARES:
+- final class AnimationLabWindow — singleton NSWindow host.
+- struct AnimationLabView: View — scrollable debug controls.
+KEY MEMBERS:
+- `AnimationLabWindow.shared`, `var window: NSWindow?`, `toggle()` — creates/close 420x680 floating window titled "Animation Lab".
+- `AnimationLabView.settings` — `@StateObject private var settings = SettingsStore.shared`.
+- Local @State: `timeScale`, `scaleAssume=0.8`, `blurAssume=10`, `anchorY=-0.25`, `openHaptic="generic"`, `closeHaptic="generic"`.
+- Body: haptic Picker bound to `$settings.hapticPattern`; buttons call `HapticsService.shared.playOnce(.generic/.alignment/.levelChange)`; sliders for assorted settings.
+OWNED BY / CREATED BY: `AnimationLabWindow.shared` is a static singleton (line 6); `window` is stored strongly on it (line 7); the NSWindow is retained via `window = w` (line 19).
+CALLED BY: NotchRootView.swift:46-47 (`AnimationLabWindow.shared.state = notchState`; `.toggle()`), NotchRootView.swift:76 (`.state` assignment), HotKeyManager.swift:18 (`toggle()`).
+CALLS INTO: SettingsStore, HapticsService, SwiftUI, AppKit (NSWindow/NSHostingView).
+RUNTIME SIDE EFFECTS: Activates the app (`NSApp.activate(ignoringOtherApps: true)`), creates a floating window, plays haptics on demand, reads settings.
+THREADING: Main (AppKit/SwiftUI).
+COMPILER FLAGS: Entire file `#if DEBUG` (line 1) through `#endif` (line 87).
+PROBLEMS SPOTTED:
+- `AnimationLabWindow` has no `state` property, but NotchRootView.swift:46 and :76 assign `AnimationLabWindow.shared.state = notchState`; this cannot compile when DEBUG is defined.
+- Local sliders `timeScale`, `scaleAssume`, `blurAssume`, `anchorY` are not applied to `Animations`/`SettingsStore`; `openHaptic` and `closeHaptic` are written but never read.
+- "Copy as Swift (conceptual)" and "Stress test toggle" buttons have empty closures (lines 80-81).
+- Hard-coded window size `420x680` and position `200,200`; text says timeScale reset is "conceptual" (line 36).
+
+FILE: BilouNook/BilouNook/Haptics/Haptics.swift | LINES: 15 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Tiny legacy haptic wrapper that performs a single alignment click in DEBUG and does nothing in release. It duplicates the `shared` singleton pattern used by HapticsService.
+DECLARES:
+- final class Haptics (DEBUG branch) — `smallClick()` calls `NSHapticFeedbackManager.defaultPerformer.perform(.alignment, performanceTime: .now)`.
+- final class Haptics (non-DEBUG branch) — `smallClick()` empty.
+KEY MEMBERS: `static let shared`; `smallClick()`.
+OWNED BY / CREATED BY: Static singleton; no owner.
+CALLED BY: NotchRootView.swift:53 (DEBUG context menu "Haptic test"); HotKeyManager.swift:20 (DEBUG hotkey id 3).
+CALLS INTO: AppKit `NSHapticFeedbackManager`.
+RUNTIME SIDE EFFECTS: Performs a haptic in DEBUG only.
+THREADING: Main (called from menu/hotkey handler).
+COMPILER FLAGS: `#if DEBUG` line 3, `#else` line 10, `#endif` line 15.
+PROBLEMS SPOTTED:
+- Duplicate `final class Haptics` declarations in the two conditional branches.
+- Overlaps with HapticsService (two separate haptic entry points and singletons).
+- No cooldown/settings check in this wrapper.
+
+FILE: BilouNook/BilouNook/Haptics/HapticsService.swift | LINES: 71 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Central haptic dispatcher with enable check, same-kind and opposite-kind cooldowns, and OSLog instrumentation. It exposes counters used by the debug lab and performs patterns on the main queue. DEBUG-only helpers play patterns directly for testing.
+DECLARES:
+- enum HapticKind — `.open`, `.close`.
+- final class HapticsService — singleton dispatcher.
+KEY MEMBERS:
+- `shared`, `logger = OSLog(subsystem: "com.bilou.BilouNook", category: "haptics")`.
+- `lastFireTime`, `lastFireKind`, `lastFirePattern`.
+- `callsSinceOpen`, `callsSinceClose` — Int counters.
+- `play(_:)` — checks `SettingsStore.shared.hapticsEnabled`, 0.25s same-kind cooldown, 0.12s opposite-kind cooldown, then dispatches `perform`.
+- `patternFromString(_:)` — "generic"/"alignment"/"levelChange", default generic.
+- DEBUG `testAll()` — schedules levelChange/alignment/generic at 0/0.6/1.2s.
+- DEBUG `playOnce(_:)` — immediate pattern if haptics enabled.
+OWNED BY / CREATED BY: static singleton; no external owner.
+CALLED BY: NotchState.swift:58,104,125 (`play`); NotchRootView.swift:173 (`testAll`); AnimationLab.swift:45-47 (`playOnce`); AnimationLab.swift:49-50 reads counters.
+CALLS INTO: SettingsStore, NSHapticFeedbackManager, OSLog, DispatchQueue.
+RUNTIME SIDE EFFECTS: Reads `hapticsEnabled` and `hapticPattern` from UserDefaults-backed SettingsStore; writes counters/lastFire*; performs haptics; writes OSLog lines.
+THREADING: `play` runs on caller thread but logs "thread=main"; actual perform is `DispatchQueue.main.async`; DEBUG helpers also dispatch main.
+COMPILER FLAGS: `#if DEBUG` at line 55 encloses `testAll` and `playOnce` through `#endif` at line 70.
+PROBLEMS SPOTTED:
+- `Optional(lastFireTime)` at line 25 is redundant (`let lastTime = Optional(lastFireTime)`).
+- Hard-coded cooldowns `0.25` (line 25) and `0.12` (line 29).
+- `lastFirePattern` is assigned (line 38) but never read.
+- `playOnce` does not update cooldown state, so test patterns bypass all guards.
+- Log strings hard-code `thread=main` rather than checking the actual thread.
+
+FILE: BilouNook/BilouNook/Interaction/GestureMonitor.swift | LINES: 61 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Installs global and local scroll-wheel monitors and turns vertical scroll accumulation into NotificationCenter open/close events. It only reacts near the notch/open rect and only when vertical gestures are enabled. It also publishes raw gesture deltas on a Combine subject.
+DECLARES:
+- struct NotchGestureEvent — deltaY, deltaX, phase string.
+- final class GestureMonitor — singleton monitor.
+KEY MEMBERS:
+- `shared`, `gestureStream = PassthroughSubject<NotchGestureEvent, Never>()`, `onVerticalGesture`.
+- `globalMonitor`, `localMonitor`, `accumulated`, `inGesture`.
+- `start()` — installs `.scrollWheel` global + local monitors (no stop, no idempotency guard).
+- `handle(_:)` — computes openRect `544x204` and hotRect `notch.width+12`/`notch.height+3`; checks `verticalGesturesEnabled`; posts `BilouNook.GestureDown` when accumulated < -12 and `GestureUp` when > 12.
+OWNED BY / CREATED BY: static singleton; started at NotchRootView.swift:80 `GestureMonitor.shared.start()`.
+CALLED BY: NotchRootView.swift:80 only.
+CALLS INTO: ScreenResolver, NotchGeometry, SettingsStore, NotchState (`let state = NotchState()`), NotificationCenter, Combine.
+RUNTIME SIDE EFFECTS: Adds two NSEvent scroll monitors; posts `NotificationCenter` names `BilouNook.GestureDown` and `BilouNook.GestureUp`; reads SettingsStore.
+THREADING: Monitor callbacks arrive on main; no explicit DispatchQueue.
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- `let state = NotchState()` at line 33 is unused and creates a throwaway state instance.
+- `inGesture` is written (lines 48, 58) but never read.
+- `start()` is not idempotent and there is no `stop()`, so repeated starts install duplicate monitors.
+- Hard-coded rect `544x204` (line 36), hot rect padding `12`/`3` (line 39) and threshold `12` (line 52).
+- `settings.verticalGesturesEnabled` is checked only after the rect checks (line 42), so disabled gestures still compute geometry.
+- `onVerticalGesture` is never called (grep shows only declaration).
+- `allowScrollGestures` in NotchState is not consulted.
+
+FILE: BilouNook/BilouNook/Interaction/InteractionRegion.swift | LINES: 29 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Pure geometry helper computing the hover hot zone and the interactive rectangle for a given phase. Values derive from NotchGeometry and SettingsStore paddings, with hard-coded open dimensions.
+DECLARES:
+- enum InteractionRegion — static geometry functions.
+KEY MEMBERS:
+- `hotZone(screen:notchGeom:)` — `width = notch.width + hotPaddingX*2`, `height = notch.height + hotPaddingBelow`, origin top-centered.
+- `interactiveRect(for:screen:notchGeom:)` — open: `480x150` + `24/24`; otherwise `notch.width+6` x `notch.height+3`.
+OWNED BY / CREATED BY: No instances; static enum.
+CALLED BY: MouseMonitor.swift:47,54; Watchdog.swift:14; NotchRootView.swift:165.
+CALLS INTO: SettingsStore.shared, NotchGeometry, AppKit NSRect/NSScreen.
+RUNTIME SIDE EFFECTS: Reads SettingsStore values.
+THREADING: Any (pure functions); callers are main.
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- `NSRect.contains`/the returned rect excludes `maxY`; hotZone's top edge equals `screen.frame.maxY` (line 11), so a pointer exactly at the screen top row is outside the hot zone.
+- Hard-coded `480`, `150`, `24`, `6`, `3` (lines 17-26).
+- Only `phase == .open` gets the open rect; `.opening`, `.closing`, and `.peek` get the closed-sized rect.
+- The open rect ignores the actual NotchPresets/open metrics and is not tied to panel size.
+
+FILE: BilouNook/BilouNook/Interaction/MouseMonitor.swift | LINES: 59 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Installs global/local mouse-moved monitors and calls callbacks when the pointer is inside the hot zone or outside the open rect. It implements an optional fly-by speed guard. The view wires the callbacks to NotchState.
+DECLARES:
+- final class MouseMonitor — singleton monitor.
+KEY MEMBERS:
+- `shared`, callbacks `onEnterHotZone`, `onLeaveOpenArea`, `onMouseMove`.
+- `globalMonitor`, `localMonitor`, `lastPoint`, `lastTime`.
+- `start()` — adds `.mouseMoved` global + local monitors.
+- `stop()` — removes both monitors.
+- `handle(_:)` — fly-by guard when enabled and `lastTime != .distantPast`; computes distance/time and returns if `dist/dt > flyBySpeedThreshold`; otherwise computes hotRect and calls `onEnterHotZone?()`; computes `.open` rect and calls `onLeaveOpenArea?()` when outside.
+OWNED BY / CREATED BY: Static singleton; started at NotchRootView.swift:158 inside `setupMonitors()`.
+CALLED BY: NotchRootView.swift:143-158 (callback assignment and `start()`); no other callers.
+CALLS INTO: InteractionRegion, ScreenResolver, NotchGeometry, SettingsStore, AppKit NSEvent.
+RUNTIME SIDE EFFECTS: Installs two NSEvent `.mouseMoved` monitors; reads `flyByGuardEnabled`/`flyBySpeedThreshold`/hot-zone settings; invokes callbacks that mutate `panel.ignoresMouseEvents` and NotchState.
+THREADING: NSEvent monitor callbacks on main; no dispatch.
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- `start()` has no "already started" guard, so repeated calls stack monitors.
+- `let statePhase = NotchPhase.closed // simplified` (line 53) is unused and contradicts the real state.
+- The leave check always uses `interactiveRect(for: .open, ...)` (line 54) and calls `onLeaveOpenArea` on every move outside it, even while closed.
+- `onEnterHotZone` fires on every move inside the hot zone (no edge detection), so the view's `enterIntent()` is invoked repeatedly.
+- Hard-coded `2.5` default is in SettingsStore, not here; comment "simplified" at line 53.
+
+FILE: BilouNook/BilouNook/Interaction/Watchdog.swift | LINES: 29 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: A repeating timer that force-closes the notch whenever the state is not closed and the mouse is outside the interactive rect. It is intended as a safety net, but the current implementation closes immediately on the first tick outside.
+DECLARES:
+- final class Watchdog — singleton timer owner.
+KEY MEMBERS:
+- `shared`, `timer`.
+- `start(state:)` — invalidates previous timer, schedules a 0.25s repeating Timer; if `state.phase == .closed` returns; else if mouse outside `interactiveRect(for: state.phase)` dispatches `state.closeImmediately(reason: .watchdog)`.
+- `stop()` — invalidates and nils the timer.
+OWNED BY / CREATED BY: Static singleton; started at NotchRootView.swift:79 with the view's own state.
+CALLED BY: NotchRootView.swift:79 only.
+CALLS INTO: ScreenResolver, InteractionRegion, NotchGeometry, NSEvent, NotchState.
+RUNTIME SIDE EFFECTS: Creates a repeating Timer on the current run loop; reads mouse location; mutates NotchState.
+THREADING: `Timer.scheduledTimer` runs on the caller's run loop (main when started from SwiftUI onAppear).
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- Comment line 17 says "force close after outside", but there is no 0.5s confirmation; the first tick outside closes.
+- Hard-coded interval `0.25` (line 9).
+- `stop()` is never called anywhere (grep shows only declaration; NotchRootView never stops it).
+- The timer closure captures `state` strongly and can keep a dead view's state alive/act on it.
+
+FILE: BilouNook/BilouNook/Notch/DebugOverlay.swift | LINES: 58 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Debug-only SwiftUI overlay showing screen/notch geometry with fine-tune steppers, hosted in a borderless floating window. The whole file is compiled only in DEBUG.
+DECLARES:
+- struct DebugOverlay: View — info text + width/height steppers.
+- class DebugOverlayWindow — singleton borderless window.
+KEY MEMBERS:
+- `DebugOverlayWindow.shared`, `window`, `toggle()` — creates a 300x100 transparent floating window hosting `DebugOverlay`.
+- `DebugOverlay.info` — geometry string; `settings` StateObject.
+OWNED BY / CREATED BY: static singleton; window stored strongly.
+CALLED BY: NotchRootView.swift:50 (`DebugOverlayWindow.shared.toggle()` from DEBUG context menu); HotKeyManager.swift:16 (hotkey id 1).
+CALLS INTO: ScreenResolver, NotchGeometry, SettingsStore, SwiftUI, AppKit.
+RUNTIME SIDE EFFECTS: Activates app, creates/closes a floating window; reads settings.
+THREADING: Main.
+COMPILER FLAGS: `#if DEBUG` line 4 through `#endif` line 58.
+PROBLEMS SPOTTED:
+- `if let screen = ScreenResolver.shared.targetScreen()` (line 28) and `guard let screen = ... else` (line 48) are invalid because `targetScreen()` returns non-optional `NSScreen` (ScreenResolver.swift:13); compile errors when DEBUG is defined.
+- `class DebugOverlayWindow` is also declared in NotchRootView.swift:185, producing a duplicate type name in the same module under DEBUG.
+- Hard-coded window size `300x100` and offsets `150`/`120` (line 49).
+
+FILE: BilouNook/BilouNook/Notch/NotchGeometry.swift | LINES: 35 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Computes the notch rectangle from NSScreen auxiliary top areas, falling back to safe-area insets, then to configured handler dimensions, then to a fixed 200x32. It centralizes geometry for all interaction and drawing code.
+DECLARES:
+- struct NotchRect — width/height pair.
+- final class NotchGeometry — singleton geometry provider.
+KEY MEMBERS:
+- `shared`.
+- `geometry(for:settings:)` — on macOS 12+, uses `auxiliaryTopLeftArea`/`auxiliaryTopRightArea`, width `abs(right.minX - left.maxX) + fineTuneWidth`, height `max(left.height, right.height) + fineTuneHeight`; else safeAreaInsets top; else `handlerEnabled` uses `handlerWidth`/`handlerHeight`; final `NotchRect(width: 200, height: 32)`.
+- `notchRect(for:)` — convenience wrapper.
+OWNED BY / CREATED BY: static singleton; NotchRect is a value type created per call.
+CALLED BY: NotchRootView.swift:67,104,113,137,165; InteractionRegion.swift:6,23; MouseMonitor.swift:47,54; GestureMonitor.swift:38; Watchdog.swift:14; DebugOverlay.swift:29.
+CALLS INTO: AppKit NSScreen/NSRect, SettingsStore.
+RUNTIME SIDE EFFECTS: Reads SettingsStore (fineTuneWidth/Height, handlerEnabled/Width/Height).
+THREADING: Any; callers main.
+COMPILER FLAGS: `if #available(macOS 12.0, *)` at line 12 (runtime availability, not a compilation flag).
+PROBLEMS SPOTTED:
+- Hard-coded fallbacks `200` (line 22), `50`, `4` (line 24), `50`, `2` (line 27), `200`, `32` (line 29).
+- Fine-tune adjustments can make width/height non-positive; the auxiliary branch checks `> 0` and falls through, but the safe-area branch clamps to 50/4 and the handler branch clamps to 50/2 (inconsistent).
+- No caching; recomputes screen geometry on every mouse event through InteractionRegion.
+
+FILE: BilouNook/BilouNook/Notch/NotchRootView.swift | LINES: 211 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: The SwiftUI root view hosted inside the notch panel. It draws the black notch shape, reveals a hard-coded "Hello" content block, owns its own NotchState, wires mouse/gesture/watchdog monitoring, and drives metric/state changes from settings and phase transitions. It also contains DEBUG menu items and a second DEBUG overlay implementation.
+DECLARES:
+- struct NotchRootView: View — root notch UI and lifecycle wiring.
+- extension NotchRootView (DEBUG) — `testHaptics()`.
+- extension NotchRootView (DEBUG) — empty `addAssumptionSliders()`.
+- class DebugOverlayWindow (DEBUG) — duplicate singleton overlay window.
+- struct DebugOverlayView (DEBUG) — minimal yellow text overlay.
+KEY MEMBERS:
+- `@State private var notchState = NotchState()` — view-owned state instance.
+- `@State private var metrics = NotchMetrics(w: 200, h: 32, t: 6, b: 14)`.
+- `@State private var showContent`, `lastOpenTrigger`.
+- `@StateObject private var settings = SettingsStore.shared`; `var panel: NSPanel`.
+- `body` — ZStack with NotchShape fill (480x150 content when `showContent`), context menu (Settings/Animation Lab/Debug overlay/Haptic test/Quit), `.onTapGesture { notchState.toggle() }`, frame `700x320`.
+- `onAppear` — computes closed metrics, copies settings into state, sets `panel.ignoresMouseEvents = true`, DEBUG registers hotkeys and assigns lab state, starts monitors/watchdog/gestures, adds NotificationCenter observers for GestureDown/GestureUp and NSWorkspace willSleep.
+- `onChange(of: notchState.phase)` — animates metrics to `NotchPresets.open` / peek size / closed; toggles `showContent`; calls `updateMouseInteraction()`; asyncAfter 0.4s re-disables mouse events.
+- `onChange` handlers for settings (geometry, openOnHover, intentDelay, closeDelay).
+- `updateGeometry()` — resets closed metrics.
+- `setupMonitors()` — assigns MouseMonitor callbacks (`enterIntent`, `requestClose`/`cancelIntent`, `updateMouseInteraction`) and starts it; calls `updateMouseInteraction()`.
+- `updateMouseInteraction()` — `panel.ignoresMouseEvents = !rect.contains(mouse)` using `interactiveRect(for: notchState.phase, ...)`.
+OWNED BY / CREATED BY: Created by NotchPanelController.show() at Window/NotchPanel.swift:47 (`NSHostingView(rootView: root)`), stored strongly in `NotchPanelController.hostingView` (line 44/52).
+CALLED BY: Window/NotchPanel.swift:44,47.
+CALLS INTO: NotchState, NotchShape, NotchMetrics/NotchPresets, NotchGeometry, InteractionRegion, MouseMonitor, Watchdog, GestureMonitor, HotKeyManager, Haptics, HapticsService, SettingsStore, SettingsWindow, AnimationLabWindow, DebugOverlayWindow, ScreenResolver, Animations.
+RUNTIME SIDE EFFECTS:
+- Mutates `panel.ignoresMouseEvents` (lines 73, 118, 166).
+- Starts MouseMonitor (line 158), Watchdog (line 79), GestureMonitor (line 80).
+- Registers Carbon hotkeys in DEBUG (line 75).
+- Adds NotificationCenter observers for `BilouNook.GestureDown`/`BilouNook.GestureUp` (lines 81-89, never removed).
+- Adds NSWorkspace `willSleepNotification` observer (line 90, never removed).
+- Reads UserDefaults through SettingsStore; writes via sliders in debug UI/settings.
+- Creates Settings/Animation Lab/overlay windows through menu.
+THREADING: SwiftUI main actor; asyncAfter on main.
+COMPILER FLAGS:
+- `#if DEBUG` lines 44-55: context-menu buttons for "Animation Lab" (assigns non-existent `.state`), "Debug overlay", "Haptic test".
+- `#if DEBUG` lines 74-77: `HotKeyManager.shared.register()` and `AnimationLabWindow.shared.state = notchState`.
+- `#if DEBUG` lines 170-176: `testHaptics()` calling `HapticsService.shared.testAll()`.
+- `#if DEBUG` lines 178-182: empty `addAssumptionSliders()`.
+- `#if DEBUG` lines 184-211: duplicate `DebugOverlayWindow` class and `DebugOverlayView` struct.
+PROBLEMS SPOTTED:
+- Owns a separate `@State NotchState()` (line 5) while GestureMonitor creates another `NotchState()` (GestureMonitor.swift:33) and nothing shares a single instance.
+- `AnimationLabWindow.shared.state` does not exist in Debug/AnimationLab.swift, so DEBUG builds cannot compile (lines 46, 76).
+- `DebugOverlayWindow` is declared twice under DEBUG (DebugOverlay.swift:37 and this file:185).
+- Observers are added but never removed; escaping closures capture the SwiftUI view value.
+- Hard-coded `700x320` frame (lines 39,64), content `480x150` (line 31), close re-enable delay `0.4` (line 116), peek size `+8/+3` (line 105), initial metrics `200,32,6,14` (line 6).
+- `.onTapGesture` cannot receive clicks while `panel.ignoresMouseEvents == true` (line 73) until hover callback sets it false.
+- `NotchPresets.peek` is not used here; peek uses a manually built `NotchMetrics`.
+- `lastOpenTrigger` is stored in `@State` and mutated inside escaping monitor closures (lines 144, 84), which is not a guaranteed mutation path for value-type view state.
+
+FILE: BilouNook/BilouNook/Notch/NotchShape.swift | LINES: 65 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Custom SwiftUI Shape drawing the notch silhouette with independently animatable width, height and top/bottom corner radii. It also defines the metric struct and named presets used by the root view.
+DECLARES:
+- struct NotchShape: Shape — animated notch path.
+- struct NotchMetrics — w/h/t/b.
+- enum NotchPresets — closed(notchW:notchH:), peek, open.
+KEY MEMBERS:
+- `width`, `height`, `topCornerRadius=6`, `bottomCornerRadius=14`.
+- `animatableData` — nested `AnimatablePair<AnimatablePair<CGFloat,CGFloat>, AnimatablePair<CGFloat,CGFloat>>`.
+- `path(in:)` — clamps w/h to >=0, clamps t/b to `minDim/2`, builds rounded-top/rounded-bottom path centered at `rect.midX`, `originY = rect.minY`.
+- `NotchPresets.closed` returns `(w: notchW, h: notchH, t: 6, b: 14)`; `peek = (208,35,6,14)`; `open = (480,150,19,24)`.
+OWNED BY / CREATED BY: Value types; `NotchShape` instantiated in NotchRootView.swift:22 and :35.
+CALLED BY: NotchRootView.swift:22,35 (shape); NotchRootView.swift:69,96,114,138 (presets); NotchRootView.swift:6,105 (metrics).
+CALLS INTO: SwiftUI Shape/Path/AnimatablePair.
+RUNTIME SIDE EFFECTS: None.
+THREADING: Main (SwiftUI rendering).
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- Hard-coded radii/presets `6`, `14`, `208`, `35`, `480`, `150`, `19`, `24`.
+- `NotchPresets.peek` is declared and never referenced (grep shows only declaration).
+- Comment at line 37 says overdraw is "handled ... conceptually"; no actual overdraw is drawn.
+- `NotchMetrics` has no initializer defaults; all call sites repeat `t: 6, b: 14`.
+
+FILE: BilouNook/BilouNook/Settings/NotchSettings.swift | LINES: 8 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Declares four static @AppStorage values for notch/handler tuning. No code references this struct anywhere in the project.
+DECLARES:
+- struct NotchSettings — static @AppStorage wrappers.
+KEY MEMBERS:
+- `@AppStorage("notchFineTuneWidth") static var fineTuneWidth: Double = 0`.
+- `@AppStorage("notchFineTuneHeight") static var fineTuneHeight: Double = 0`.
+- `@AppStorage("handlerWidth") static var handlerWidth: Double = 184`.
+- `@AppStorage("handlerHeight") static var handlerHeight: Double = 8`.
+OWNED BY / CREATED BY: No instances; no owner.
+CALLED BY: None (grep shows only the declaration at NotchSettings.swift:3).
+CALLS INTO: SwiftUI @AppStorage / UserDefaults.
+RUNTIME SIDE EFFECTS: Would read/write UserDefaults keys `notchFineTuneWidth`, `notchFineTuneHeight`, `handlerWidth`, `handlerHeight` if accessed.
+THREADING: Unknown (never accessed).
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- Dead type: never referenced.
+- Duplicates SettingsStore keys with different names: `notchFineTuneWidth`/`notchFineTuneHeight` vs SettingsStore's `fineTuneWidth`/`fineTuneHeight`; `handlerWidth`/`handlerHeight` are shared key names between both stores.
+- Uses @AppStorage as static properties outside a View/App/Scene; behavior is not exercised anywhere and is UNKNOWN.
+
+FILE: BilouNook/BilouNook/Settings/SettingsStore.swift | LINES: 99 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Single ObservableObject settings store, backed by UserDefaults with a persisted key per @Published property. It exposes tuning, behavior, haptic and experimental content values and is injected as `@StateObject` in views.
+DECLARES:
+- final class SettingsStore: ObservableObject — singleton settings model.
+KEY MEMBERS (stored @Published properties and defaults read in init):
+- `fineTuneWidth` key "fineTuneWidth" default 0.
+- `fineTuneHeight` key "fineTuneHeight" default 0.
+- `handlerEnabled` default true.
+- `handlerWidth` default 184.
+- `handlerHeight` default 8.
+- `displayMode` default "Built-in".
+- `openOnHover` default true.
+- `hoverIntentDelay` default 0.
+- `closeDelay` default 0.15.
+- `verticalGesturesEnabled` default true.
+- `hapticsEnabled` default true.
+- `hotPaddingX` default 14.
+- `hotPaddingBelow` default 4.
+- `flyByGuardEnabled` default false.
+- `flyBySpeedThreshold` default 2.5.
+- `contentInDelay` default 0.1.
+- `openHapticPattern` default "levelChange".
+- `closeHapticPattern` default "alignment".
+- `contentScale_ASSUMPTION` default 0.8.
+- `contentBlur_ASSUMPTION` default 10.
+- `contentAnchorY_ASSUMPTION` default -0.25.
+- `hapticPattern` default "generic".
+- `shared` static singleton; each property's `didSet` writes `UserDefaults.standard`.
+OWNED BY / CREATED BY: static singleton; held by `@StateObject` in NotchRootView.swift:9, DebugOverlay.swift:7, AnimationLab.swift:24; passed to NotchGeometry.geometry at NotchGeometry.swift:11,33.
+CALLED BY: NotchGeometry.swift:11,33; NotchRootView.swift:9,67,68,104,113,137; HapticsService.swift:20,35,63; InteractionRegion.swift:6,7,8,23; MouseMonitor.swift:33,38; GestureMonitor.swift:38,42; ScaleBlur.swift:11-13; AnimationLab.swift:24 and sliders.
+CALLS INTO: Foundation, SwiftUI ObservableObject/@Published, UserDefaults.
+RUNTIME SIDE EFFECTS: Reads UserDefaults keys listed above in `init()` (lines 76-97); writes each key on `didSet` (lines 8-72). No notifications posted.
+THREADING: Main by convention (observable UI model); no enforcement.
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- `contentInDelay` (default 0.1) is read but `Animations.contentIn` hard-codes `.delay(0.1)` (Animations.swift:11), so the setting is unused.
+- `displayMode` is read but never applied to ScreenResolver.preference (grep shows no use).
+- `openHapticPattern`/`closeHapticPattern` are read but HapticsService uses `hapticPattern` only (HapticsService.swift:35).
+- Duplicate config source NotchSettings.swift with different fine-tune keys.
+- `flyBySpeedThreshold` default `2.5` and cooldown/delay defaults quoted above are hard-coded assumptions.
+
+FILE: BilouNook/BilouNook/Settings/SettingsWindow.swift | LINES: 25 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Placeholder settings window singleton. It opens a titled 400x300 window containing only a "Settings (step 11)" label. The window is retained after closing.
+DECLARES:
+- class SettingsWindow — singleton NSWindow host.
+KEY MEMBERS:
+- `shared`, `window` (strong), `show()` — reuses existing window or creates NSWindow with `NSHostingView` of a VStack/Text, `isReleasedWhenClosed = false`.
+OWNED BY / CREATED BY: static singleton; window stored strongly at line 23.
+CALLED BY: NotchRootView.swift:42 (context menu "Settings…").
+CALLS INTO: SwiftUI VStack/Text, AppKit NSWindow/NSHostingView.
+RUNTIME SIDE EFFECTS: Creates and shows a titled window.
+THREADING: Main (menu action).
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- UI is a placeholder: `Text("Settings (step 11)")` (line 14) and title "Settings (step 11)" (line 19).
+- Hard-coded size/position `400x300` and `200,200`.
+- No settings controls wired to SettingsStore.
+
+FILE: BilouNook/BilouNook/State/NotchState.swift | LINES: 183 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Observable state machine for closed/peek/open/opening/closing with generation-token cancellation, intent delay and close delay, and haptic triggers on transitions. It exposes open/close/toggle/enterIntent APIs used by the view, monitor callbacks and watchdog.
+DECLARES:
+- enum NotchPhase — closed, peek, open, opening, closing.
+- enum OpenTrigger — hover, click, gesture, programmatic.
+- enum CloseReason — mouseLeft, gesture, click, programmatic, watchdog, system.
+- @Observable final class NotchState — state machine.
+KEY MEMBERS:
+- `phase = .closed`, `intentDelay = 0`, `closeDelay = 0.15`, `allowScrollGestures = true`, `openOnHover = true`, `minStateDwell = 0.12`.
+- Private `pendingTask`, `generation: UInt64`, `intentTask`, `lastTransitionTime`, `lastCloseTime`, `lastOpenTime`.
+- `requestOpen(trigger:)` — guards already open; handles closing dwell; cancels pending, increments generation, plays open haptic, sets `.opening`; if `intentDelay <= 0` commits `.open`/`.peek`; otherwise schedules a @MainActor Task.
+- `requestClose(reason:)` — guards closed/closing and min dwell; plays close haptic; sets `.closing`; schedules closeDelay Task then `.closed`.
+- `closeImmediately(reason:)` — guards and dwell; plays haptic; sets `.closing` then immediately `.closed`.
+- `enterIntent()` / `cancelIntent()` — hover intent with optional delay.
+- `cancelPending()` — cancels close and intent tasks.
+- `toggle()`, `close()`, `open()`, `scheduleClose()` — convenience wrappers.
+OWNED BY / CREATED BY: Created at NotchRootView.swift:5 as view `@State`; created again at GestureMonitor.swift:33 (unused local); passed to `Watchdog.start` at NotchRootView.swift:79.
+CALLED BY: NotchRootView.swift:61,70-72,82,84,88,90,118,129-131,143-153,165; Watchdog.swift:11,14,19; GestureMonitor.swift:33 (instance only).
+CALLS INTO: HapticsService, Combine (imported but no Combine symbols used), Foundation Task.
+RUNTIME SIDE EFFECTS: Plays haptics on open/close; spawns Tasks; reads/sets timing values supplied by the view; no UserDefaults access.
+THREADING: Tasks use `@MainActor`; methods themselves have no actor annotation and are called from main.
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- `allowScrollGestures` is declared (line 34) and never read.
+- `lastTransitionTime` is written (lines 56, 102, 123) but never read; `lastCloseTime` is only used for the dwell check; `lastOpenTime` is used for dwell.
+- In `requestOpen`, `phase = .opening` at line 61 is followed by `if !openOnHover && trigger == .hover && (phase == .closed || phase == .closing)` at line 66; since phase is already `.opening`, that condition is always false, so the intended `.peek` branch is unreachable and the `else` at line 72 opens immediately.
+- `closeImmediately` sets `.closing` and then `.closed` in the same call (lines 128-130), so there is no closing interval.
+- Hard-coded dwell `0.12` (line 36), peek sleep `0.1` (lines 69, 85), default intent fallback `0.08` (line 145).
+- Multiple instances exist because NotchRootView owns one and GestureMonitor constructs another; no shared instance.
+- `lastOpenTime` stays `.distantPast` after `closeImmediately`, so the next close dwell check compares against a stale time.
+- Imports Combine but no Combine API is used.
+
+FILE: BilouNook/BilouNook/Utils/CoordinateSpace.swift | LINES: 23 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Utility enum with coordinate conversion helpers for mouse location and panel-local points, plus a hard-coded 1470x956 unit-test helper. Nothing in the project calls it.
+DECLARES:
+- enum CoordinateSpace — static coordinate helpers.
+KEY MEMBERS:
+- `mouseLocationInScreen(_:)` — returns `NSEvent.mouseLocation` unchanged; screen parameter unused.
+- `pointInPanelCoordinates(_:panel:)` — computes x/y from panel frame and screen; `y` at line 12 is immediately overwritten by the returned expression at line 13.
+- `unitTest1470x956()` — returns `(inFrame, inFrame)` where both are the same Bool.
+OWNED BY / CREATED BY: No instances; no owner.
+CALLED BY: None (grep shows only the declaration at CoordinateSpace.swift:3).
+CALLS INTO: AppKit NSEvent/NSScreen/NSRect/NSPanel.
+RUNTIME SIDE EFFECTS: None.
+THREADING: Any; never called.
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- Dead utility: never referenced.
+- `mouseLocationInScreen` ignores its screen argument (line 4-5).
+- Unused local `let y` computed at line 12 then discarded; line 13 returns a different formula.
+- `unitTest1470x956` returns the same Bool twice and hard-codes `1470x956` and `955/954` (lines 17-19).
+
+FILE: BilouNook/BilouNook/Utils/HotKeyManager.swift | LINES: 42 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: DEBUG-only Carbon hotkey registration for three shortcuts: ⌥⌘D toggles the debug overlay, ⌥⌘L toggles the animation lab, and ⌥⌘H plays a haptic. It installs one Carbon event handler and registers three EventHotKeys.
+DECLARES:
+- class HotKeyManager — singleton hotkey owner.
+KEY MEMBERS:
+- `shared`, `hotKeyRefs: [EventHotKeyRef?]`.
+- `register()` — `InstallEventHandler(GetApplicationEventTarget(), ...)` with `kEventClassKeyboard`/`kEventHotKeyPressed`; dispatches to `DebugOverlayWindow` (id 1), `AnimationLabWindow` (id 2), `Haptics.smallClick()` (id 3); registers `kVK_ANSI_D`, `kVK_ANSI_L`, `kVK_ANSI_H` with `optionKey | cmdKey`, signature `0x42494C4F`.
+OWNED BY / CREATED BY: static singleton; called at NotchRootView.swift:75 inside `#if DEBUG`.
+CALLED BY: NotchRootView.swift:75.
+CALLS INTO: Carbon, AppKit, DebugOverlayWindow, AnimationLabWindow, Haptics.
+RUNTIME SIDE EFFECTS: Installs a Carbon event handler and three global hotkeys; dispatches actions on main.
+THREADING: Carbon callback runs on the main application event target; actions dispatch to `DispatchQueue.main.async`.
+COMPILER FLAGS: Entire file `#if DEBUG` (line 4) through `#endif` (line 42).
+PROBLEMS SPOTTED:
+- `register()` is not idempotent and there is no unregister; repeated calls install duplicate handlers/hotkeys.
+- Return statuses of `InstallEventHandler`/`RegisterEventHotKey` are ignored (lines 11,28,33,38).
+- Hard-coded key codes and signature `0x42494C4F`.
+- No `deinit`; `hotKeyRefs` are never unregistered.
+- No tooltip/user documentation of the shortcuts in this file.
+
+FILE: BilouNook/BilouNook/Utils/ScreenResolver.swift | LINES: 35 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Chooses the target NSScreen according to a display preference: built-in (by CGDisplayIsBuiltin or non-zero safe-area top), follow-mouse, or fallback main/first screen. NotchGeometry, the panel and all monitors use it.
+DECLARES:
+- enum DisplayPreference: String — builtIn = "Built-in", main = "Main", followMouse = "Follow mouse".
+- final class ScreenResolver — singleton screen selector.
+KEY MEMBERS:
+- `shared`, `preference: DisplayPreference = .builtIn`.
+- `targetScreen()` — if builtIn, first screen where `CGDisplayIsBuiltin(displayID) != 0 || screen.safeAreaInsets.top > 0`; if followMouse, screen containing `NSEvent.mouseLocation`; else `NSScreen.main ?? NSScreen.screens.first!`.
+OWNED BY / CREATED BY: static singleton; held implicitly.
+CALLED BY: NotchRootView.swift:66,103,112,136,164; InteractionRegion callers indirectly? (no); MouseMonitor.swift:46; GestureMonitor.swift:32; Watchdog.swift:13; DebugOverlay.swift:28,48; Window/NotchPanel.swift:6,62.
+CALLS INTO: AppKit NSScreen/NSEvent, CoreGraphics CGDisplayIsBuiltin.
+RUNTIME SIDE EFFECTS: Reads screen geometry and mouse position; no writes.
+THREADING: Main (AppKit).
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- Force unwrap `NSScreen.screens.first!` at line 33.
+- `DisplayPreference.main` is never referenced (setting `displayMode` is unused), so `.main` behaves like the fallback rather than explicitly choosing NSScreen.main.
+- The built-in heuristic treats any screen with `safeAreaInsets.top > 0` as built-in (lines 19,22), which can select an external display with a menu-bar inset.
+- No observer for display changes here; NotchPanelController separately observes screen/wake notifications and repositions.
+
+FILE: BilouNook/BilouNook/Window/NotchPanel.swift | LINES: 69 | LAST COMMIT: 341c04c Core: notch window, shape, state machine, animation, haptics
+PURPOSE: Defines the borderless NSPanel hosting the notch UI and its controller. The panel is sized from hard-coded max-open dimensions, floats above the menu bar, joins all Spaces, and ignores mouse events by default. The controller installs the SwiftUI hosting view and repositions on screen/wake/Space changes.
+DECLARES:
+- final class NotchPanel: NSPanel — the notch window.
+- final class NotchPanelController: NSObject — window/controller wiring.
+KEY MEMBERS:
+- `NotchPanel.init()` — `maxOpenWidth 520`, `maxOpenHeight 180`, panel `730x285` (520*1.25+80, 180*1.25+60); style `[.borderless, .nonactivatingPanel]`; clear/non-opaque/no shadow; `level = mainMenu.rawValue + 3`; `collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary, .ignoresCycle]`; `isFloatingPanel = true`; `ignoresMouseEvents = true`; `acceptsMouseMovedEvents = true`; `canBecomeKey/canBecomeMain = false`; `constrainFrameRect` returns input unchanged.
+- `NotchPanelController.panel` (created at line 43), `hostingView: NSHostingView<NotchRootView>?`.
+- `show()` — builds `NotchRootView(panel:)`, hosting view autoresizes, sets `panel.contentView`, `orderFrontRegardless`, observes `didChangeScreenParametersNotification`, `screensDidWakeNotification`, `didWakeNotification`, `activeSpaceDidChangeNotification`, then `reposition()`.
+- `reposition()` — recomputes `730x285` frame top-centered and `setFrame`.
+OWNED BY / CREATED BY: `NotchPanelController` created by AppDelegate at App/BilouNookApp.swift:18 and stored strongly in `AppDelegate.panelController` (line 15); `NotchPanel` created as a `let` property at line 43; `hostingView` strong optional.
+CALLED BY: App/BilouNookApp.swift:18-19 (`NotchPanelController()`, `.show()`).
+CALLS INTO: ScreenResolver, NotchRootView, AppKit NSWindow/NSHostingView, NotificationCenter, NSWorkspace.
+RUNTIME SIDE EFFECTS: Creates a high-level floating window; sets content view; orders front; adds four notification observers; repositions window on notifications.
+THREADING: Main (AppKit).
+COMPILER FLAGS: None.
+PROBLEMS SPOTTED:
+- Hard-coded max-open size `520x180` and computed `730x285` (lines 7-10, 63-66); duplicates the numbers in the initializer and reposition.
+- `canBecomeKey = false` (line 34) makes keyboard input/focus impossible for this panel.
+- `ignoresMouseEvents = true` (line 31) initially; hover/click depends entirely on global monitors and the view toggling this flag.
+- No `deinit` removal of the four notification observers.
+- `hostingView` is stored but otherwise unused after assignment.
+
+SECTION 3 — EVERY CONFIG / NON-SWIFT FILE
+
+FILE: BilouNook/BilouNook/Info.plist | LINES: 28
+CONTENT: Standard app plist, all keys quoted:
+- CFBundleDevelopmentRegion = $(DEVELOPMENT_LANGUAGE)
+- CFBundleExecutable = $(EXECUTABLE_NAME)
+- CFBundleIdentifier = com.bilou.BilouNook
+- CFBundleInfoDictionaryVersion = 6.0
+- CFBundleName = BilouNook
+- CFBundlePackageType = APPL
+- CFBundleShortVersionString = 1.0
+- CFBundleVersion = 1
+- LSMinimumSystemVersion = 14.6
+- LSUIElement = true (agent app, no Dock icon)
+- NSPrincipalClass = NSApplication
+NOTABLE ABSENCES: No NSAppleEventsUsageDescription, no NSInputMonitoringUsageDescription, no NSAccessibilityUsageDescription, no NSSupportsAutomaticTermination, no NSHumanReadableCopyright, no CFBundleIconFile/CFBundleIconName (despite ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon).
+USED BY: INFOPLIST_FILE = BilouNook/Info.plist in both target configurations (project.pbxproj:290,313).
+
+FILE: BilouNook/BilouNook/App/Info.plist | LINES: 28
+CONTENT: Byte-for-byte identical to BilouNook/BilouNook/Info.plist (same 11 keys, same values, same order).
+USED BY: Nothing. No PBXFileReference and no project.pbxproj occurrence of "App/Info.plist"; the only Info.plist file reference is C2000008b in the BilouNook group (project.pbxproj:57,74) resolving to BilouNook/BilouNook/Info.plist.
+PROBLEM: Duplicate, unreferenced plist. Editing it has no effect on the build.
+
+FILE: entitlements | LINES: 0 (no file exists)
+EVIDENCE: `find . -name "*.entitlements" -not -path "./.git/*"` returned no paths. project.pbxproj sets `CODE_SIGN_ENTITLEMENTS = "";` in both Debug (line 284) and Release (line 307).
+CONSEQUENCE: No hardened-runtime exceptions, no accessibility/input-monitoring entitlements, no app sandbox (ENABLE_APP_SANDBOX = NO, line 288/311). Global NSEvent monitors and Carbon hotkeys rely on the absence of sandbox rather than entitlements.
+
+FILE: BilouNook/BilouNook.xcodeproj/project.pbxproj | LINES: 372
+PROJECT: objectVersion = 56; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; LastUpgradeCheck = 1500 (lines 216-220).
+TARGETS: exactly one — PBXNativeTarget C6000001 "BilouNook", productType com.apple.product-type.application (lines 194-209). No test target, no framework target, no aggregate target.
+BUILD PHASES: only Sources (C6000002) and Resources (C6000003). There is no PBXFrameworksBuildPhase. Resources phase `files = ()` is empty (lines 238-244).
+SOURCES (22, all Swift on disk): BilouNookApp, NotchPanel, NotchRootView, NotchGeometry, NotchShape, NotchSettings, DebugOverlay, NotchState, Animations, MouseMonitor, AnimationLab, CoordinateSpace, ScreenResolver, InteractionRegion, SettingsWindow, SettingsStore, HotKeyManager, Haptics, GestureMonitor, Watchdog, ScaleBlur, HapticsService (lines 248-276).
+GROUPS: App, Window, Notch, Settings, State, Animations, Interaction, Debug, Utils, Haptics (children at lines 71-182). Haptics group lines 179-181 contain a duplicated `name = Haptics;` key and no `path`; its file refs use paths prefixed `Haptics/` (lines 52,56) so they resolve under the parent group path `BilouNook`.
+FILE REFERENCES: 22 Swift + Info.plist (C2000008b) + Assets.xcassets (C3000001) + BilouNook.app (C4000001).
+TARGET BUILD SETTINGS (Debug C9000001 / Release C9000002, identical except name):
+- ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
+- CODE_SIGN_ENTITLEMENTS = ""
+- CODE_SIGN_STYLE = Automatic
+- COMBINE_HIDPI_IMAGES = YES
+- CURRENT_PROJECT_VERSION = 1
+- ENABLE_APP_SANDBOX = NO
+- ENABLE_HARDENED_RUNTIME = YES
+- INFOPLIST_FILE = BilouNook/Info.plist
+- LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/../Frameworks")
+- MACOSX_DEPLOYMENT_TARGET = 14.6
+- MARKETING_VERSION = 1.0
+- PRODUCT_BUNDLE_IDENTIFIER = com.bilou.BilouNook
+- PRODUCT_NAME = BilouNook
+- SWIFT_VERSION = 5.0
+PROJECT-LEVEL SETTINGS (Debug C9000003 / Release C9000004, identical): ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; MACOSX_DEPLOYMENT_TARGET = 14.6; SDKROOT = macosx.
+NOTABLE ABSENCES: No SWIFT_ACTIVE_COMPILATION_CONDITIONS anywhere (grep of the file matches only the INFOPLIST_FILE lines for "DEBUG"), so DEBUG is NOT defined in Debug configuration. No DEVELOPMENT_TEAM, no CODE_SIGN_IDENTITY, no SWIFT_OPTIMIZATION_LEVEL, no GCC_PREPROCESSOR_DEFINITIONS, no ARCHS, no ONLY_ACTIVE_ARCH, no ENABLE_TESTABILITY, no TEST_HOST/BUNDLE_LOADER.
+CONFIG LIST DEFAULT: defaultConfigurationName = Release for both target (line 358) and project (line 367).
+PROBLEMS:
+- Assets.xcassets is referenced but absent from Resources build phase → AppIcon is never compiled/copied.
+- No framework build phase (imports still auto-link).
+- No test target or test build phase at all.
+- Haptics group duplicate `name` key.
+
+FILE: schemes | LINES: 0 (no .xcscheme file exists)
+EVIDENCE: `find . -name "*.xcscheme"` returned nothing. Only BilouNook/BilouNook.xcodeproj/xcuserdata/bilelzghal.xcuserdatad/xcschemes/xcschememanagement.plist exists (14 lines), containing SchemeUserState → key "BilouNook.xcscheme_^#shared#^_" → orderHint = 0.
+CONSEQUENCE: There is no shared scheme directory (BilouNook.xcodeproj/xcshareddata/xcschemes absent). The scheme named by xcschememanagement is auto-generated by Xcode; `xcodebuild -scheme BilouNook test` has no test action (consistent with the earlier error on the fix branch: "Scheme BilouNook is not currently configured for the test action").
+
+FILE: scripts/ | LINES: 0 (no project-level scripts directory)
+EVIDENCE: `find . -type d -name scripts` returns only ./BilouNook/mediaremote-adapter/scripts, which belongs to the nested untracked mediaremote-adapter repository. There is no top-level scripts/, no BilouNook/scripts/, and no build/run scripts in the Xcode project.
+
+FILE: docs/HAPTICS_NOTES.md | LINES: 6
+CONTENT (quoted substance): HapticsService uses NSHapticFeedbackManager.defaultPerformer.perform(pattern: .levelChange/.alignment/.generic, performanceTime: .now), main-thread only, rate-limited to >=40ms, respects hapticsEnabled. Open haptic fires at acceptance before animation; close on acceptance; none for cancelled/rejected intents. Debug tool plays patterns 600ms apart with os_log. Note: trackpad haptics only felt while finger is on trackpad; may be suppressed when another app is frontmost; .now and .default both tried.
+
+FILE: docs/MOTION_NOTES.md | LINES: 12
+CONTENT: theoretical spring stats: hoverOpen (0.58,0.68) underdamped soft bounce; hoverClose (0.58,0.65); openFootprint (0.5,0.6); closeFootprint (0.62,1.0) critically damped; contentIn (0.35,1.0) delayed 0.1s; contentOut (0.2,1.0). NotchNook measured: first change ~0.109s, nearly settled ~0.325s, stable ~0.424s.
+
+FILE: docs/STATE_MACHINE.md | LINES: 17
+CONTENT: Phases closed/peek(only if openOnHover false)/open; transitions for hover intent (hoverIntentDelay 0.08s), peek, leave cancels intent, open close after closeDelay 0.15s, re-enter cancels, retarget on enter during close, click open, clicks inside open content never close, vertical gestures threshold ~12pt via scrollWheel global+local, horizontal deltas published to NotchGestureEvent with no action, watchdog 0.25s and 0.5s outside force close, close on sleep/wake/space/screen notifications, exactly one pending action via cancellable Task with generation token.
+
+FILE: docs/TESTS.md | LINES: 48
+CONTENT: acceptance log "TESTS - FIX PASS 1..4" describing panel size formula, constrainFrameRect unchanged, animationBehavior/window flags, ScreenResolver preference order, click-through via global+local mouseMoved and InteractionRegion, placeholder Settings window, CoordinateSpace unit-test idea, SettingsStore keys, pure NotchGeometry, DEBUG tools/hotkeys, NotchShape path spec and layering, state machine/gestures/watchdog, and test lists. Several claims describe behavior that the code does not implement (see Section 5-level mismatches recorded in Sections 2 and 4), e.g. `.animationBehavior .none`, `.isReleasedWhenClosed`, `peek`, `openOnHover` gating.
+
+FILE: docs/NotchNook_Complete_Reverse_Engineering.txt | LINES: 13126 bytes
+CONTENT: Reverse-engineering notes for the reference NotchNook app (inventory evidence; not compiled, not referenced by code).
+
+FILE: docs/NotchNook_Animation_UX_Audit.txt | LINES: 11647 bytes
+CONTENT: Animation/UX audit of the reference app (inventory evidence; not compiled, not referenced by code).
+
+FILE: docs/VERIFY_A_WINDOW_GEOMETRY.txt | LINES: 8971 bytes
+CONTENT: Window geometry verification notes for the reference app.
+
+FILE: docs/VERIFY_B_STATE_ANIMATION.txt | LINES: 11218 bytes
+CONTENT: State/animation verification notes for the reference app.
+
+FILE: AGENTS.md | LINES: 0 (file does not exist)
+EVIDENCE: `wc -l AGENTS.md` → "No such file or directory"; `find . -maxdepth 2 -iname AGENTS.md -o -iname CLAUDE.md` returned nothing.
+CONSEQUENCE: There are no repo-level agent rules to summarize for this tree. Root planning files (below) are not AGENTS.md and are not auto-loaded.
+
+FILE: BilouNook/BilouNook/Assets.xcassets/Contents.json | LINES: 6
+CONTENT: {"info":{"author":"xcode","version":1}} only.
+
+FILE: BilouNook/BilouNook/Assets.xcassets/AppIcon.appiconset/Contents.json | LINES: 58
+CONTENT: 10 mac image entries (16/32/128/256/512 at 1x and 2x), NO `filename` on any entry, info author xcode version 1. No image files exist in the appiconset.
+PROBLEM: Empty icon set; combined with the empty Resources phase and no CFBundleIconName, the built app has no icon.
+
+FILE: .gitignore | LINES: 7
+CONTENT: DerivedData/, build/, xcuserdata/, *.xcuserstate, .DS_Store, *.csv, *.xcscmblueprint.
+NOTE: xcuserdata is ignored, yet BilouNook.xcodeproj/xcuserdata/... and project.xcworkspace/xcuserdata/... appear untracked in `git status` (they were created after the ignore rule or the directory is tracked-adjacent); unresolved detail depends on `git check-ignore` (NOT RUN).
+
+FILE: DIAG_OPEN_HAPTICS.txt | LINES: 22 (root)
+CONTENT: Diagnostics for fix pass 7 and latency budget D0-D7; states Lab presets JSON save/load not implemented, spot estimates like hoverIntentDelay 0.08s, 0.1s contentIn delay, Task hops, withAnimation in onChange. Planning artifact only; imported by nothing.
+
+FILE: fix.txt | LINES: 63 (root)
+CONTENT: Implementation log "FIX PASS 0..8" claiming files changed and "Built successfully" per pass. Planning artifact only; imported by nothing. Includes "FIX PASS 8 - instant open, hot zone separation, haptics hardening / Starting implementation..." with no completion entry.
+
+FILE: rapport.txt | LINES: 62 (root)
+CONTENT: Steps 1-3 build/test report, including "Date: $(date)" literal (unexpanded), panel 700x320, hitTest returning nil, Settings/Quit menu, BUILD SUCCEEDED claims. Planning artifact only.
+
+FILE: VERIFY_C.txt | LINES: 24 (root)
+CONTENT: Notes a ScaleBlur ViewModifier with scale 0.8 / blur 10 / anchor (0.5,-0.25) and a verdict table. Planning artifact only.
+
+FILE: BilouNook/mediaremote-adapter/ | FILES: nested git repository (untracked by parent)
+CONTENT: CMakeLists.txt, Makefile, LICENSE, README.md (20937 bytes), .clang-format, .cmake-format, .gitmodules (0 bytes), .perltidyrc, include/MediaRemoteAdapter.h, src/ (C/C++ sources), bin/, scripts/mediaremote-adapter-dev.sh, scripts/update-readme-badges.py, .vscode/.
+USED BY: Nothing in BilouNook.xcodeproj references mediaremote-adapter; it is not in any build phase.
+PROBLEM: Vendored third-party code is an untracked nested repo; parent repo cannot reproduce it.
+
+SECTION 4 — DUPLICATES AND DEAD CODE
+
+A. DUPLICATE DECLARATIONS
+
+1) DebugOverlayWindow — declared twice in the same target.
+- Notch/DebugOverlay.swift:37 `class DebugOverlayWindow {`
+- Notch/NotchRootView.swift:185 `class DebugOverlayWindow {`
+Both define `static let shared` (DebugOverlay.swift:38, NotchRootView.swift:186) and `toggle()`.
+Referenced from: NotchRootView.swift:50, HotKeyManager.swift:16.
+Status: not a build error today only because every reference and both declarations sit inside `#if DEBUG` blocks and DEBUG is not defined (see D). If DEBUG were enabled, this is a redeclaration error.
+
+2) DebugOverlayView — declared twice.
+- Notch/DebugOverlay.swift:50 (struct with `@StateObject settings`, debug text)
+- Notch/NotchRootView.swift:198 (struct showing "DEBUG" + two hard-coded Texts)
+Same caveat as above: both inside `#if DEBUG`.
+
+3) DebugOverlay.swift duplicates the tail of NotchRootView.swift.
+NotchRootView.swift:184-211 repeats the singleton window + overlay view that already live in DebugOverlay.swift:37-58. Two copies of the same feature, different content.
+
+4) Info.plist — duplicated on disk.
+- BilouNook/BilouNook/Info.plist (referenced via project.pbxproj:57,74 and INFOPLIST_FILE at :290,:313)
+- BilouNook/BilouNook/App/Info.plist (identical 28 lines, referenced nowhere)
+
+5) Two parallel haptic APIs.
+- Haptics/Haptics.swift: `Haptics.shared.smallClick()` — used at NotchRootView.swift:53 and HotKeyManager.swift:20.
+- Haptics/HapticsService.swift: `play(_:)`, `playOnce(_:)`, `testAll()` — used at NotchState.swift:58,104,125; NotchRootView.swift:173; AnimationLab.swift:45-50.
+Both are called in the same app for the same user-visible effect (a click).
+
+6) Duplicate settings sources for the same UserDefaults keys.
+- Settings/NotchSettings.swift:6-7 `@AppStorage("handlerWidth")`, `@AppStorage("handlerHeight")` (184/8)
+- Settings/SettingsStore.swift:16-20 `handlerWidth`/`handlerHeight` didSet writing the same keys (184/8)
+Also `notchFineTuneWidth`/`notchFineTuneHeight` (NotchSettings.swift:4-5) vs `fineTuneWidth`/`fineTuneHeight` (SettingsStore.swift:9-14) — two different key names for the same intent. NotchSettings is never referenced, so only SettingsStore's values are observable.
+
+7) Duplicate NotchState instances.
+- Notch/NotchRootView.swift:5 `@State private var notchState = NotchState()`
+- Interaction/GestureMonitor.swift:33 `let state = NotchState()`
+There is no shared/singleton state. The GestureMonitor instance is constructed and discarded; the view's instance is the only one that can change phase.
+
+8) Duplicated geometry numbers.
+- Window/NotchPanel.swift:7-9 declares `maxOpenWidth = 520`, `maxOpenHeight = 180` and computes `520*1.25+80` / `180*1.25+60`; lines 63-66 repeat `730x285` literally.
+- Notch/NotchShape.swift:60-64 repeats radii `6/14` and open `480x150/19/24`, which also appear in NotchRootView.swift default metrics (line 6: `200,32,6,14`).
+- NotchRootView.swift:31,39,64 hard-codes `480x150`, `700x320`, `700x320`.
+
+9) Duplicate hard-coded timings between docs and code.
+- docs/STATE_MACHINE.md says `hoverIntentDelay 0.08`, `closeDelay 0.15`, margin `+12pt`; SettingsStore defaults match 0.08/0.15 but InteractionRegion pads from `hotPaddingX` (14) and `hotPaddingBelow` (4) (InteractionRegion.swift:7-8), while NotchState also hard-codes `0.1` peek delay (NotchState.swift:69,85) and `0.12` dwell (line 36).
+
+B. DEAD / UNREFERENCED DECLARATIONS (grep evidence, declaration only unless noted)
+
+1) NotchPresets.peek — Notch/NotchShape.swift:59-64. `grep -rn -F "NotchPresets.peek"` → no matches. Only `.closed` and `.open` are used (NotchRootView.swift:69,96,114,138).
+
+2) ScaleBlurOpacityContentModifier — Animations/Animations.swift:25. Only the declaration line exists; never applied to any view.
+
+3) NotchContentTransitionModifier — Animations/Animations.swift:38. Only the declaration line exists; never applied. Its static `insertion`/`removal` (ScaleBlur.swift:34-35) are its only content and are also never used.
+
+4) ScaleBlur — Animations/ScaleBlur.swift:7. Used only by the never-applied NotchContentTransitionModifier (ScaleBlur.swift:34-35). Consequently its `contentScale_ASSUMPTION`/`contentBlur_ASSUMPTION`/`contentAnchorY_ASSUMPTION` reads (lines 11-13) never execute in the app.
+
+5) CoordinateSpace (entire file) — Utils/CoordinateSpace.swift:3. `grep -rn -F "CoordinateSpace"` → only the declaration in its own file. All three helpers are dead.
+
+6) NotchSettings (entire file) — Settings/NotchSettings.swift:3. `grep -rn -F "NotchSettings"` → only the declaration. Dead, and superseded by SettingsStore.
+
+7) GestureMonitor.onVerticalGesture — Interaction/GestureMonitor.swift:13. Declared as an optional closure; `grep` shows only that line — it is never assigned and never invoked, so vertical swipe input never reaches NotchState.
+
+8) NotchGeometry.notchRect(for:) — Notch/NotchGeometry.swift:32. Only the declaration; all callers use `geometry(for:settings:)` (NotchRootView.swift:104,113,137; InteractionRegion.swift:6,23; DebugOverlay.swift:29).
+
+9) SettingsStore.displayMode — Settings/SettingsStore.swift:22-24,81. Read/written only inside SettingsStore. ScreenResolver.preference is never assigned from it; no other file mentions displayMode.
+
+10) SettingsStore.contentInDelay — lines 52-54,91. No reader; Animations.contentIn hard-codes `.delay(0.1)` (Animations.swift:11).
+
+11) SettingsStore.openHapticPattern / closeHapticPattern — lines 55-60,92-93. No reader; HapticsService uses only `SettingsStore.shared.hapticPattern` (HapticsService.swift:35).
+
+12) NotchState.allowScrollGestures — State/NotchState.swift:34. `grep` shows only the declaration line; never read.
+
+13) NotchState.lastTransitionTime — NotchState.swift:41 (declaration), written at 56,102,123; never read anywhere.
+
+14) NotchPanelController.hostingView — Window/NotchPanel.swift:44 (declaration), assigned at 52; never read afterwards.
+
+15) NotchRootView.addAssumptionSliders() — NotchRootView.swift:178-182, empty body; not called anywhere in the file.
+
+16) NotchRootView.testHaptics() — NotchRootView.swift:170-176; called only from its own DEBUG menu button (line 54).
+
+C. FILES THAT CONTRIBUTE NOTHING TO THE CURRENT BUILD
+
+- Debug/DebugOverlay.swift — the entire body after imports is wrapped by `#if DEBUG` (line 6 through 58); with DEBUG undefined the translation unit is empty.
+- Debug/AnimationLab.swift — `#if DEBUG` line 3 through 87; empty translation unit.
+- Utils/HotKeyManager.swift — `#if DEBUG` line 4 through 42; empty translation unit.
+- Notch/NotchRootView.swift — five `#if DEBUG` regions (44-55, 74-77, 170-176, 178-182, 184-211) are excluded; the app builds without them.
+- Utils/CoordinateSpace.swift and Settings/NotchSettings.swift — compiled but never referenced (B.5, B.6).
+
+D. WHY THE DEBUG ERRORS ARE INVISIBLE (build-setting evidence)
+
+- project.pbxproj has NO `SWIFT_ACTIVE_COMPILATION_CONDITIONS` key in any of the four XCBuildConfigurations (C9000001-C9000004). `grep -n "SWIFT_ACTIVE_COMPILATION_CONDITIONS\|DEBUG"` on project.pbxproj returns only the two INFOPLIST_FILE lines.
+- Therefore `DEBUG` is not defined even for `-configuration Debug`, so all `#if DEBUG` code is stripped. Concrete compile errors hidden by this:
+  - DebugOverlay.swift:28 `if let screen = ScreenResolver.shared.targetScreen()` — targetScreen() returns non-optional NSScreen (ScreenResolver.swift:12); optional binding of a non-optional is an error.
+  - DebugOverlay.swift:48 `guard let screen = ScreenResolver.shared.targetScreen() else { return }` — same error.
+  - NotchRootView.swift:46 and :76 `AnimationLabWindow.shared.state = notchState` — AnimationLabWindow (Debug/AnimationLab.swift:5-21) has no `state` property.
+  - Duplicate `DebugOverlayWindow`/`DebugOverlayView` (A.1-A.2).
+
+E. ON-DISK SWIFT FILES VS SOURCES BUILD PHASE
+
+- 22 Swift files on disk; 22 PBXBuildFile entries; 22 entries in PBXSourcesBuildPhase (project.pbxproj:251-274). Every on-disk Swift file is compiled, and no Sources entry points at a missing file (10-22 file refs map 1:1 to the 22 paths).
+- Files on disk NOT in any build phase: Assets.xcassets (referenced in the group at project.pbxproj:75 but Resources `files` is empty at :241-242), BilouNook/BilouNook/App/Info.plist (no reference at all), all docs/, root .txt artifacts, and the whole mediaremote-adapter nested repo.
+
+F. DEAD / UNUSED ASSETS AND KEYS SUMMARY
+
+- No app icon assets exist; AppIcon.appiconset has 10 empty image slots with no `filename` keys (Assets.xcassets/AppIcon.appiconset/Contents.json).
+- Assets catalog never enters Resources phase → no compiled asset bundle.
+- UserDefaults keys written by SettingsStore but never consumed: displayMode, contentInDelay, openHapticPattern, closeHapticPattern, contentScale_ASSUMPTION, contentBlur_ASSUMPTION, contentAnchorY_ASSUMPTION (the last three only read by never-applied ScaleBlur/NotchContentTransitionModifier).
+- SettingsStore keys consumed: fineTuneWidth/Height (NotchGeometry), handlerEnabled/Width/Height (NotchGeometry), openOnHover (NotchRootView:130), hoverIntentDelay (NotchRootView:131), closeDelay (NotchRootView:140), verticalGesturesEnabled (GestureMonitor:38), hapticsEnabled (HapticsService:20,63), hotPaddingX/hotPaddingBelow (InteractionRegion:7-8), flyByGuardEnabled/flyBySpeedThreshold (MouseMonitor:33,38), hapticPattern (HapticsService:35, AnimationLab:39).
+- Static NotchSettings keys consumed: none.
+
