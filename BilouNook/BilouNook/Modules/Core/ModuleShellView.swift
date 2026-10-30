@@ -5,13 +5,12 @@ struct ModuleShellView: View {
     @State private var notchState = NotchState.shared
 
     var body: some View {
-        ZStack(alignment: .top) {
-            VStack(spacing: 0) {
-                tabBarSpacer
-                content
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        shell
+    }
 
+    private var shell: some View {
+        ZStack(alignment: .top) {
+            tabContent
             flankTabBar
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -23,6 +22,14 @@ struct ModuleShellView: View {
         .onDisappear {
             GestureMonitor.shared.onHorizontalSwipe = nil
         }
+    }
+
+    private var tabContent: some View {
+        VStack(spacing: 0) {
+            tabBarSpacer
+            content
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var geometry: NotchGeometry {
@@ -43,78 +50,128 @@ struct ModuleShellView: View {
         geometry.isPhysicalNotch
     }
 
+    private struct FlankLayout {
+        let allModules: [any NotchModule]
+        let leftModules: [any NotchModule]
+        let rightModules: [any NotchModule]
+        let spacing: CGFloat
+        let hitSize: CGFloat
+        let iconSize: CGFloat
+        let shapeWidth: CGFloat
+        let notchHeight: CGFloat
+        let hasNotch: Bool
+        let leftPositionX: CGFloat
+        let rightPositionX: CGFloat
+        let centerPositionX: CGFloat
+    }
+
     private var flankTabBar: some View {
+        let layout = flankLayout
+        return ZStack {
+            if layout.hasNotch && layout.shapeWidth > 0 {
+                tabGroup(
+                    modules: layout.leftModules,
+                    spacing: layout.spacing,
+                    hitSize: layout.hitSize,
+                    iconSize: layout.iconSize,
+                    height: layout.notchHeight,
+                    edge: .leading,
+                    padding: 8
+                )
+                .position(x: layout.leftPositionX, y: layout.notchHeight / 2)
+
+                tabGroup(
+                    modules: layout.rightModules,
+                    spacing: layout.spacing,
+                    hitSize: layout.hitSize,
+                    iconSize: layout.iconSize,
+                    height: layout.notchHeight,
+                    edge: .trailing,
+                    padding: 8
+                )
+                .position(x: layout.rightPositionX, y: layout.notchHeight / 2)
+            } else {
+                tabGroup(
+                    modules: layout.allModules,
+                    spacing: 6,
+                    hitSize: layout.hitSize,
+                    iconSize: layout.iconSize,
+                    height: layout.notchHeight,
+                    edge: .horizontal,
+                    padding: 12
+                )
+                .position(x: layout.centerPositionX, y: layout.notchHeight / 2)
+            }
+        }
+        .allowsHitTesting(true)
+    }
+
+    private var flankLayout: FlankLayout {
         let modules = registry.enabledModules
         let leftCount = Int(ceil(Double(modules.count) / 2.0))
         let leftModules = Array(modules.prefix(leftCount))
         let rightModules = Array(modules.dropFirst(leftCount))
-        var spacing: CGFloat = 4
         let hitSize: CGFloat = 24
         let iconSize: CGFloat = 14
-
-        let shapeWidth = registry.activeModule?.preferredSize.width ?? NotchPresets.open.w
+        let shapeWidth: CGFloat = registry.activeModule?.preferredSize.width ?? NotchPresets.open.w
         let flanks = geometry.topBandFlanks(inShapeSpace: shapeWidth)
-        let forbidden = CGRect(
-            x: geometry.forbiddenZone(inShapeSpace: shapeWidth).origin.x,
-            y: 0,
-            width: geometry.forbiddenZone(inShapeSpace: shapeWidth).width,
-            height: geometry.notchRect.height
+        var spacing: CGFloat = 4
+
+        if !Self.fits(count: leftModules.count, flankWidth: flanks.left.width, hitSize: hitSize, spacing: spacing) {
+            spacing = max(2, spacing - 1)
+        }
+        if !Self.fits(count: rightModules.count, flankWidth: flanks.right.width, hitSize: hitSize, spacing: spacing) {
+            spacing = max(2, spacing - 1)
+        }
+
+        let leftGroupWidth: CGFloat = Self.groupWidth(count: leftModules.count, hitSize: hitSize, spacing: spacing)
+        let rightGroupWidth: CGFloat = Self.groupWidth(count: rightModules.count, hitSize: hitSize, spacing: spacing)
+        let leftPositionX: CGFloat = flanks.left.maxX - (leftGroupWidth + 8) / 2 + leftGroupWidth / 2
+        let rightPositionX: CGFloat = flanks.right.minX + (rightGroupWidth + 8) / 2 - rightGroupWidth / 2
+        let centerPositionX: CGFloat = shapeWidth / 2
+
+        return FlankLayout(
+            allModules: modules,
+            leftModules: leftModules,
+            rightModules: rightModules,
+            spacing: spacing,
+            hitSize: hitSize,
+            iconSize: iconSize,
+            shapeWidth: shapeWidth,
+            notchHeight: notchHeight,
+            hasNotch: hasNotch,
+            leftPositionX: leftPositionX,
+            rightPositionX: rightPositionX,
+            centerPositionX: centerPositionX
         )
+    }
 
-        // Compute capacity and shrink spacing if needed
-        func fits(modulesCount: Int, flankWidth: CGFloat) -> Bool {
-            guard modulesCount > 0 else { return true }
-            let total = CGFloat(modulesCount) * hitSize + CGFloat(max(0, modulesCount - 1)) * spacing + 16
-            return flankWidth >= total
-        }
-        if !fits(modulesCount: leftModules.count, flankWidth: flanks.left.width) {
-            spacing = max(2, spacing - 1)
-        }
-        if !fits(modulesCount: rightModules.count, flankWidth: flanks.right.width) {
-            spacing = max(2, spacing - 1)
-        }
+    private static func fits(count: Int, flankWidth: CGFloat, hitSize: CGFloat, spacing: CGFloat) -> Bool {
+        guard count > 0 else { return true }
+        let total: CGFloat = CGFloat(count) * hitSize + CGFloat(max(0, count - 1)) * spacing + 16
+        return flankWidth >= total
+    }
 
-        return ZStack {
-            if hasNotch && shapeWidth > 0 {
-                // Left flank group hugging forbidden zone
-                HStack(spacing: spacing) {
-                    ForEach(Array(leftModules.enumerated()), id: \.element.id) { _, module in
-                        tabButton(module: module, hitSize: hitSize, iconSize: iconSize)
-                    }
-                }
-                .padding(.leading, 8)
-                .frame(height: notchHeight)
-                .position(
-                    x: flanks.left.maxX - (CGFloat(leftModules.count) * hitSize + CGFloat(max(0, leftModules.count - 1)) * spacing + 8) / 2 + (CGFloat(leftModules.count) * hitSize + CGFloat(max(0, leftModules.count - 1)) * spacing) / 2,
-                    y: notchHeight / 2
-                )
-                .allowsHitTesting(true)
+    private static func groupWidth(count: Int, hitSize: CGFloat, spacing: CGFloat) -> CGFloat {
+        CGFloat(count) * hitSize + CGFloat(max(0, count - 1)) * spacing
+    }
 
-                // Right flank group
-                HStack(spacing: spacing) {
-                    ForEach(Array(rightModules.enumerated()), id: \.element.id) { _, module in
-                        tabButton(module: module, hitSize: hitSize, iconSize: iconSize)
-                    }
-                }
-                .padding(.trailing, 8)
-                .frame(height: notchHeight)
-                .position(
-                    x: flanks.right.minX + (CGFloat(rightModules.count) * hitSize + CGFloat(max(0, rightModules.count - 1)) * spacing + 8) / 2 - (CGFloat(rightModules.count) * hitSize + CGFloat(max(0, rightModules.count - 1)) * spacing) / 2,
-                    y: notchHeight / 2
-                )
-                .allowsHitTesting(true)
-            } else {
-                HStack(spacing: 6) {
-                    ForEach(modules, id: \.id) { module in
-                        tabButton(module: module, hitSize: hitSize, iconSize: iconSize)
-                    }
-                }
-                .padding(.horizontal, 12)
-                .frame(height: notchHeight)
-                .position(x: shapeWidth / 2, y: notchHeight / 2)
-                .allowsHitTesting(true)
+    private func tabGroup(
+        modules: [any NotchModule],
+        spacing: CGFloat,
+        hitSize: CGFloat,
+        iconSize: CGFloat,
+        height: CGFloat,
+        edge: Edge.Set,
+        padding: CGFloat
+    ) -> some View {
+        HStack(spacing: spacing) {
+            ForEach(modules, id: \.id) { module in
+                tabButton(module: module, hitSize: hitSize, iconSize: iconSize)
             }
         }
+        .padding(edge, padding)
+        .frame(height: height)
         .allowsHitTesting(true)
     }
 
