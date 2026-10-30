@@ -1,0 +1,28 @@
+# Environment — baseline
+
+## xcodebuild -version
+Xcode 26.3
+Build version 17C529
+
+## sw_vers
+ProductName:		macOS
+ProductVersion:		15.6
+BuildVersion:		24G84
+
+## swift --version
+swift-driver version: 1.127.15 Apple Swift version 6.2.4 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
+Target: arm64-apple-macosx15.0
+
+## git log --oneline -5
+f87414a Phase1-P0: add safety rules and cleanup invariants
+526b63d recovery: include PROJECT_ANALYSIS.txt
+a9497f8 recovered from opencode data
+
+## git tag --list
+pre-baseline
+v-recovered
+
+## git status --porcelain=v1 (start of task)
+?? bilel_rapport.txt
+?? docs/cleanup-log/
+?? opencode.json
