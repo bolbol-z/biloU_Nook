@@ -62,11 +62,6 @@ enum InteractionRegion {
             let width = size.width + 24 // stay-open region slightly larger
             let height = size.height + ZoneMath.topExtension + 12
             return NSRect(x: screen.frame.midX - width / 2, y: panelTop - height, width: width, height: height)
-        case .peek:
-            let size = ModuleRegistry.shared.activeModule?.preferredSize ?? CGSize(width: NotchPresets.open.w, height: NotchPresets.open.h)
-            let width = size.width + 12
-            let height = size.height + ZoneMath.topExtension
-            return NSRect(x: screen.frame.midX - width / 2, y: panelTop - height, width: width, height: height)
         case .closed:
             let notch = notchGeom.closedMetrics(isLiveActivityActive: false)
             let width = notch.w + 6

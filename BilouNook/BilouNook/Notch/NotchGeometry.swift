@@ -117,16 +117,6 @@ struct NotchGeometry: Equatable {
         )
     }
 
-    func peekMetrics() -> NotchMetrics {
-        let closed = closedMetrics(isLiveActivityActive: false)
-        return NotchMetrics(
-            w: Self.pixelAlignedWidth(closed.w + 8, scale: backingScaleFactor),
-            h: Self.pixelCeil(closed.h + 3, scale: backingScaleFactor),
-            t: closed.t,
-            b: closed.b
-        )
-    }
-
     func openMetrics(for contentSize: CGSize) -> NotchMetrics {
         let width = Self.pixelAlignedWidth(
             max(contentSize.width, 2),

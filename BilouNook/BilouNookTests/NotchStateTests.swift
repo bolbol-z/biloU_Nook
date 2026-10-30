@@ -119,7 +119,7 @@ final class NotchStateTests: XCTestCase {
         XCTAssertEqual(state.phase, .open)
     }
 
-    func testPeekAdvancesToOpen() {
+    func testHoverOpensImmediately() {
         let (state, _, scheduler) = makeState()
         state.requestOpen(trigger: .hover)
         XCTAssertEqual(state.phase, .open)

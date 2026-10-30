@@ -4,9 +4,8 @@ import Combine
 
 enum NotchPhase: Equatable {
     case closed
-    case peek
-    case open
     case opening
+    case open
     case closing
 }
 

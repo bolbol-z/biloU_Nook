@@ -178,13 +178,13 @@ struct NotchRootView: View {
                         }
                     }
                 }
-            } else if newPhase == .peek {
+            } else if newPhase == .open {
                 withAnimation(Animations.scaled(Animations.hoverOpen)) {
                     let screen = ScreenResolver.shared.targetScreen()
                     metrics = activeOpenMetrics
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                    if self.notchState.phase == .peek || self.notchState.phase == .open {
+                    if self.notchState.phase == .open || self.notchState.phase == .open {
                         withAnimation(Animations.scaled(Animations.contentIn)) {
                             showContent = true
                         }
@@ -260,7 +260,7 @@ struct NotchRootView: View {
             if notchState.phase == .open {
                 notchState.cancelIntent()
                 notchState.requestClose(reason: .mouseLeft)
-            } else if notchState.phase == .closed || notchState.phase == .peek {
+            } else if notchState.phase == .closed || notchState.phase == .open {
                 notchState.cancelIntent()
             }
         }
