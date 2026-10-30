@@ -1,4 +1,5 @@
 #if DEBUG
+#if DEBUG
 import SwiftUI
 import AppKit
 import os.log
@@ -114,4 +115,6 @@ struct AnimationLabView: View {
         }
     }
 }
+#endif
+
 #endif

@@ -153,8 +153,12 @@ struct NotchRootView: View {
             notchState.minStateDwell = settings.minStateDwell
             panel.ignoresMouseEvents = true
             #if DEBUG
-            HotKeyManager.shared.register()
-            AnimationLabWindow.shared.state = notchState
+            if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
+                DebugTools.install(appDelegate: appDelegate, panel: panel, state: notchState, mouseMonitor: MouseMonitor.shared, gestureMonitor: GestureMonitor.shared, watchdog: Watchdog.shared)
+            } else {
+                HotKeyManager.shared.register()
+                AnimationLabWindow.shared.state = notchState
+            }
             #endif
             setupMonitors()
             Watchdog.shared.start()

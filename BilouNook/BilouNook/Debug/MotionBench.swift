@@ -1,3 +1,4 @@
+#if DEBUG
 import AppKit
 import Foundation
 import QuartzCore
@@ -75,4 +76,6 @@ enum MotionBench {
         print(md)
     }
 }
+#endif
+
 #endif
