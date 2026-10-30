@@ -1,0 +1,32 @@
+# Step 7 — Smoke script and launch checks
+
+## What changed
+
+- `scripts/smoke.sh`
+  - Runs `python3 scripts/check-project.py` before the build and reports
+    `PROJECT PASS` / `PROJECT FAIL`.
+  - Moves logs from `/tmp` to `build/logs/` so the script stays inside the
+    repository:
+    - `build/logs/smoke-build.log`
+    - `build/logs/smoke-test.log`
+  - Exits non-zero when project validation, build, or tests fail.
+
+## Commands and results
+
+    ./scripts/smoke.sh
+    -> EXIT 0
+       check-project: PASS (234 objects, 75 file references)
+       PROJECT PASS
+       BUILD PASS
+       TESTS PASS
+
+    build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook --smoke-test
+    -> EXIT 0
+
+    build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook --notch-selfcheck
+    -> EXIT 0
+       SELFCHECK PASS
+
+The launch-argument runs are DEBUG-only (`BilouNookApp.runSmokeTestIfNeeded` and
+`runNotchSelfCheckIfNeeded`) and exit themselves. `scripts/smoke.sh` itself
+still does not launch the app.

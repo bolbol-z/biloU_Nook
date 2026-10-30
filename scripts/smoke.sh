@@ -5,8 +5,18 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT" || exit 1
 PROJECT="BilouNook/BilouNook.xcodeproj"
 SCHEME="BilouNook"
-BUILD_LOG="/tmp/bilounook_smoke_build.log"
-TEST_LOG="/tmp/bilounook_smoke_test.log"
+LOG_DIR="$ROOT/build/logs"
+BUILD_LOG="$LOG_DIR/smoke-build.log"
+TEST_LOG="$LOG_DIR/smoke-test.log"
+mkdir -p "$LOG_DIR"
+
+python3 scripts/check-project.py
+CHECK_RESULT=$?
+if [ "$CHECK_RESULT" -eq 0 ]; then
+    echo "PROJECT PASS"
+else
+    echo "PROJECT FAIL"
+fi
 
 xcodebuild -project "$PROJECT" -scheme "$SCHEME" -configuration Debug -derivedDataPath ./build build > "$BUILD_LOG" 2>&1
 BUILD_RESULT=$?
@@ -25,4 +35,4 @@ else
 fi
 
 echo "Logs: $BUILD_LOG $TEST_LOG"
-exit $(( BUILD_RESULT != 0 || TEST_RESULT != 0 ))
+exit $(( CHECK_RESULT != 0 || BUILD_RESULT != 0 || TEST_RESULT != 0 ))
