@@ -67,6 +67,7 @@ final class NotchState {
     static let shared = NotchState()
     
     var phase: NotchPhase = .closed
+    var openOnHover = true
     var intentDelay: Double = 0.0
     var closeDelay: Double = 0.0
     var minStateDwell: Double = 0.0
@@ -138,6 +139,7 @@ final class NotchState {
     }
     
     func enterIntent() {
+        guard openOnHover else { return }
         if phase == .open || phase == .opening { return }
         if phase == .closing && clock.now().timeIntervalSince(lastCloseTime) < minStateDwell { return }
         cancelPending()

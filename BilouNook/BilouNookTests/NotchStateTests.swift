@@ -136,4 +136,31 @@ final class NotchStateTests: XCTestCase {
         scheduler.advance(by: 0.15)
         XCTAssertEqual(state.phase, .closed)
     }
+
+    func testEnterIntentSchedulesOpenWhenOpenOnHoverIsEnabled() {
+        let (state, _, scheduler) = makeState()
+        state.openOnHover = true
+        state.intentDelay = 0.1
+        state.enterIntent()
+        XCTAssertEqual(state.phase, .closed)
+        scheduler.advance(by: 0.1)
+        XCTAssertEqual(state.phase, .open)
+    }
+
+    func testEnterIntentDoesNotScheduleOpenWhenOpenOnHoverIsDisabled() {
+        let (state, _, scheduler) = makeState()
+        state.openOnHover = false
+        state.intentDelay = 0.1
+        state.enterIntent()
+        XCTAssertEqual(state.phase, .closed)
+        scheduler.advance(by: 1.0)
+        XCTAssertEqual(state.phase, .closed)
+    }
+
+    func testClickStillOpensWhenOpenOnHoverIsDisabled() {
+        let (state, _, _) = makeState()
+        state.openOnHover = false
+        state.requestOpen(trigger: .click)
+        XCTAssertEqual(state.phase, .open)
+    }
 }
