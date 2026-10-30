@@ -11,6 +11,15 @@
 7. **One commit per step.** Stage only that step's files, message `Phase1-Pn: ...`, then stop.
 8. **Window lifetime.** Every NSWindow/NSPanel created in code must set isReleasedWhenClosed = false, be created once, retained strongly, and toggled with orderOut — never close() a retained window.
 
+## Safety rules (mandatory, override everything else)
+
+1. **Repository boundary.** Run `pwd` and `git rev-parse --show-toplevel` before any file operation; stop if the result is not this repository. Never touch parent or sibling folders.
+2. **Forbidden commands.** Never run `rm`, `rmdir`, `find -delete`, `git clean`, `git reset --hard`, `git gc`, `git prune`, or `git worktree remove`.
+3. **Safe file operations.** Remove tracked files only with `git rm`. Move tracked files only with `git mv`.
+4. **Outside writes.** The only permitted write outside the repository is `git bundle create ~/Backups/BilouNook/<name>.bundle --all`.
+5. **Frozen for the whole cleanup.** Motion constants (`Animations.swift`), haptic behavior and cooldowns, and hover/close timing defaults (`intentDelay` 0, `closeDelay` 0, `minStateDwell` 0) must not change.
+6. **Cleanup log.** Every cleanup task ends with `docs/cleanup-log/NN-<task>.txt` describing what changed, the commands run, and the results.
+
 ## Working rules (mandatory for every task)
 
 1. **Start clean.** At the start of every task, `git status` must be clean; create tag `pre-<task>`.
