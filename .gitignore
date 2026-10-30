@@ -1,11 +1,11 @@
-DerivedData/
 build/
+DerivedData/
+*.xcresult
 xcuserdata/
-*.xcuserstate
 .DS_Store
-*.csv
-*.xcscmblueprint
-# Local clone and build artifacts
-third_party/mediaremote-adapter/
-Vendor/MediaRemoteAdapter/build/
-PROJECT_ANALYSIS.txt
+*.swp
+opencode.json
+__pycache__/
+
+# docs/reference/ contains notes derived from a third-party app.
+# Keep this repository private.

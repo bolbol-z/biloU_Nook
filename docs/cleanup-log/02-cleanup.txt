@@ -1,0 +1,172 @@
+# Cleanup — final report
+
+Start tag: pre-cleanup (v-baseline, 984d199)
+Branch: cleanup
+Final tag: v-cleanup
+
+## Tracked size
+
+Whole repository (before, v-baseline):
+
+    167 files, 896562 bytes
+
+Whole repository (after, including this log):
+
+    169 files, 1,100,310 bytes
+
+Outside BilouNook/ and Vendor/ (before):
+
+    40 files, 333097 bytes
+
+Outside BilouNook/ and Vendor/ (after, excluding this log):
+
+    40 files, 530158 bytes
+
+The outside byte increase is the newly tracked 229607-byte forensic recovery
+report plus the new README, VENDOR, archive/reference indexes, and manifest,
+offset by removing duplicate copies.
+
+## Repository root tree
+
+Before (tracked top level, v-baseline):
+
+    .gitignore
+    AGENTS.md
+    BilouNook/
+    DIAG_OPEN_HAPTICS.txt
+    NotchNook_Animation_UX_Audit.txt
+    NotchNook_Complete_Reverse_Engineering.txt
+    PROJECT_ANALYSIS.txt
+    VERIFY_A_WINDOW_GEOMETRY.txt
+    VERIFY_B_STATE_ANIMATION.txt
+    VERIFY_C.txt
+    Vendor/
+    docs/
+    fix.txt
+    rapport.txt
+    scripts/
+
+After (tracked top level):
+
+    .gitignore
+    AGENTS.md
+    BilouNook/
+    README.md
+    Vendor/
+    docs/
+    scripts/
+
+Ignored/untracked top-level entries still present locally: `build/`,
+`opencode.json`, and the empty directories left by `git mv` (`docs/audit/`,
+`docs/superpowers/specs/`). None are tracked.
+
+## Moved files
+
+Root documents to docs/archive/:
+
+    PROJECT_ANALYSIS.txt
+    DIAG_OPEN_HAPTICS.txt
+    fix.txt
+    rapport.txt
+    VERIFY_A_WINDOW_GEOMETRY.txt
+    VERIFY_B_STATE_ANIMATION.txt
+    VERIFY_C.txt
+
+docs/ documents to docs/archive/:
+
+    STATE_MACHINE.md
+    TESTS.md
+    HAPTICS_NOTES.md
+    MOTION_NOTES.md
+    motion-baseline.md
+    motion-bench-before.md
+    motion-bench-after.md
+    open-latency-before.md
+    notch-attach-diagnosis.md
+    notch-visibility-audit.md
+    audit/01-change-review.md
+    audit/03-media-ui.md
+
+Reference moves:
+
+    NotchNook_Animation_UX_Audit.txt -> docs/reference/
+    NotchNook_Complete_Reverse_Engineering.txt -> docs/reference/
+    docs/nowplaying-diagnosis.md -> docs/reference/
+    docs/superpowers/specs/2026-10-26-media-polish-design.md -> docs/specs/
+    docs/superpowers/specs/2026-10-26-media-ui-design.md -> docs/specs/
+
+Untracked report added and moved:
+
+    bilel_rapport.txt -> docs/archive/forensic-recovery-report-2026-10-29.txt
+
+## Deleted files
+
+    docs/NotchNook_Animation_UX_Audit.txt
+    docs/NotchNook_Complete_Reverse_Engineering.txt
+    docs/VERIFY_A_WINDOW_GEOMETRY.txt
+    docs/VERIFY_B_STATE_ANIMATION.txt
+    docs/open-latency-after.md
+
+The four NotchNook/VERIFY docs copies are exact byte duplicates of the root
+copies. The task expected the NotchNook copies to differ; they do not.
+`docs/open-latency-after.md` is 21 bytes, not zero, but contains only its title
+heading, so it was treated as empty.
+
+## New files
+
+    README.md
+    docs/README.md
+    docs/archive/README.txt
+    docs/reference/NotchNook_Animation_UX_Audit.txt
+    docs/reference/NotchNook_Complete_Reverse_Engineering.txt
+    docs/reference/nowplaying-diagnosis.md
+    docs/specs/2026-10-26-media-polish-design.md
+    docs/specs/2026-10-26-media-ui-design.md
+    docs/cleanup-log/02-manifest.txt
+    Vendor/MediaRemoteAdapter/VENDOR.md
+    .gitignore (rewritten)
+
+## Vendor provenance
+
+Cloned https://github.com/ungive/mediaremote-adapter into the ignored
+`build/vendor-check/`, checked out `0e82bf1c44ec39554fbfc402ec88a48c6ae2a0fd`,
+and compared:
+
+    diff -r --exclude=.git --exclude=.gitmodules --exclude=build \
+      Vendor/MediaRemoteAdapter build/vendor-check
+    -> exit 0, no differences
+
+The local generated `build/` directory was excluded because it is not vendored.
+License: BSD 3-Clause. Details in `Vendor/MediaRemoteAdapter/VENDOR.md`.
+No upstream file was modified.
+
+## Verification
+
+    ./scripts/smoke.sh
+    -> EXIT 0
+       check-project: PASS (234 objects, 75 file references)
+       PROJECT PASS
+       BUILD PASS
+       TESTS PASS
+
+    build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook --smoke-test
+    -> EXIT 0
+
+    build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook --notch-selfcheck
+    -> EXIT 0
+       SELFCHECK PASS
+
+    tests: 117 executed, 0 failures (build/logs/smoke-test.log)
+
+    git diff --stat v-baseline..HEAD -- BilouNook Vendor
+    -> only Vendor/MediaRemoteAdapter/VENDOR.md (47 insertions)
+
+## Deviations
+
+- `docs/open-latency-after.md` is not byte-empty; it contains only its heading.
+- Root and docs `NotchNook_*` copies are identical, not different. One copy is
+  kept per title and the duplicate is deleted. Both hashes are in the manifest.
+- docs `VERIFY_A` and `VERIFY_B` are exact duplicates of the root copies.
+  Root copies are archived; docs duplicates are deleted.
+- `.gitignore` additionally ignores `__pycache__/` so the existing Python cache
+  directory does not need `git add -f` or manual removal.

@@ -1,0 +1,71 @@
+# Cleanup manifest — files outside BilouNook/ and Vendor/
+
+Snapshot taken on branch cleanup at v-baseline (984d199).
+Path = original path. Size and lines are from that snapshot.
+
+| Path | Bytes | Lines | Last commit | Class | Disposition / reason |
+| --- | ---: | ---: | --- | --- | --- |
+| .gitignore | 200 | 11 | 2026-10-29 | KEEP | Rewritten in this task; repository ignore policy. |
+| AGENTS.md | 7775 | 72 | 2026-10-30 | KEEP | Operating rules for the repository. |
+| DIAG_OPEN_HAPTICS.txt | 1037 | 22 | 2026-10-29 | ARCHIVE | Historical haptics diagnosis; code is authoritative. -> docs/archive/ |
+| NotchNook_Animation_UX_Audit.txt | 11647 | 173 | 2026-10-29 | REFERENCE | Canonical third-party UX audit copy. SHA-256 e43027ce...a3a0. -> docs/reference/ |
+| NotchNook_Complete_Reverse_Engineering.txt | 11763 | 212 | 2026-10-29 | REFERENCE | Canonical third-party reverse-engineering note. SHA-256 022a6502...9fe1. -> docs/reference/ |
+| PROJECT_ANALYSIS.txt | 156691 | 1900 | 2026-10-29 | ARCHIVE | Historical project analysis; code is authoritative. -> docs/archive/ |
+| VERIFY_A_WINDOW_GEOMETRY.txt | 8971 | 113 | 2026-10-29 | ARCHIVE | Historical verification record. SHA-256 e5b638f8...30bf. -> docs/archive/ |
+| VERIFY_B_STATE_ANIMATION.txt | 10868 | 202 | 2026-10-29 | ARCHIVE | Historical verification record. SHA-256 b3e0903e...62bf. -> docs/archive/ |
+| VERIFY_C.txt | 834 | 32 | 2026-10-29 | ARCHIVE | Historical verification record. -> docs/archive/ |
+| docs/HAPTICS_NOTES.md | 730 | 6 | 2026-10-29 | ARCHIVE | Historical notes; code is authoritative. -> docs/archive/ |
+| docs/MOTION_NOTES.md | 419 | 12 | 2026-10-29 | ARCHIVE | Historical notes; code is authoritative. -> docs/archive/ |
+| docs/NotchNook_Animation_UX_Audit.txt | 11647 | 173 | 2026-10-29 | DELETE | Exact byte duplicate of the root copy (same SHA-256). One reference copy kept. |
+| docs/NotchNook_Complete_Reverse_Engineering.txt | 11763 | 212 | 2026-10-29 | DELETE | Exact byte duplicate of the root copy (same SHA-256). One reference copy kept. |
+| docs/STATE_MACHINE.md | 1183 | 17 | 2026-10-29 | ARCHIVE | Historical design note; code is authoritative. -> docs/archive/ |
+| docs/TESTS.md | 4836 | 48 | 2026-10-29 | ARCHIVE | Historical test notes; current tests are authoritative. -> docs/archive/ |
+| docs/VERIFY_A_WINDOW_GEOMETRY.txt | 8971 | 113 | 2026-10-29 | DELETE | Exact byte duplicate of the root copy (same SHA-256). Root copy archived. |
+| docs/VERIFY_B_STATE_ANIMATION.txt | 10868 | 202 | 2026-10-29 | DELETE | Exact byte duplicate of the root copy (same SHA-256). Root copy archived. |
+| docs/audit/01-change-review.md | 9887 | 169 | 2026-10-29 | ARCHIVE | Historical audit; code is authoritative. -> docs/archive/audit/ |
+| docs/audit/03-media-ui.md | 8652 | 132 | 2026-10-29 | ARCHIVE | Historical media UI audit; code is authoritative. -> docs/archive/audit/ |
+| docs/cleanup-log/00-environment.txt | 622 | 28 | 2026-10-30 | KEEP | Baseline environment record. |
+| docs/cleanup-log/01-baseline.txt | 2792 | 66 | 2026-10-30 | KEEP | Baseline final report. |
+| docs/cleanup-log/06-tests.txt | 2621 | 51 | 2026-10-30 | KEEP | Baseline test stabilization record. |
+| docs/cleanup-log/07-smoke.txt | 1011 | 32 | 2026-10-30 | KEEP | Baseline smoke record. |
+| docs/motion-baseline.md | 1550 | 31 | 2026-10-29 | ARCHIVE | Historical motion notes; code is authoritative. -> docs/archive/ |
+| docs/motion-bench-after.md | 985 | 18 | 2026-10-29 | ARCHIVE | INVALID: measured script timing, not motion. -> docs/archive/ |
+| docs/motion-bench-before.md | 1271 | 18 | 2026-10-29 | ARCHIVE | INVALID: measured script timing, not motion. -> docs/archive/ |
+| docs/notch-attach-diagnosis.md | 4616 | 113 | 2026-10-29 | ARCHIVE | Historical diagnosis; code is authoritative. -> docs/archive/ |
+| docs/notch-visibility-audit.md | 2958 | 28 | 2026-10-29 | ARCHIVE | Historical audit; code is authoritative. -> docs/archive/ |
+| docs/nowplaying-diagnosis.md | 5036 | 128 | 2026-10-29 | REFERENCE | Useful integration reference; not a specification. -> docs/reference/ |
+| docs/open-latency-after.md | 21 | 1 | 2026-10-29 | DELETE | Placeholder containing only its heading; no measurement. |
+| docs/open-latency-before.md | 1869 | 22 | 2026-10-29 | ARCHIVE | Historical latency note. -> docs/archive/ |
+| docs/superpowers/specs/2026-10-26-media-polish-design.md | 3307 | 65 | 2026-10-29 | REFERENCE | Approved design history; not current spec. -> docs/specs/ |
+| docs/superpowers/specs/2026-10-26-media-ui-design.md | 5700 | 106 | 2026-10-29 | REFERENCE | Approved design history; not current spec. -> docs/specs/ |
+| fix.txt | 3020 | 86 | 2026-10-29 | ARCHIVE | Historical fix notes; code is authoritative. -> docs/archive/ |
+| rapport.txt | 3285 | 47 | 2026-10-29 | ARCHIVE | Historical report; code is authoritative. -> docs/archive/ |
+| scripts/build-mediaremote-adapter.sh | 2414 | 72 | 2026-10-29 | KEEP | Builds the vendored MediaRemote framework. |
+| scripts/check-project.py | 7243 | 222 | 2026-10-30 | KEEP | Validates project structure. |
+| scripts/make-placeholder-icon.swift | 2417 | 85 | 2026-10-30 | KEEP | Generates the placeholder AppIcon. |
+| scripts/prepare-nowplaying-runtime.sh | 634 | 17 | 2026-10-29 | KEEP | Copies the runtime into app resources. |
+| scripts/smoke.sh | 983 | 38 | 2026-10-30 | KEEP | Project check, build, and tests. |
+| bilel_rapport.txt | 229607 | 4921 | untracked | ARCHIVE | Untracked forensic recovery report. -> docs/archive/forensic-recovery-report-2026-10-29.txt |
+
+## Reference-copy hashes (root and docs copies)
+
+The task expected the root and docs copies to differ. In this repository they
+are exact byte duplicates, so one copy of each is kept and the duplicate is
+deleted. Recorded hashes:
+
+    NotchNook_Animation_UX_Audit.txt
+      root: e43027ceeb7ee73dcfe482a745c2807190c81cdb7dbb2c07db3a9161345aa3a0
+      docs: e43027ceeb7ee73dcfe482a745c2807190c81cdb7dbb2c07db3a9161345aa3a0
+    NotchNook_Complete_Reverse_Engineering.txt
+      root: 022a6502d07690c175ecbbaf84574851bb8266018303b66335bbda071dfa9fe1
+      docs: 022a6502d07690c175ecbbaf84574851bb8266018303b66335bbda071dfa9fe1
+
+## Deviations
+
+- `docs/open-latency-after.md` is 21 bytes, not zero bytes: it contains only
+  `# open-latency-after`. Treated as empty and deleted.
+- `docs/VERIFY_A_WINDOW_GEOMETRY.txt` and `docs/VERIFY_B_STATE_ANIMATION.txt`
+  are exact byte duplicates of their root copies. Root copies are archived;
+  docs duplicates are deleted instead of creating duplicate archive names.
+- `NotchNook_*` root and docs copies are identical, not different. Root copies
+  are moved to `docs/reference/`; docs copies are deleted.
