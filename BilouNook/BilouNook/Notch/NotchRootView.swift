@@ -178,9 +178,6 @@ struct NotchRootView: View {
         .onChange(of: settings.fineTuneHeight) { _, _ in updateGeometry() }
         .onChange(of: settings.topFlareRadius) { _, _ in updateGeometry() }
         .onChange(of: settings.bottomRadius) { _, _ in updateGeometry() }
-        .onChange(of: settings.handlerWidth) { _, _ in updateGeometry() }
-        .onChange(of: settings.handlerHeight) { _, _ in updateGeometry() }
-        .onChange(of: settings.handlerEnabled) { _, _ in updateGeometry() }
         .onChange(of: settings.openOnHover) { _, v in notchState.openOnHover = v }
         .onChange(of: settings.hoverIntentDelay) { _, v in notchState.intentDelay = v }
         .onChange(of: settings.closeDelay) { _, v in notchState.closeDelay = v }

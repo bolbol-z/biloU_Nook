@@ -48,13 +48,13 @@
 
 ### Open/close path
 1. Cursor enters the top hot zone → `MouseMonitor` → `enterIntent()` (honors intent delay) → `requestOpen(.hover)`.
-2. `requestOpen` ignores already-open, applies the closing dwell guard, cancels pending timers, sets `opening`, then `peek` (only when hover should peek) or `open`; peek promotes to open after 0.1s.
+2. `requestOpen` ignores already-open, applies the closing dwell guard, cancels pending timers, sets `opening`, then `open`.
 3. Cursor leaves the interactive rect → `requestClose` → `closing` (haptic) → `closed` after `closeDelay`; early closes are rejected until `minStateDwell` has passed.
 4. Re-entering during `closing` (after the dwell) cancels the pending close and reopens.
 5. `Watchdog` polls the phase-correct rect; after 0.5s continuously outside it calls `closeImmediately(.watchdog)`, which uses the same closing path.
 
 ### Settings keys (`SettingsStore`, `UserDefaults`)
-`fineTuneWidth`, `fineTuneHeight`, `handlerEnabled`, `handlerWidth`, `handlerHeight`, `displayMode`, `openOnHover`, `hoverIntentDelay`, `closeDelay`, `minStateDwell`, `verticalGesturesEnabled`, `hapticsEnabled`, `mediaCompactEnabled`, `hotPaddingX`, `hotPaddingBelow`, `flyByGuardEnabled`, `flyBySpeedThreshold`, `contentInDelay`, `openHapticPattern`, `closeHapticPattern`, `hapticPattern`, `contentScale_ASSUMPTION`, `contentBlur_ASSUMPTION`, `contentAnchorY_ASSUMPTION`.
+`fineTuneWidth`, `fineTuneHeight`, `topFlareRadius`, `bottomRadius`, `openOnHover`, `hoverIntentDelay`, `closeDelay`, `minStateDwell`, `verticalGesturesEnabled`, `hapticsEnabled`, `mediaCompactEnabled`, `hotPaddingX`, `hotPaddingBelow`, `flyByGuardEnabled`, `flyBySpeedThreshold`, `slowMotion`, `hapticPattern`.
 
 ## Tests and smoke
 

@@ -135,6 +135,7 @@
 		C1000251 /* DebugTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000108 /* DebugTools.swift */; };
 		C1000252 /* MotionBench.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000103 /* MotionBench.swift */; };
 		C1000253 /* NotchAttachDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000100 /* NotchAttachDiagnostics.swift */; };
+		C1000254 /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000110 /* SettingsStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -210,6 +211,7 @@
 		C2000100 /* NotchAttachDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchAttachDiagnostics.swift; sourceTree = "<group>"; };
 		C2000101 /* NotchPanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchPanelTests.swift; sourceTree = "<group>"; };
 		C2000102 /* CompactLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayoutTests.swift; sourceTree = "<group>"; };
+		C2000110 /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
 		C2000103 /* MotionBench.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionBench.swift; sourceTree = "<group>"; };
 		C2000105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2000106 /* NotchPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchPanelController.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				C2000098 /* NotchAttachmentTests.swift */,
 				C2000101 /* NotchPanelTests.swift */,
 				C2000102 /* CompactLayoutTests.swift */,
+				C2000110 /* SettingsStoreTests.swift */,
 			);
 			path = BilouNookTests;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				C1000251 /* DebugTools.swift in Sources */,
 				C1000252 /* MotionBench.swift in Sources */,
 				C1000253 /* NotchAttachDiagnostics.swift in Sources */,
+				C1000254 /* SettingsStoreTests.swift in Sources */,
 				C1000080 /* NowPlayingSnapshot.swift in Sources */,
 				C1000081 /* NowPlayingProvider.swift in Sources */,
 				C1000082 /* MediaRemoteNowPlayingProvider.swift in Sources */,
