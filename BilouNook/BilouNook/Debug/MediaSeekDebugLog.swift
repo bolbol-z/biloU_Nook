@@ -1,5 +1,4 @@
 #if DEBUG
-#if DEBUG
 import Foundation
 
 enum MediaSeekDebugLog {
@@ -77,6 +76,4 @@ enum MediaSeekDebugLog {
         }
     }
 }
-#endif
-
 #endif

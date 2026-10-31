@@ -558,7 +558,6 @@ final class MediaSnapshotRenderTests: XCTestCase {
     ) throws {
         let scale = CGFloat(rendered.raw.pixelsWide) / max(1, scene.panelFrame.width)
         let width = rendered.raw.pixelsWide
-        let height = rendered.raw.pixelsHigh
         let shapeLeft = (scene.panelFrame.width - scene.metrics.w) / 2 * scale
         let shapeRight = shapeLeft + scene.metrics.w * scale
 
@@ -581,7 +580,8 @@ final class MediaSnapshotRenderTests: XCTestCase {
                 lastAlpha = x
             }
         }
-        let measured = CGFloat((lastAlpha ?? 0) - (firstAlpha ?? 0) + 1)
+        let measuredPixels = max(0, (lastAlpha ?? 0) - (firstAlpha ?? 0) + 1)
+        let measured = CGFloat(measuredPixels)
         if let hardware = scene.geometry.hardwareNotchRect {
             XCTAssertGreaterThanOrEqual(
                 measured,

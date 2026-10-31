@@ -1,5 +1,4 @@
 #if DEBUG
-#if DEBUG
 import AppKit
 import ObjectiveC.runtime
 
@@ -165,6 +164,4 @@ enum NotchAttachDiagnostics {
         )
     }
 }
-#endif
-
 #endif

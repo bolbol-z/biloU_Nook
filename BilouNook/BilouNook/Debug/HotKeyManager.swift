@@ -3,7 +3,6 @@ import Carbon
 import AppKit
 import os.log
 
-#if DEBUG
 class HotKeyManager {
     static let shared = HotKeyManager()
     private static let logger = OSLog(subsystem: "com.bilou.BilouNook", category: "hotkeys")
@@ -74,6 +73,4 @@ class HotKeyManager {
         return status
     }
 }
-#endif
-
 #endif

@@ -2,7 +2,6 @@
 import SwiftUI
 import AppKit
 
-#if DEBUG
 struct DebugOverlay: View {
     @State private var info: String = ""
     @StateObject private var settings = SettingsStore.shared
@@ -309,6 +308,4 @@ class DebugOverlayWindow {
         w.makeKeyAndOrderFront(nil)
     }
 }
-#endif
-
 #endif
