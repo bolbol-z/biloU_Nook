@@ -196,42 +196,21 @@ struct NotchGeometry: Equatable {
         )
     }
 
-    var topBandFlanks: (left: CGRect, right: CGRect) {
-        let notch = notchRect
-        let forbidden = forbiddenZone
-        let leftFlank = CGRect(
-            x: notch.minX,
-            y: notch.minY,
-            width: max(0, forbidden.minX - notch.minX),
-            height: notch.height
-        )
-        let rightFlank = CGRect(
-            x: forbidden.maxX,
-            y: notch.minY,
-            width: max(0, notch.maxX - forbidden.maxX),
-            height: notch.height
-        )
-        return (left: leftFlank, right: rightFlank)
-    }
-
     func topBandFlanks(inShapeSpace shapeWidth: CGFloat) -> (left: CGRect, right: CGRect) {
-        let screen = screenFrame
-        let shapeOriginX = screen.midX - shapeWidth / 2
-        let notch = notchRect
-        let forbidden = forbiddenZone
-        let leftWidth = max(0, forbidden.minX - notch.minX)
-        let rightWidth = max(0, notch.maxX - forbidden.maxX)
+        let width = max(0, shapeWidth)
+        let forbidden = forbiddenZone(inShapeSpace: width)
+        let height = notchRect.height
         let leftFlank = CGRect(
-            x: notch.minX - shapeOriginX,
+            x: 0,
             y: 0,
-            width: leftWidth,
-            height: notch.height
+            width: max(0, min(width, forbidden.minX)),
+            height: height
         )
         let rightFlank = CGRect(
-            x: forbidden.maxX - shapeOriginX,
+            x: min(width, max(0, forbidden.maxX)),
             y: 0,
-            width: rightWidth,
-            height: notch.height
+            width: max(0, width - forbidden.maxX),
+            height: height
         )
         return (left: leftFlank, right: rightFlank)
     }

@@ -142,6 +142,8 @@
 		C1000258 /* NotchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000113 /* NotchCoordinator.swift */; };
 		C1000259 /* NotchOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000114 /* NotchOverlays.swift */; };
 		C1000260 /* NotchOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000114 /* NotchOverlays.swift */; };
+		C1000261 /* ModuleTabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000115 /* ModuleTabLayout.swift */; };
+		C1000262 /* ModuleTabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000115 /* ModuleTabLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -222,6 +224,7 @@
 		C2000112 /* NotchCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchCoordinatorTests.swift; sourceTree = "<group>"; };
 		C2000113 /* NotchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchCoordinator.swift; sourceTree = "<group>"; };
 		C2000114 /* NotchOverlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchOverlays.swift; sourceTree = "<group>"; };
+		C2000115 /* ModuleTabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTabLayout.swift; sourceTree = "<group>"; };
 		C2000103 /* MotionBench.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionBench.swift; sourceTree = "<group>"; };
 		C2000105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2000106 /* NotchPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchPanelController.swift; sourceTree = "<group>"; };
@@ -390,6 +393,7 @@
 				C2000041 /* ModuleRegistry.swift */,
 				C2000042 /* ModuleShellView.swift */,
 				C2000043 /* PlaceholderModuleView.swift */,
+				C2000115 /* ModuleTabLayout.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -624,6 +628,7 @@
 				C1000041 /* ModuleRegistry.swift in Sources */,
 				C1000042 /* ModuleShellView.swift in Sources */,
 				C1000043 /* PlaceholderModuleView.swift in Sources */,
+				C1000261 /* ModuleTabLayout.swift in Sources */,
 				C1000044 /* ModuleA.swift in Sources */,
 				C1000045 /* ModuleB.swift in Sources */,
 				C1000070 /* NowPlayingSnapshot.swift in Sources */,
@@ -677,6 +682,7 @@
 				C1000050 /* ModuleRegistry.swift in Sources */,
 				C1000051 /* ModuleShellView.swift in Sources */,
 				C1000052 /* PlaceholderModuleView.swift in Sources */,
+				C1000262 /* ModuleTabLayout.swift in Sources */,
 				C1000053 /* ModuleA.swift in Sources */,
 				C1000054 /* ModuleB.swift in Sources */,
 				C1000055 /* Animations.swift in Sources */,
