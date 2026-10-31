@@ -6,7 +6,11 @@ enum HapticKind {
     case close
 }
 
-final class HapticsService {
+protocol HapticPlaying: AnyObject {
+    func play(_ kind: HapticKind)
+}
+
+final class HapticsService: HapticPlaying {
     static let shared = HapticsService()
     private let logger = OSLog(subsystem: "com.bilou.BilouNook", category: "haptics")
     private var lastFireTime: Date = .distantPast

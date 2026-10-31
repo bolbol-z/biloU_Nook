@@ -73,6 +73,7 @@ final class NotchState {
     
     private let clock: NotchClock
     private let scheduler: NotchScheduler
+    private let haptics: HapticPlaying
     private var closeHandle: NotchScheduled?
     private var intentHandle: NotchScheduled?
     private var outsideSince: Date?
@@ -80,9 +81,14 @@ final class NotchState {
     private var lastCloseTime: Date = .distantPast
     private var lastOpenTime: Date = .distantPast
 
-    init(clock: NotchClock = SystemNotchClock(), scheduler: NotchScheduler = SystemNotchScheduler()) {
+    init(
+        clock: NotchClock = SystemNotchClock(),
+        scheduler: NotchScheduler = SystemNotchScheduler(),
+        haptics: HapticPlaying = HapticsService.shared
+    ) {
         self.clock = clock
         self.scheduler = scheduler
+        self.haptics = haptics
     }
     
     func requestOpen(trigger: OpenTrigger) {
@@ -98,7 +104,7 @@ final class NotchState {
         }
         cancelPending()
         generation += 1
-        HapticsService.shared.play(.open)
+        haptics.play(.open)
         HapticsService.shared.callsSinceOpen = 1
         phase = .opening
         debugLog("requestOpen ACCEPTED trigger=\(trigger) target=open")
@@ -118,7 +124,7 @@ final class NotchState {
         cancelPending()
         generation += 1
         let gen = generation
-        HapticsService.shared.play(.close)
+        haptics.play(.close)
         HapticsService.shared.callsSinceClose = 1
         phase = .closing
         lastCloseTime = clock.now()
