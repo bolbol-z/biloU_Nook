@@ -89,6 +89,5 @@ enum NotchPresets {
     static func closed(notchW: CGFloat, notchH: CGFloat) -> NotchMetrics {
         return NotchMetrics(w: notchW, h: notchH, t: 6, b: 14)
     }
-    static let peek = NotchMetrics(w: 208, h: 35, t: 6, b: 14)
     static let open: NotchMetrics = NotchMetrics(w: 480, h: 150, t: 6, b: 14)
 }

@@ -192,8 +192,6 @@ enum MediaLayout {
     static let metrics = MediaLayoutMetrics.standard
 
     static let shellTabBarHeight: CGFloat = 0
-    static let metadataHeight: CGFloat = 0
-    static let metadataToTitle: CGFloat = 0
     static let titleHeight: CGFloat = 19 // approx for 15pt
     static let titleToArtist: CGFloat = 2
     static let artistHeight: CGFloat = 16 // approx for 12pt

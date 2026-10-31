@@ -53,12 +53,6 @@ final class HapticsService {
     }
     
 #if DEBUG
-    func testAll() {
-        playOnce(.levelChange)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { self.playOnce(.alignment) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { self.playOnce(.generic) }
-    }
-    
     func playOnce(_ pattern: NSHapticFeedbackManager.FeedbackPattern) {
         if !SettingsStore.shared.hapticsEnabled { return }
         let now = Date()

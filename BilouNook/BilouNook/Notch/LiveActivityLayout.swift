@@ -2,7 +2,6 @@ import AppKit
 
 enum LiveActivityLayout {
     static let horizontalWing: CGFloat = 36
-    static let minimumContentWidth: CGFloat = 120
 
     static func hardwareNotchWidth(auxLeft: NSRect?, auxRight: NSRect?) -> CGFloat? {
         guard let auxLeft, let auxRight else { return nil }
