@@ -40,28 +40,57 @@ struct NotchRootView: View {
         return size
     }
 
-    var body: some View {
+    @ViewBuilder
+    private var closedOverlays: some View {
+        if notchState.phase == .closed, let compactView = modules.activeModule?.compactView {
+            let screen = ScreenResolver.shared.targetScreen()
+            let geom = NotchGeometry.live(for: screen, settings: settings)
+            let forbidden = geom.forbiddenZone(inShapeSpace: metrics.w)
+            let centerX = metrics.w / 2
+            let compactCenter = CGRect(x: centerX - 6, y: 0, width: 12, height: geom.notchRect.height)
+            let inForbidden = forbidden.intersects(compactCenter)
+            if inForbidden {
+                EmptyView()
+            } else {
+                compactView
+                    .frame(width: metrics.w, height: metrics.h)
+                    .mask(
+                        NotchShape(width: metrics.w, height: metrics.h, topCornerRadius: metrics.t, bottomCornerRadius: metrics.b)
+                    )
+                    .allowsHitTesting(false)
+            }
+        }
+
+        if notchState.phase == .closed, let liveActivity = modules.activeLiveActivity?.liveActivity {
+            liveActivity
+                .frame(width: metrics.w, height: metrics.h)
+                .opacity(0.9)
+                .animation(Animations.scaled(Animation.easeInOut(duration: 0.12)), value: metrics.w)
+                .mask(
+                    NotchShape(width: metrics.w, height: metrics.h, topCornerRadius: metrics.t, bottomCornerRadius: metrics.b)
+                )
+                .allowsHitTesting(false)
+        }
+    }
+
+    private var notchContent: some View {
         ZStack(alignment: .top) {
-            Color.clear
-                .contentShape(Rectangle())
-            
-            ZStack(alignment: .top) {
-                NotchShape(width: metrics.w, height: metrics.h, topCornerRadius: metrics.t, bottomCornerRadius: metrics.b)
-                    .fill(Color.black)
-                    #if DEBUG
-                    .background {
-                        GeometryReader { proxy in
-                            Color.clear.preference(
-                                key: NotchShapeFramePreferenceKey.self,
-                                value: proxy.frame(in: .named("notchRoot"))
-                            )
-                        }
+            NotchShape(width: metrics.w, height: metrics.h, topCornerRadius: metrics.t, bottomCornerRadius: metrics.b)
+                .fill(Color.black)
+                #if DEBUG
+                .background {
+                    GeometryReader { proxy in
+                        Color.clear.preference(
+                            key: NotchShapeFramePreferenceKey.self,
+                            value: proxy.frame(in: .named("notchRoot"))
+                        )
                     }
-                    #endif
-                    .onTapGesture {
-                        notchState.toggle()
-                    }
-                
+                }
+                #endif
+                .onTapGesture {
+                    notchState.toggle()
+                }
+
             if showContent {
                 ModuleShellView()
                     .frame(width: metrics.w, height: metrics.h)
@@ -73,68 +102,52 @@ struct NotchRootView: View {
                     .animation(Animations.scaled(Animation.spring(response: 0.32, dampingFraction: 0.9)), value: showContent)
             }
 
-                if notchState.phase == .closed, let compactView = modules.activeModule?.compactView {
-                    let screen = ScreenResolver.shared.targetScreen()
-                    let geom = NotchGeometry.live(for: screen, settings: settings)
-                    let forbidden = geom.forbiddenZone(inShapeSpace: metrics.w)
-                    let centerX = metrics.w / 2
-                    let compactCenter = CGRect(x: centerX - 6, y: 0, width: 12, height: geom.notchRect.height)
-                    let inForbidden = forbidden.intersects(compactCenter)
-                    if inForbidden {
-                        EmptyView()
-                    } else {
-                        compactView
-                            .frame(width: metrics.w, height: metrics.h)
-                            .mask(
-                                NotchShape(width: metrics.w, height: metrics.h, topCornerRadius: metrics.t, bottomCornerRadius: metrics.b)
-                            )
-                            .allowsHitTesting(false)
-                    }
-                }
-
-                if notchState.phase == .closed, let liveActivity = modules.activeLiveActivity?.liveActivity {
-                    liveActivity
-                        .frame(width: metrics.w, height: metrics.h)
-                        .opacity(0.9)
-                        .animation(Animations.scaled(Animation.easeInOut(duration: 0.12)), value: metrics.w)
-                        .mask(
-                            NotchShape(width: metrics.w, height: metrics.h, topCornerRadius: metrics.t, bottomCornerRadius: metrics.b)
-                        )
-                        .allowsHitTesting(false)
-                }
+            closedOverlays
+        }
+        .frame(width: canvasSize.width, height: canvasSize.height)
+        .contextMenu {
+            Button("Settings…") {
+                SettingsWindow.shared.show()
             }
-            .frame(width: canvasSize.width, height: canvasSize.height)
-            .contextMenu {
-                Button("Settings…") {
-                    SettingsWindow.shared.show()
-                }
-                #if DEBUG
-                Button("Animation Lab") { 
-                    AnimationLabWindow.shared.state = notchState
-                    AnimationLabWindow.shared.toggle()
-                }
-                Button("Debug overlay") { 
-                    DebugOverlayWindow.shared.toggle()
-                }
-                Button("Haptic test") { 
-                    HapticsService.shared.playOnce(.generic)
-                }
-                #endif
-                Button("Quit BilouNook") {
-                    NSApplication.shared.terminate(nil)
-                }
-            }
-
             #if DEBUG
-            if calibration.isVisible {
-                let screen = ScreenResolver.shared.targetScreen()
-                NotchCalibrationOverlay(
-                    geometry: NotchGeometry.live(for: screen, settings: settings),
-                    panel: panel
-                )
-                .frame(width: canvasSize.width, height: canvasSize.height)
+            Button("Animation Lab") {
+                AnimationLabWindow.shared.state = notchState
+                AnimationLabWindow.shared.toggle()
+            }
+            Button("Debug overlay") {
+                DebugOverlayWindow.shared.toggle()
+            }
+            Button("Haptic test") {
+                HapticsService.shared.playOnce(.generic)
             }
             #endif
+            Button("Quit BilouNook") {
+                NSApplication.shared.terminate(nil)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var calibrationOverlay: some View {
+        #if DEBUG
+        if calibration.isVisible {
+            let screen = ScreenResolver.shared.targetScreen()
+            NotchCalibrationOverlay(
+                geometry: NotchGeometry.live(for: screen, settings: settings),
+                panel: panel
+            )
+            .frame(width: canvasSize.width, height: canvasSize.height)
+        }
+        #endif
+    }
+
+    var body: some View {
+        ZStack(alignment: .top) {
+            Color.clear
+                .contentShape(Rectangle())
+
+            notchContent
+            calibrationOverlay
         }
         .frame(width: canvasSize.width, height: canvasSize.height)
         #if DEBUG
@@ -143,68 +156,9 @@ struct NotchRootView: View {
             NotchShapeProbe.frameInRoot = frame
         }
         #endif
-        .onAppear {
-            guard !isPreview else { return }
-            let screen = ScreenResolver.shared.targetScreen()
-            metrics = closedMetrics(for: screen)
-            notchState.openOnHover = settings.openOnHover
-            notchState.intentDelay = settings.hoverIntentDelay
-            notchState.closeDelay = settings.closeDelay
-            notchState.minStateDwell = settings.minStateDwell
-            panel.ignoresMouseEvents = true
-            #if DEBUG
-            if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
-                DebugTools.install(appDelegate: appDelegate, panel: panel, state: notchState, mouseMonitor: MouseMonitor.shared, gestureMonitor: GestureMonitor.shared, watchdog: Watchdog.shared)
-            } else {
-                HotKeyManager.shared.register()
-                AnimationLabWindow.shared.state = notchState
-            }
-            #endif
-            setupMonitors()
-            Watchdog.shared.start()
-            GestureMonitor.shared.start()
-            NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.willSleepNotification, object: nil, queue: .main) { _ in notchState.closeImmediately(reason: .system) }
-        }
+        .onAppear(perform: handleAppear)
         .onChange(of: notchState.phase) { oldPhase, newPhase in
-            if newPhase == .open {
-                let anim = Animations.hoverOpen
-                withAnimation(Animations.scaled(anim)) {
-                    metrics = activeOpenMetrics
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                    if self.notchState.phase == .open {
-                        withAnimation(Animations.scaled(Animations.contentIn)) {
-                            showContent = true
-                        }
-                    }
-                }
-            } else if newPhase == .open {
-                withAnimation(Animations.scaled(Animations.hoverOpen)) {
-                    let screen = ScreenResolver.shared.targetScreen()
-                    metrics = activeOpenMetrics
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                    if self.notchState.phase == .open || self.notchState.phase == .open {
-                        withAnimation(Animations.scaled(Animations.contentIn)) {
-                            showContent = true
-                        }
-                    }
-                }
-            } else if newPhase == .closed {
-                withAnimation(Animations.scaled(Animation.easeIn(duration: 0.12))) {
-                    showContent = false
-                }
-                withAnimation(Animations.scaled(Animations.closeFootprint)) {
-                    let screen = ScreenResolver.shared.targetScreen()
-                    metrics = closedMetrics(for: screen)
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    if self.notchState.phase == .closed {
-                        self.panel.ignoresMouseEvents = true
-                    }
-                }
-            }
-            updateMouseInteraction()
+            handlePhaseChange(from: oldPhase, to: newPhase)
         }
         .onChange(of: modules.activeModuleID) { _, _ in
             guard notchState.phase == .open else { return }
@@ -233,6 +187,59 @@ struct NotchRootView: View {
         .onChange(of: settings.minStateDwell) { _, v in notchState.minStateDwell = v }
     }
     
+    private func handleAppear() {
+        guard !isPreview else { return }
+        let screen = ScreenResolver.shared.targetScreen()
+        metrics = closedMetrics(for: screen)
+        notchState.openOnHover = settings.openOnHover
+        notchState.intentDelay = settings.hoverIntentDelay
+        notchState.closeDelay = settings.closeDelay
+        notchState.minStateDwell = settings.minStateDwell
+        panel.ignoresMouseEvents = true
+        #if DEBUG
+        if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
+            DebugTools.install(appDelegate: appDelegate, panel: panel, state: notchState, mouseMonitor: MouseMonitor.shared, gestureMonitor: GestureMonitor.shared, watchdog: Watchdog.shared)
+        } else {
+            HotKeyManager.shared.register()
+            AnimationLabWindow.shared.state = notchState
+        }
+        #endif
+        setupMonitors()
+        Watchdog.shared.start()
+        GestureMonitor.shared.start()
+        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.willSleepNotification, object: nil, queue: .main) { _ in notchState.closeImmediately(reason: .system) }
+    }
+
+    private func handlePhaseChange(from oldPhase: NotchPhase, to newPhase: NotchPhase) {
+        if newPhase == .open {
+            let anim = Animations.hoverOpen
+            withAnimation(Animations.scaled(anim)) {
+                metrics = activeOpenMetrics
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                if self.notchState.phase == .open {
+                    withAnimation(Animations.scaled(Animations.contentIn)) {
+                        showContent = true
+                    }
+                }
+            }
+        } else if newPhase == .closed {
+            withAnimation(Animations.scaled(Animation.easeIn(duration: 0.12))) {
+                showContent = false
+            }
+            withAnimation(Animations.scaled(Animations.closeFootprint)) {
+                let screen = ScreenResolver.shared.targetScreen()
+                metrics = closedMetrics(for: screen)
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                if self.notchState.phase == .closed {
+                    self.panel.ignoresMouseEvents = true
+                }
+            }
+        }
+        updateMouseInteraction()
+    }
+
     private var activeOpenMetrics: NotchMetrics {
         let size = modules.activeModule?.preferredSize ?? CGSize(width: NotchPresets.open.w, height: NotchPresets.open.h)
         let screen = ScreenResolver.shared.targetScreen()

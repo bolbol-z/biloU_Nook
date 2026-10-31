@@ -25,7 +25,6 @@
 		C1000017 /* HotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000017 /* HotKeyManager.swift */; };
 		C1000019 /* GestureMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000019 /* GestureMonitor.swift */; };
 		C1000020 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000020 /* Watchdog.swift */; };
-		C1000021 /* ScaleBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000021 /* ScaleBlur.swift */; };
 		C1000022 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000022 /* HapticsService.swift */; };
 		C1000023 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3000001 /* Assets.xcassets */; };
 		C1000030 /* ZoneMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000030 /* ZoneMathTests.swift */; };
@@ -53,7 +52,6 @@
 		C1000053 /* ModuleA.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000044 /* ModuleA.swift */; };
 		C1000054 /* ModuleB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000045 /* ModuleB.swift */; };
 		C1000055 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000009 /* Animations.swift */; };
-		C1000056 /* ScaleBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000021 /* ScaleBlur.swift */; };
 		C1000057 /* MouseMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000010 /* MouseMonitor.swift */; };
 		C1000058 /* Watchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000020 /* Watchdog.swift */; };
 		C1000059 /* GestureMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000019 /* GestureMonitor.swift */; };
@@ -128,6 +126,16 @@
 		C1000242 /* NotchPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000101 /* NotchPanelTests.swift */; };
 		C1000243 /* CompactLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000102 /* CompactLayoutTests.swift */; };
 		C3000002 /* MotionBench.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000103 /* MotionBench.swift */; };
+		C1000244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000105 /* AppDelegate.swift */; };
+		C1000245 /* NotchPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000106 /* NotchPanelController.swift */; };
+		C1000246 /* DebugLaunchModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000107 /* DebugLaunchModes.swift */; };
+		C1000247 /* DebugTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000108 /* DebugTools.swift */; };
+		C1000248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000105 /* AppDelegate.swift */; };
+		C1000249 /* NotchPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000106 /* NotchPanelController.swift */; };
+		C1000250 /* DebugLaunchModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000107 /* DebugLaunchModes.swift */; };
+		C1000251 /* DebugTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000108 /* DebugTools.swift */; };
+		C1000252 /* MotionBench.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000103 /* MotionBench.swift */; };
+		C1000253 /* NotchAttachDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000100 /* NotchAttachDiagnostics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,7 +144,7 @@
 		C2000003 /* NotchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchRootView.swift; sourceTree = "<group>"; };
 		C2000004 /* NotchGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchGeometry.swift; sourceTree = "<group>"; };
 		C2000005 /* NotchShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchShape.swift; sourceTree = "<group>"; };
-		C2000007 /* DebugOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilouNook/Notch/DebugOverlay.swift; sourceTree = SOURCE_ROOT; };
+		C2000007 /* DebugOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOverlay.swift; sourceTree = "<group>"; };
 		C2000008 /* NotchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchState.swift; sourceTree = "<group>"; };
 		C2000009 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		C2000010 /* MouseMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseMonitor.swift; sourceTree = "<group>"; };
@@ -146,10 +154,9 @@
 		C2000014 /* InteractionRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionRegion.swift; sourceTree = "<group>"; };
 		C2000015 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
 		C2000016 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
-		C2000017 /* HotKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilouNook/Utils/HotKeyManager.swift; sourceTree = SOURCE_ROOT; };
+		C2000017 /* HotKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyManager.swift; sourceTree = "<group>"; };
 		C2000019 /* GestureMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureMonitor.swift; sourceTree = "<group>"; };
 		C2000020 /* Watchdog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watchdog.swift; sourceTree = "<group>"; };
-		C2000021 /* ScaleBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleBlur.swift; sourceTree = "<group>"; };
 		C2000022 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics/HapticsService.swift; sourceTree = "<group>"; };
 		C2000104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -198,14 +205,18 @@
 		C2000093 /* SourceAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceAppInfo.swift; sourceTree = "<group>"; };
 		C2000094 /* MediaContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaContentView.swift; sourceTree = "<group>"; };
 		C2000095 /* ArtworkAverageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkAverageColor.swift; sourceTree = "<group>"; };
-		C2000096 /* MediaSeekDebugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilouNook/Modules/Media/MediaSeekDebugLog.swift; sourceTree = SOURCE_ROOT; };
+		C2000096 /* MediaSeekDebugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSeekDebugLog.swift; sourceTree = "<group>"; };
 		C2000097 /* MediaSnapshotRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSnapshotRenderTests.swift; sourceTree = "<group>"; };
 		C2000098 /* NotchAttachmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchAttachmentTests.swift; sourceTree = "<group>"; };
 		C2000099 /* NotchAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchAttachment.swift; sourceTree = "<group>"; };
-		C2000100 /* NotchAttachDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilouNook/Window/NotchAttachDiagnostics.swift; sourceTree = SOURCE_ROOT; };
+		C2000100 /* NotchAttachDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchAttachDiagnostics.swift; sourceTree = "<group>"; };
 		C2000101 /* NotchPanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchPanelTests.swift; sourceTree = "<group>"; };
 		C2000102 /* CompactLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayoutTests.swift; sourceTree = "<group>"; };
 		C2000103 /* MotionBench.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionBench.swift; sourceTree = "<group>"; };
+		C2000105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C2000106 /* NotchPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchPanelController.swift; sourceTree = "<group>"; };
+		C2000107 /* DebugLaunchModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLaunchModes.swift; sourceTree = "<group>"; };
+		C2000108 /* DebugTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -243,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				C2000001 /* BilouNookApp.swift */,
+				C2000105 /* AppDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -251,8 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				C2000002 /* NotchPanel.swift */,
+				C2000106 /* NotchPanelController.swift */,
 				C2000099 /* NotchAttachment.swift */,
-				C2000100 /* NotchAttachDiagnostics.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -264,7 +276,6 @@
 				C2000004 /* NotchGeometry.swift */,
 				C2000005 /* NotchShape.swift */,
 				C2000071 /* LiveActivityLayout.swift */,
-				C2000007 /* DebugOverlay.swift */,
 			);
 			path = Notch;
 			sourceTree = "<group>";
@@ -290,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				C2000009 /* Animations.swift */,
-				C2000021 /* ScaleBlur.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -309,8 +319,14 @@
 		C5000011 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				C2000007 /* DebugOverlay.swift */,
 				C2000011 /* AnimationLab.swift */,
+				C2000017 /* HotKeyManager.swift */,
+				C2000096 /* MediaSeekDebugLog.swift */,
+				C2000100 /* NotchAttachDiagnostics.swift */,
 				C2000103 /* MotionBench.swift */,
+				C2000107 /* DebugLaunchModes.swift */,
+				C2000108 /* DebugTools.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -320,7 +336,6 @@
 			children = (
 				C2000012 /* CoordinateSpace.swift */,
 				C2000013 /* ScreenResolver.swift */,
-				C2000017 /* HotKeyManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -403,7 +418,6 @@
 				C2000093 /* SourceAppInfo.swift */,
 				C2000094 /* MediaContentView.swift */,
 				C2000095 /* ArtworkAverageColor.swift */,
-				C2000096 /* MediaSeekDebugLog.swift */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -568,11 +582,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1000001 /* BilouNookApp.swift in Sources */,
+				C1000244 /* AppDelegate.swift in Sources */,
 				C1000002 /* NotchPanel.swift in Sources */,
+				C1000245 /* NotchPanelController.swift in Sources */,
 				C1000003 /* NotchRootView.swift in Sources */,
 				C1000004 /* NotchGeometry.swift in Sources */,
 				C1000005 /* NotchShape.swift in Sources */,
 				C1000007 /* DebugOverlay.swift in Sources */,
+				C1000246 /* DebugLaunchModes.swift in Sources */,
+				C1000247 /* DebugTools.swift in Sources */,
 				C1000008 /* NotchState.swift in Sources */,
 				C1000009 /* Animations.swift in Sources */,
 				C1000010 /* MouseMonitor.swift in Sources */,
@@ -586,7 +604,6 @@
 				C1000017 /* HotKeyManager.swift in Sources */,
 				C1000019 /* GestureMonitor.swift in Sources */,
 				C1000020 /* Watchdog.swift in Sources */,
-				C1000021 /* ScaleBlur.swift in Sources */,
 				C1000022 /* HapticsService.swift in Sources */,
 				C1000040 /* NotchModule.swift in Sources */,
 				C1000041 /* ModuleRegistry.swift in Sources */,
@@ -646,7 +663,6 @@
 				C1000053 /* ModuleA.swift in Sources */,
 				C1000054 /* ModuleB.swift in Sources */,
 				C1000055 /* Animations.swift in Sources */,
-				C1000056 /* ScaleBlur.swift in Sources */,
 				C1000057 /* MouseMonitor.swift in Sources */,
 				C1000058 /* Watchdog.swift in Sources */,
 				C1000059 /* GestureMonitor.swift in Sources */,
@@ -655,6 +671,12 @@
 				C1000062 /* DebugOverlay.swift in Sources */,
 				C1000063 /* AnimationLab.swift in Sources */,
 				C1000064 /* SettingsWindow.swift in Sources */,
+				C1000248 /* AppDelegate.swift in Sources */,
+				C1000249 /* NotchPanelController.swift in Sources */,
+				C1000250 /* DebugLaunchModes.swift in Sources */,
+				C1000251 /* DebugTools.swift in Sources */,
+				C1000252 /* MotionBench.swift in Sources */,
+				C1000253 /* NotchAttachDiagnostics.swift in Sources */,
 				C1000080 /* NowPlayingSnapshot.swift in Sources */,
 				C1000081 /* NowPlayingProvider.swift in Sources */,
 				C1000082 /* MediaRemoteNowPlayingProvider.swift in Sources */,

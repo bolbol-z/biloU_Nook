@@ -16,8 +16,8 @@ enum DebugLaunchModes {
         }
         if args.contains("--notch-attach-diag") {
             guard let appDelegate = NSApplication.shared.delegate as? AppDelegate,
-                  let panelController = appDelegate.panelController,
-                  let panel = panelController.panel else { exit(5) }
+                  let panelController = appDelegate.panelController else { exit(5) }
+            let panel = panelController.panel
             Watchdog.shared.stop()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 NotchAttachDiagnostics.printSnapshot(label: "closed", panel: panel)
@@ -31,8 +31,8 @@ enum DebugLaunchModes {
         }
         if args.contains("--notch-selfcheck") {
             guard let appDelegate = NSApplication.shared.delegate as? AppDelegate,
-                  let panelController = appDelegate.panelController,
-                  let panel = panelController.panel else { exit(5) }
+                  let panelController = appDelegate.panelController else { exit(5) }
+            let panel = panelController.panel
             Watchdog.shared.stop()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 NotchState.shared.open()
