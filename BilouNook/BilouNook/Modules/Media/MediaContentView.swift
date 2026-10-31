@@ -174,18 +174,6 @@ struct MediaContentView: View {
         return String(format: "%d:%02d", minutes, seconds)
     }
 
-    private var metadataHeader: some View {
-        HStack(spacing: 5) {
-            Spacer(minLength: 0)
-        }
-        .frame(height: 0)
-    }
-
-    private var headerTitle: String {
-        let name = sourceApp?.name ?? "Now Playing"
-        return name.uppercased()
-    }
-
     private var controls: some View {
         HStack(spacing: 10) {
             Spacer(minLength: 0)

@@ -287,20 +287,6 @@ struct NotchRootView: View {
 }
 
 #if DEBUG
-extension NotchRootView {
-    func testHaptics() {
-        HapticsService.shared.testAll()
-    }
-}
-#endif
-
-#if DEBUG
-extension NotchRootView {
-    func addAssumptionSliders() {}
-}
-#endif
-
-#if DEBUG
 enum NotchShapeProbe {
     static var frameInRoot: CGRect?
 }

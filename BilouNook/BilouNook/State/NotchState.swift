@@ -98,7 +98,6 @@ final class NotchState {
         }
         cancelPending()
         generation += 1
-        let _gen = generation
         HapticsService.shared.play(.open)
         HapticsService.shared.callsSinceOpen = 1
         phase = .opening
@@ -198,10 +197,6 @@ final class NotchState {
     
     func open() {
         requestOpen(trigger: .programmatic)
-    }
-    
-    func scheduleClose() {
-        requestClose(reason: .mouseLeft)
     }
     
     private func debugLog(_ message: String) {

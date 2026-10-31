@@ -1,10 +1,5 @@
 import AppKit
 
-struct NotchRect: Equatable {
-    let width: CGFloat
-    let height: CGFloat
-}
-
 struct NotchGeometry: Equatable {
     static let overlap: CGFloat = 0.5
     static let virtualWidth: CGFloat = 200
@@ -192,14 +187,7 @@ struct NotchGeometry: Equatable {
         let base = notchRect
         let screen = screenFrame
         let shapeW = shapeWidth ?? base.width
-        let originX = screen.midX - shapeW / 2
-        let originY = screen.maxY // shape origin in screen coords relative to panel positioning varies; but easier to give relative to shape centered at screen.midX top
-        // Shape coordinates: relative to the shape rect positioned centered at top of screen in panel space
-        let fx = (base.minX - Self.forbiddenZoneExpansion) - (screen.midX - shapeW / 2)
-        let fy = base.minY - (screen.maxY - base.height) // approximate; better use y from 0 in shape coords relative to shape top
-        // Simpler: in shape coordinates with origin at top-left of shape, y from 0 to height
         let shapeOriginX = screen.midX - shapeW / 2
-        let shapeOriginY = screen.maxY - base.height // top of shape area
         return CGRect(
             x: base.minX - Self.forbiddenZoneExpansion - shapeOriginX,
             y: 0,

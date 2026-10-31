@@ -26,28 +26,3 @@ enum Animations {
         return animation.speed(1.0 / scale)
     }
 }
-
-struct ScaleBlurOpacityContentModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .scaleEffect(0.8, anchor: UnitPoint(x: 0.5, y: -0.25))
-            .blur(radius: 10)
-            .opacity(0)
-            .onAppear {
-                withAnimation(Animations.scaled(Animations.contentIn)) {
-                }
-            }
-    }
-}
-
-struct NotchContentTransitionModifier: ViewModifier {
-    var active: Bool
-    
-    func body(content: Content) -> some View {
-        content
-            .scaleEffect(active ? 1.0 : 0.8, anchor: UnitPoint(x: 0.5, y: -0.25))
-            .blur(radius: active ? 0 : 10)
-            .opacity(active ? 1.0 : 0)
-            .animation(Animations.scaled(active ? Animations.contentIn : Animations.contentOut), value: active)
-    }
-}

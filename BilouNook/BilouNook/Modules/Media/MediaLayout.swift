@@ -75,7 +75,6 @@ struct NotchContentSafeArea: Equatable {
 
     var leftInset: CGFloat { contentRect.minX }
     var rightInset: CGFloat { max(0, shape.width - contentRect.maxX) }
-    var contentWidth: CGFloat { contentRect.width }
     var contentHeight: CGFloat { contentRect.height }
 
     static func resolve(

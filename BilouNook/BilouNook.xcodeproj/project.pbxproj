@@ -17,7 +17,6 @@
 		C1000009 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000009 /* Animations.swift */; };
 		C1000010 /* MouseMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000010 /* MouseMonitor.swift */; };
 		C1000011 /* AnimationLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000011 /* AnimationLab.swift */; };
-		C1000012 /* CoordinateSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000012 /* CoordinateSpace.swift */; };
 		C1000013 /* ScreenResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000013 /* ScreenResolver.swift */; };
 		C1000014 /* InteractionRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000014 /* InteractionRegion.swift */; };
 		C1000015 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000015 /* SettingsWindow.swift */; };
@@ -149,7 +148,6 @@
 		C2000009 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		C2000010 /* MouseMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseMonitor.swift; sourceTree = "<group>"; };
 		C2000011 /* AnimationLab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLab.swift; sourceTree = "<group>"; };
-		C2000012 /* CoordinateSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSpace.swift; sourceTree = "<group>"; };
 		C2000013 /* ScreenResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenResolver.swift; sourceTree = "<group>"; };
 		C2000014 /* InteractionRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionRegion.swift; sourceTree = "<group>"; };
 		C2000015 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
@@ -334,7 +332,6 @@
 		C5000012 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C2000012 /* CoordinateSpace.swift */,
 				C2000013 /* ScreenResolver.swift */,
 			);
 			path = Utils;
@@ -596,7 +593,6 @@
 				C1000010 /* MouseMonitor.swift in Sources */,
 				C1000011 /* AnimationLab.swift in Sources */,
 				C3000002 /* MotionBench.swift in Sources */,
-				C1000012 /* CoordinateSpace.swift in Sources */,
 				C1000013 /* ScreenResolver.swift in Sources */,
 				C1000014 /* InteractionRegion.swift in Sources */,
 				C1000015 /* SettingsWindow.swift in Sources */,
