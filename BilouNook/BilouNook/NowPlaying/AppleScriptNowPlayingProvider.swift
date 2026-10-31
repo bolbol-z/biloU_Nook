@@ -41,7 +41,7 @@ final class AppleScriptNowPlayingProvider: NowPlayingProvider {
                 tell application "Spotify"
                     if player state is stopped then return ""
                     set t to current track
-                    return (player state as text) & "|" & (player position as text) & "|" & (name of t) & "|" & (artist of t) & "|" & (album of t) & "|" & (duration of t as text)
+                    return {player state as text, player position as text, name of t, artist of t, album of t, duration of t as text}
                 end tell
                 """
             case .music:
@@ -53,7 +53,7 @@ final class AppleScriptNowPlayingProvider: NowPlayingProvider {
                     on error
                         return ""
                     end try
-                    return (player state as text) & "|" & (player position as text) & "|" & (name of t) & "|" & (artist of t) & "|" & (album of t) & "|" & (duration of t as text)
+                    return {player state as text, player position as text, name of t, artist of t, album of t, duration of t as text}
                 end tell
                 """
             }
@@ -216,33 +216,50 @@ final class AppleScriptNowPlayingProvider: NowPlayingProvider {
     }
 
     private func readSnapshot() -> Result<NowPlayingSnapshot?, AppleScriptFailure> {
-        let result = run(source: target.readScript)
-        switch result {
+        switch execute(source: target.readScript) {
         case .failure(let failure):
             return .failure(failure)
-        case .success(let output):
-            let parts = output.components(separatedBy: "|")
-            guard parts.count >= 6 else { return .success(nil) }
-            let state = parts[0].trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-            guard state == "playing" || state == "paused" else { return .success(nil) }
-            let title = parts[2].trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !title.isEmpty else { return .success(nil) }
-            let elapsed = max(0, Double(parts[1]) ?? 0)
-            let duration = max(0, (Double(parts[5]) ?? 0) / target.durationDivisor)
-            return .success(NowPlayingSnapshot(
-                title: title,
-                artist: parts[3].trimmingCharacters(in: .whitespacesAndNewlines),
-                album: parts[4].trimmingCharacters(in: .whitespacesAndNewlines),
-                isPlaying: state == "playing",
-                elapsed: duration > 0 ? min(elapsed, duration) : elapsed,
-                duration: duration,
+        case .success(let descriptor):
+            let count = descriptor.numberOfItems
+            guard count >= 6 else { return .success(nil) }
+            let fields = (1...6).map { descriptor.atIndex($0)?.stringValue ?? "" }
+            return .success(Self.snapshot(
+                fields: fields,
+                durationDivisor: target.durationDivisor,
                 bundleIdentifier: target.bundleIdentifier
             ))
         }
     }
 
+    static func snapshot(
+        fields: [String],
+        durationDivisor: Double,
+        bundleIdentifier: String
+    ) -> NowPlayingSnapshot? {
+        guard fields.count == 6 else { return nil }
+        let state = fields[0].trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        guard state == "playing" || state == "paused" else { return nil }
+        let title = fields[2].trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !title.isEmpty else { return nil }
+        let elapsed = max(0, Double(fields[1]) ?? 0)
+        let duration = max(0, (Double(fields[5]) ?? 0) / durationDivisor)
+        return NowPlayingSnapshot(
+            title: title,
+            artist: fields[3].trimmingCharacters(in: .whitespacesAndNewlines),
+            album: fields[4].trimmingCharacters(in: .whitespacesAndNewlines),
+            isPlaying: state == "playing",
+            elapsed: duration > 0 ? min(elapsed, duration) : elapsed,
+            duration: duration,
+            bundleIdentifier: bundleIdentifier
+        )
+    }
+
     @discardableResult
     private func run(source: String) -> Result<String, AppleScriptFailure> {
+        execute(source: source).map { $0.stringValue ?? "" }
+    }
+
+    private func execute(source: String) -> Result<NSAppleEventDescriptor, AppleScriptFailure> {
         guard let script = NSAppleScript(source: source) else {
             return .failure(AppleScriptFailure(number: -1, message: "Unable to compile AppleScript"))
         }
@@ -253,7 +270,7 @@ final class AppleScriptNowPlayingProvider: NowPlayingProvider {
             let message = error[NSAppleScript.errorMessage] as? String ?? "AppleScript failed"
             return .failure(AppleScriptFailure(number: number, message: message))
         }
-        return .success(descriptor.stringValue ?? "")
+        return .success(descriptor)
     }
 }
 

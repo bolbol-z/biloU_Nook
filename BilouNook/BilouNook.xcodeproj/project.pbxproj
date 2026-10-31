@@ -70,6 +70,7 @@
 		C1000083 /* AppleScriptNowPlayingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000063 /* AppleScriptNowPlayingProvider.swift */; };
 		C1000084 /* NowPlayingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000064 /* NowPlayingService.swift */; };
 		C1000085 /* NowPlayingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000065 /* NowPlayingServiceTests.swift */; };
+		C1000300 /* AppleScriptNowPlayingProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000120 /* AppleScriptNowPlayingProviderTests.swift */; };
 		C1000090 /* NowPlayingLiveActivityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000070 /* NowPlayingLiveActivityState.swift */; };
 		C1000091 /* LiveActivityLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000071 /* LiveActivityLayout.swift */; };
 		C1000092 /* MediaModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000072 /* MediaModule.swift */; };
@@ -186,6 +187,7 @@
 		C2000063 /* AppleScriptNowPlayingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptNowPlayingProvider.swift; sourceTree = "<group>"; };
 		C2000064 /* NowPlayingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingService.swift; sourceTree = "<group>"; };
 		C2000065 /* NowPlayingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingServiceTests.swift; sourceTree = "<group>"; };
+		C2000120 /* AppleScriptNowPlayingProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptNowPlayingProviderTests.swift; sourceTree = "<group>"; };
 		C2000070 /* NowPlayingLiveActivityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingLiveActivityState.swift; sourceTree = "<group>"; };
 		C2000071 /* LiveActivityLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityLayout.swift; sourceTree = "<group>"; };
 		C2000072 /* MediaModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaModule.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 				C2000046 /* ModuleRegistryTests.swift */,
 				C2000047 /* NotchRootViewRenderTests.swift */,
 				C2000065 /* NowPlayingServiceTests.swift */,
+				C2000120 /* AppleScriptNowPlayingProviderTests.swift */,
 				C2000081 /* MediaFormattingTests.swift */,
 				C2000082 /* MediaViewStateTests.swift */,
 				C2000083 /* LiveActivityLayoutTests.swift */,
@@ -709,6 +712,7 @@
 				C1000083 /* AppleScriptNowPlayingProvider.swift in Sources */,
 				C1000084 /* NowPlayingService.swift in Sources */,
 				C1000085 /* NowPlayingServiceTests.swift in Sources */,
+				C1000300 /* AppleScriptNowPlayingProviderTests.swift in Sources */,
 				C1000110 /* NowPlayingLiveActivityState.swift in Sources */,
 				C1000111 /* LiveActivityLayout.swift in Sources */,
 				C1000112 /* MediaModule.swift in Sources */,
