@@ -261,14 +261,33 @@ enum MediaLayout {
 
 #if DEBUG
 enum MediaLayoutProbe: String, CaseIterable {
-    case topLabel
     case artwork
     case textColumn
     case title
     case artist
     case progressTrack
     case timeRow
+    case elapsedTime
+    case remainingTime
     case controls
+}
+
+enum MediaTimeLabel: String, CaseIterable {
+    case elapsed
+    case remaining
+}
+
+struct MediaTimeLabelProbeKey: PreferenceKey {
+    static var defaultValue: [MediaTimeLabel: [CGRect]] = [:]
+
+    static func reduce(
+        value: inout [MediaTimeLabel: [CGRect]],
+        nextValue: () -> [MediaTimeLabel: [CGRect]]
+    ) {
+        for (label, frames) in nextValue() {
+            value[label, default: []].append(contentsOf: frames)
+        }
+    }
 }
 
 struct MediaLayoutProbeKey: PreferenceKey {
@@ -289,6 +308,17 @@ extension View {
                 Color.clear.preference(
                     key: MediaLayoutProbeKey.self,
                     value: [probe: geometry.frame(in: .named(MediaLayout.probeCoordinateSpace))]
+                )
+            }
+        }
+    }
+
+    func mediaTimeLabelProbe(_ label: MediaTimeLabel) -> some View {
+        background {
+            GeometryReader { geometry in
+                Color.clear.preference(
+                    key: MediaTimeLabelProbeKey.self,
+                    value: [label: [geometry.frame(in: .named(MediaLayout.probeCoordinateSpace))]]
                 )
             }
         }

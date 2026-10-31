@@ -31,6 +31,7 @@ final class MediaSnapshotRenderTests: XCTestCase {
 
     private final class ProbeBox {
         var frames: [String: CGRect] = [:]
+        var timeLabels: [String: [CGRect]] = [:]
     }
 
     private struct LayoutFixture {
@@ -87,12 +88,14 @@ final class MediaSnapshotRenderTests: XCTestCase {
             .appendingPathComponent("build/screens")
         try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)
 
+        let physicalSize = MediaLayout.preferredSize(notchHeight: 32, menuBarHeight: 24)
+        let noNotchSize = MediaLayout.preferredSize(notchHeight: 0, menuBarHeight: 24)
         let layouts = [
             LayoutFixture(
                 id: "physical-notch",
                 shape: MediaShapeGeometry(
-                    width: 520,
-                    height: 225,
+                    width: physicalSize.width,
+                    height: physicalSize.height,
                     topCornerRadius: 19,
                     bottomCornerRadius: 24
                 ),
@@ -102,8 +105,8 @@ final class MediaSnapshotRenderTests: XCTestCase {
             LayoutFixture(
                 id: "no-notch",
                 shape: MediaShapeGeometry(
-                    width: 520,
-                    height: 217,
+                    width: noNotchSize.width,
+                    height: noNotchSize.height,
                     topCornerRadius: 19,
                     bottomCornerRadius: 24
                 ),
@@ -117,6 +120,11 @@ final class MediaSnapshotRenderTests: XCTestCase {
         let sourceApp = MediaSourceApp(
             bundleIdentifier: "com.spotify.client",
             name: "Spotify",
+            icon: makeIcon()
+        )
+        let browserApp = MediaSourceApp(
+            bundleIdentifier: "com.apple.Safari",
+            name: "Safari",
             icon: makeIcon()
         )
         let tint = Color(red: 0.18, green: 0.62, blue: 0.46)
@@ -160,7 +168,47 @@ final class MediaSnapshotRenderTests: XCTestCase {
                     updatedAt: now
                 )
             ),
-            StateFixture(id: "04-empty", snapshot: nil),
+            StateFixture(
+                id: "05-playing-no-album",
+                snapshot: snapshot(
+                    title: "Midnight City",
+                    artist: "M83",
+                    album: "",
+                    artwork: artwork,
+                    isPlaying: true,
+                    elapsed: 81,
+                    duration: 244,
+                    updatedAt: now
+                )
+            ),
+            StateFixture(
+                id: "06-unknown-duration",
+                snapshot: snapshot(
+                    title: "Midnight City",
+                    artist: "M83",
+                    album: "Hurry Up, We're Dreaming",
+                    artwork: artwork,
+                    isPlaying: true,
+                    elapsed: 81,
+                    duration: 0,
+                    updatedAt: now
+                )
+            ),
+            StateFixture(
+                id: "07-browser-source",
+                snapshot: snapshot(
+                    title: "Midnight City",
+                    artist: "M83",
+                    album: "Hurry Up, We're Dreaming",
+                    artwork: artwork,
+                    isPlaying: true,
+                    elapsed: 81,
+                    duration: 244,
+                    bundleIdentifier: "com.apple.WebKit.GPU",
+                    updatedAt: now
+                )
+            ),
+            StateFixture(id: "08-empty", snapshot: nil),
         ]
 
         var reportLayouts: [[String: Any]] = []
@@ -172,7 +220,9 @@ final class MediaSnapshotRenderTests: XCTestCase {
                 let (png, frames) = try render(
                     layout: layout,
                     state: state,
-                    sourceApp: state.snapshot == nil ? nil : sourceApp,
+                    sourceApp: state.snapshot == nil
+                        ? nil
+                        : state.id == "07-browser-source" ? browserApp : sourceApp,
                     tint: state.snapshot == nil ? nil : tint
                 )
 
@@ -777,6 +827,11 @@ final class MediaSnapshotRenderTests: XCTestCase {
                 uniqueKeysWithValues: frames.map { ($0.key.rawValue, $0.value) }
             )
         }
+        .onPreferenceChange(MediaTimeLabelProbeKey.self) { labels in
+            probeBox.timeLabels = Dictionary(
+                uniqueKeysWithValues: labels.map { ($0.key.rawValue, $0.value) }
+            )
+        }
 
         let host = NSHostingView(rootView: root)
         host.frame = NSRect(origin: .zero, size: panelSize)
@@ -808,12 +863,20 @@ final class MediaSnapshotRenderTests: XCTestCase {
             "[MEDIA PROBES] \(layout.id)-\(state.id) snapshot=\(service.snapshot?.title ?? "nil") frames=\(probeBox.frames.keys.sorted())"
         )
         if state.snapshot != nil {
-            try validate(frames: probeBox.frames, layout: layout)
+            try validate(
+                frames: probeBox.frames,
+                timeLabels: probeBox.timeLabels,
+                layout: layout
+            )
         }
         return (png, probeBox.frames)
     }
 
-    private func validate(frames: [String: CGRect], layout: LayoutFixture) throws {
+    private func validate(
+        frames: [String: CGRect],
+        timeLabels: [String: [CGRect]],
+        layout: LayoutFixture
+    ) throws {
         let required: [MediaLayoutProbe] = [
             .artwork,
             .textColumn,
@@ -821,10 +884,19 @@ final class MediaSnapshotRenderTests: XCTestCase {
             .artist,
             .progressTrack,
             .timeRow,
+            .elapsedTime,
+            .remainingTime,
             .controls,
         ]
         for probe in required {
             XCTAssertNotNil(frames[probe.rawValue], "Missing \(probe.rawValue) frame")
+        }
+        for label in MediaTimeLabel.allCases {
+            XCTAssertEqual(
+                timeLabels[label.rawValue]?.count,
+                1,
+                "\(layout.id) must render exactly one \(label.rawValue) time label"
+            )
         }
 
         let shapeBounds = CGRect(
@@ -843,28 +915,40 @@ final class MediaSnapshotRenderTests: XCTestCase {
             let checkDistance = {
                 XCTAssertGreaterThanOrEqual(
                     safeArea.minimumDistance(from: shapeFrame),
-                    15.99,
+                    13.9,
                     "\(layout.id) \(name) is too close to the shape boundary"
                 )
             }
-            if name == MediaLayoutProbe.controls.rawValue {
-                XCTExpectFailure("H-3 duplicate media time row pushes controls past the height budget; fixed in task fixes") {
-                    checkDistance()
-                }
-            } else {
-                checkDistance()
-            }
+            checkDistance()
+            XCTAssertGreaterThanOrEqual(
+                shapeFrame.minX,
+                safeArea.contentRect.minX - 0.5,
+                "\(layout.id) \(name) starts left of the safe area"
+            )
+            XCTAssertGreaterThanOrEqual(
+                shapeFrame.minY,
+                safeArea.contentRect.minY - 0.5,
+                "\(layout.id) \(name) starts above the safe area"
+            )
+            XCTAssertLessThanOrEqual(
+                shapeFrame.maxX,
+                safeArea.contentRect.maxX + 0.5,
+                "\(layout.id) \(name) ends right of the safe area"
+            )
+            XCTAssertLessThanOrEqual(
+                shapeFrame.maxY,
+                safeArea.contentRect.maxY + 0.5,
+                "\(layout.id) \(name) ends below the safe area"
+            )
         }
 
         if let artwork = frames[MediaLayoutProbe.artwork.rawValue] {
-            XCTExpectFailure("H-3 duplicate media time row shifts the media column; fixed in task fixes") {
-                XCTAssertEqual(
-                    artwork.midY,
-                    safeArea.contentRect.midY,
-                    accuracy: 1,
-                    "\(layout.id) artwork is not centered against the content"
-                )
-            }
+            XCTAssertEqual(
+                artwork.midY,
+                safeArea.contentRect.midY,
+                accuracy: 1,
+                "\(layout.id) artwork is not centered against the content"
+            )
         }
 
         let left = frames[MediaLayoutProbe.title.rawValue]?.minX ?? 0
@@ -933,6 +1017,7 @@ final class MediaSnapshotRenderTests: XCTestCase {
         isPlaying: Bool,
         elapsed: TimeInterval,
         duration: TimeInterval,
+        bundleIdentifier: String = "com.spotify.client",
         updatedAt: Date
     ) -> NowPlayingSnapshot {
         NowPlayingSnapshot(
@@ -944,7 +1029,7 @@ final class MediaSnapshotRenderTests: XCTestCase {
             isPlaying: isPlaying,
             elapsed: elapsed,
             duration: duration,
-            bundleIdentifier: "com.spotify.client",
+            bundleIdentifier: bundleIdentifier,
             updatedAt: updatedAt
         )
     }

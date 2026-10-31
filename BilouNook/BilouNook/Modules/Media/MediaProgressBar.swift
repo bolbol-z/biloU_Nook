@@ -131,6 +131,11 @@ struct MediaProgressBar: View {
     private var timeRow: some View {
         HStack(spacing: 0) {
             Text(presentation.isSeekable ? MediaFormatting.time(displayedElapsed(at: Date())) : "--:--")
+                .accessibilityIdentifier("media.elapsed")
+                #if DEBUG
+                .mediaLayoutProbe(.elapsedTime)
+                .mediaTimeLabelProbe(.elapsed)
+                #endif
             Spacer(minLength: 8)
             Text(
                 presentation.isSeekable
@@ -140,6 +145,11 @@ struct MediaProgressBar: View {
                     )
                     : "--:--"
             )
+            .accessibilityIdentifier("media.remaining")
+            #if DEBUG
+            .mediaLayoutProbe(.remainingTime)
+            .mediaTimeLabelProbe(.remaining)
+            #endif
         }
         .font(.system(size: 10, weight: .medium, design: .rounded))
         .monospacedDigit()

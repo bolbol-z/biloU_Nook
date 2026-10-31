@@ -121,11 +121,6 @@ struct MediaContentView: View {
             )
 
             Spacer()
-                .frame(height: MediaLayout.progressToTimes)
-
-            timeRow
-
-            Spacer()
                 .frame(height: MediaLayout.timesToControls)
 
             controls
@@ -150,28 +145,6 @@ struct MediaContentView: View {
             return album
         }
         return ""
-    }
-
-    private var timeRow: some View {
-        HStack {
-            Text(timeString(presentation.elapsed))
-                .font(.system(size: 10.5, weight: .medium, design: .rounded).monospacedDigit())
-                .foregroundStyle(Color.white.opacity(0.6))
-            Spacer()
-            Text(timeString(presentation.duration))
-                .font(.system(size: 10.5, weight: .medium, design: .rounded).monospacedDigit())
-                .foregroundStyle(Color.white.opacity(0.6))
-        }
-        .frame(height: MediaLayout.timeRowHeight)
-        .frame(maxWidth: .infinity)
-    }
-
-    private func timeString(_ interval: TimeInterval) -> String {
-        guard interval.isFinite else { return "--:--" }
-        let total = Int(max(0, interval))
-        let minutes = total / 60
-        let seconds = total % 60
-        return String(format: "%d:%02d", minutes, seconds)
     }
 
     private var controls: some View {

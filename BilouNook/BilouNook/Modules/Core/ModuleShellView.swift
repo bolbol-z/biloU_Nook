@@ -25,21 +25,13 @@ struct ModuleShellView: View {
     }
 
     private var tabContent: some View {
-        VStack(spacing: 0) {
-            tabBarSpacer
-            content
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        content
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var geometry: NotchGeometry {
         let screen = ScreenResolver.shared.targetScreen()
         return NotchGeometry.live(for: screen)
-    }
-
-    private var tabBarSpacer: some View {
-        Color.clear
-            .frame(height: geometry.notchRect.height)
     }
 
     private var notchHeight: CGFloat {

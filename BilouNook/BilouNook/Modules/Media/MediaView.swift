@@ -53,6 +53,7 @@ struct MediaView: View {
 
         ZStack {
             ambientBackground(hasTrack: presentation != nil)
+                .padding(.top, safeArea.topClearance)
 
             Group {
                 switch state {
