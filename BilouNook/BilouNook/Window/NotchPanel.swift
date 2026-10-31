@@ -2,9 +2,9 @@ import AppKit
 import SwiftUI
 
 final class NotchPanel: NSPanel {
-    static func panelSize() -> NSSize {
-        let largest = max(MediaLayout.width, ModuleA().preferredSize.width, ModuleB().preferredSize.width)
+    static func panelSize(registry: ModuleRegistry = .shared) -> NSSize {
         let margin: CGFloat = 24
+        let largest = registry.enabledModules.map(\.preferredSize.width).max() ?? NotchPresets.open.w
         return NSSize(width: largest + margin * 2, height: 220)
     }
     

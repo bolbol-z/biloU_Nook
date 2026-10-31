@@ -26,6 +26,14 @@ final class NotchPanelTests: XCTestCase {
         XCTAssertEqual(panel.frame.width, NotchPanel.panelSize().width, accuracy: 0.0001)
     }
 
+    func testPanelWidthIsDerivedFromRegistryModules() {
+        let single = ModuleRegistry(modules: [ModuleA()])
+        XCTAssertEqual(NotchPanel.panelSize(registry: single).width, ModuleA().preferredSize.width + 48, accuracy: 0.0001)
+
+        let empty = ModuleRegistry(modules: [])
+        XCTAssertEqual(NotchPanel.panelSize(registry: empty).width, NotchPresets.open.w + 48, accuracy: 0.0001)
+    }
+
     func testPanelConstrainKeepsRequestedFrameAboveTheScreen() {
         let panel = NotchPanel()
         panel.isReleasedWhenClosed = false
