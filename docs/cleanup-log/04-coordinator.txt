@@ -1,0 +1,88 @@
+# Step 4 — NotchCoordinator extraction
+
+## Goal
+
+Move NotchRootView's lifecycle, settings propagation, geometry, content
+visibility, hit-testing, and animation selection into one @MainActor
+NotchCoordinator, without changing motion, haptics, or close behavior.
+
+## What changed
+
+New files:
+
+- `BilouNook/BilouNook/Notch/NotchCoordinator.swift` (377 lines)
+  - Owns start/stop of MouseMonitor, Watchdog, GestureMonitor, sleep observer,
+    and the settings subscription.
+  - Applies SettingsStore values to NotchState in one place.
+  - Computes open/closed metrics and content visibility for every phase.
+  - Caches the interactive rect and only assigns panel.ignoresMouseEvents when
+    the boolean changes.
+  - Holds the panel weakly through WeakPanelReference.
+  - Exposes named motion plans with Reduce Motion crossfades.
+- `BilouNook/BilouNook/Notch/NotchOverlays.swift` (96 lines)
+  - Closed compact/live-activity overlays, the context menu, and the DEBUG
+    calibration layer moved out of NotchRootView.
+- `BilouNook/BilouNookTests/NotchCoordinatorTests.swift` (436 lines)
+  - Lifecycle idempotence, settings, metrics, content timing, click-through,
+    haptic sequence, Reduce Motion, golden timings, weak panel, hit-test cache,
+    and root-view/coordinator deallocation.
+- `BilouNook/BilouNookTests/NotchCharacterizationTests.swift` (85 lines)
+  - Scripted open/close haptics, state timing settings, and geometry metrics.
+
+Changed files:
+
+- `NotchRootView.swift`: 297 -> 165 lines. Fourteen onChange handlers reduced
+  to phase/module/live-activity handlers. Direct monitor/watchdog/gesture/
+  settings/geometry ownership removed.
+- `NotchPanelController.swift`: 36 -> 82 lines. Owns the coordinator, stores
+  observer tokens, and has idempotent `stop()` teardown.
+- `AppDelegate.swift`: calls `panelController?.stop()` on termination.
+- `GestureMonitor.swift`: adds `stop()` to remove event monitors and reset state.
+- `InteractionRegion.swift`: adds a screen-frame interactive-rect overload.
+- `Animations.swift`: adds named transitions/plans, `contentShowDelay` 0.05,
+  `clickThroughDelay` 0.2, `reduceMotionDuration` 0.15, and `scaled()` use.
+- `NotchState.swift`: 207 -> 213 lines. Injects `HapticPlaying` so tests can
+  record the existing open/close haptic sequence.
+- `HapticsService.swift`: 65 -> 69 lines. Conforms to `HapticPlaying`.
+- `project.pbxproj`: adds the new sources to app and test targets.
+
+## Frozen behavior preserved
+
+- Open metrics spring 0.28 / 0.9; close metrics spring 0.28 / 1.0.
+- Content spring 0.32 / 0.9 after 0.05s; content hide easeIn 0.12s.
+- Live-activity easeInOut 0.12s; click-through enabled after 0.2s.
+- Close delay stays 0 and the close path is unchanged.
+- One haptic at each open/close transition; no extra calls.
+- Reduce Motion uses only 0.15s crossfades and no overshoot.
+- Hit-testing stays outside the notch shape; mouse-event assignment is cached.
+
+## Commands and results
+
+    python3 scripts/check-project.py
+    -> PASS (255 objects, 82 file references)
+
+    ./scripts/smoke.sh
+    -> EXIT 0
+       PROJECT PASS
+       BUILD PASS
+       TESTS PASS
+       Executed 135 tests, 0 failures
+
+    xcodebuild -project BilouNook/BilouNook.xcodeproj -scheme BilouNook \
+      -configuration Release -derivedDataPath ./build build
+    -> BUILD SUCCEEDED
+       (only the existing AppIntents metadata warning)
+
+    build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook --smoke-test
+    -> EXIT 0
+
+    build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook --notch-selfcheck
+    -> SELFCHECK PASS, EXIT 0
+
+## Status
+
+BUILD OK — VISUAL UNVERIFIED.
+
+Visual checks still needed: hover open/close feel, content spring/fade, Reduce
+Motion crossfade, closed compact/live-activity overlay, context menu, and
+click-through after close.

@@ -30,6 +30,15 @@ final class GestureMonitor {
         }
     }
     
+    func stop() {
+        if let globalMonitor { NSEvent.removeMonitor(globalMonitor); self.globalMonitor = nil }
+        if let localMonitor { NSEvent.removeMonitor(localMonitor); self.localMonitor = nil }
+        accumulated = 0
+        accumulatedX = 0
+        horizontalConsumed = false
+        inGesture = false
+    }
+
     private func handle(_ event: NSEvent) {
         if !SettingsStore.shared.verticalGesturesEnabled { return }
         let mouse = NSEvent.mouseLocation

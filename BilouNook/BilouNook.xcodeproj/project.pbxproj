@@ -137,6 +137,11 @@
 		C1000253 /* NotchAttachDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000100 /* NotchAttachDiagnostics.swift */; };
 		C1000254 /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000110 /* SettingsStoreTests.swift */; };
 		C1000255 /* NotchCharacterizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000111 /* NotchCharacterizationTests.swift */; };
+		C1000256 /* NotchCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000112 /* NotchCoordinatorTests.swift */; };
+		C1000257 /* NotchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000113 /* NotchCoordinator.swift */; };
+		C1000258 /* NotchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000113 /* NotchCoordinator.swift */; };
+		C1000259 /* NotchOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000114 /* NotchOverlays.swift */; };
+		C1000260 /* NotchOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000114 /* NotchOverlays.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +219,9 @@
 		C2000102 /* CompactLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayoutTests.swift; sourceTree = "<group>"; };
 		C2000110 /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
 		C2000111 /* NotchCharacterizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchCharacterizationTests.swift; sourceTree = "<group>"; };
+		C2000112 /* NotchCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchCoordinatorTests.swift; sourceTree = "<group>"; };
+		C2000113 /* NotchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchCoordinator.swift; sourceTree = "<group>"; };
+		C2000114 /* NotchOverlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchOverlays.swift; sourceTree = "<group>"; };
 		C2000103 /* MotionBench.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionBench.swift; sourceTree = "<group>"; };
 		C2000105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2000106 /* NotchPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchPanelController.swift; sourceTree = "<group>"; };
@@ -275,6 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				C2000003 /* NotchRootView.swift */,
+				C2000113 /* NotchCoordinator.swift */,
+				C2000114 /* NotchOverlays.swift */,
 				C2000004 /* NotchGeometry.swift */,
 				C2000005 /* NotchShape.swift */,
 				C2000071 /* LiveActivityLayout.swift */,
@@ -446,6 +456,7 @@
 				C2000102 /* CompactLayoutTests.swift */,
 				C2000110 /* SettingsStoreTests.swift */,
 				C2000111 /* NotchCharacterizationTests.swift */,
+				C2000112 /* NotchCoordinatorTests.swift */,
 			);
 			path = BilouNookTests;
 			sourceTree = "<group>";
@@ -589,6 +600,8 @@
 				C1000002 /* NotchPanel.swift in Sources */,
 				C1000245 /* NotchPanelController.swift in Sources */,
 				C1000003 /* NotchRootView.swift in Sources */,
+				C1000257 /* NotchCoordinator.swift in Sources */,
+				C1000259 /* NotchOverlays.swift in Sources */,
 				C1000004 /* NotchGeometry.swift in Sources */,
 				C1000005 /* NotchShape.swift in Sources */,
 				C1000007 /* DebugOverlay.swift in Sources */,
@@ -658,6 +671,8 @@
 				C1000046 /* ModuleRegistryTests.swift in Sources */,
 				C1000047 /* NotchRootViewRenderTests.swift in Sources */,
 				C1000048 /* NotchRootView.swift in Sources */,
+				C1000258 /* NotchCoordinator.swift in Sources */,
+				C1000260 /* NotchOverlays.swift in Sources */,
 				C1000049 /* NotchModule.swift in Sources */,
 				C1000050 /* ModuleRegistry.swift in Sources */,
 				C1000051 /* ModuleShellView.swift in Sources */,
@@ -681,6 +696,7 @@
 				C1000253 /* NotchAttachDiagnostics.swift in Sources */,
 				C1000254 /* SettingsStoreTests.swift in Sources */,
 				C1000255 /* NotchCharacterizationTests.swift in Sources */,
+				C1000256 /* NotchCoordinatorTests.swift in Sources */,
 				C1000080 /* NowPlayingSnapshot.swift in Sources */,
 				C1000081 /* NowPlayingProvider.swift in Sources */,
 				C1000082 /* MediaRemoteNowPlayingProvider.swift in Sources */,

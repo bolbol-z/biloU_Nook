@@ -19,6 +19,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             NotchCalibrationState.shared.printValues(label: "final")
         }
         #endif
+        panelController?.stop()
         Watchdog.shared.stop()
         NowPlayingService.shared.stop()
     }
