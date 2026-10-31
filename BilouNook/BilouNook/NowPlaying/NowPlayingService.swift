@@ -34,17 +34,21 @@ final class NowPlayingService {
     private let timerEnabled: Bool
     private let tickInterval: TimeInterval
     private let now: () -> Date
+    private let scheduler: NotchScheduler
+    private var seekTimeoutHandle: NotchScheduled?
 
     init(
         providers: [NowPlayingProvider]? = nil,
         timerEnabled: Bool = true,
         tickInterval: TimeInterval = 1,
-        now: @escaping () -> Date = Date.init
+        now: @escaping () -> Date = Date.init,
+        scheduler: NotchScheduler = SystemNotchScheduler()
     ) {
         self.providers = providers ?? Self.defaultProviders()
         self.timerEnabled = timerEnabled
         self.tickInterval = tickInterval
         self.now = now
+        self.scheduler = scheduler
     }
 
     #if DEBUG
@@ -76,7 +80,7 @@ final class NowPlayingService {
         activeProvider?.stop()
         activeProvider = nil
         activeProviderIndex = nil
-        pendingSeek = nil
+        clearPendingSeek()
         providerName = "none"
         snapshot = nil
         removeWorkspaceObserver()
@@ -106,11 +110,15 @@ final class NowPlayingService {
 
         let target = min(max(0, seconds), snapshot.duration)
         let issuedAt = now()
+        clearPendingSeek()
         pendingSeek = NowPlayingPendingSeek(
             target: target,
             issuedAt: issuedAt,
             trackIdentity: snapshot.trackIdentity
         )
+        seekTimeoutHandle = scheduler.schedule(after: seekTimeout) { [weak self] in
+            self?.clearPendingSeek()
+        }
 
         var optimistic = snapshot
         optimistic.elapsed = target
@@ -213,7 +221,7 @@ final class NowPlayingService {
         activeProvider?.stop()
         activeProvider = nil
         activeProviderIndex = nil
-        pendingSeek = nil
+        clearPendingSeek()
         providerName = "none"
         snapshot = nil
         stopTimer()
@@ -228,7 +236,7 @@ final class NowPlayingService {
         }
 
         guard var snapshot = normalized(incoming) else {
-            pendingSeek = nil
+            clearPendingSeek()
             self.snapshot = nil
             stopTimer()
             return
@@ -243,13 +251,13 @@ final class NowPlayingService {
         if let pendingSeek {
             let age = max(0, now().timeIntervalSince(pendingSeek.issuedAt))
             if snapshot.trackIdentity != pendingSeek.trackIdentity || age > seekTimeout {
-                self.pendingSeek = nil
+                clearPendingSeek()
             } else {
                 let expected = pendingSeek.target + (snapshot.isPlaying ? age : 0)
                 guard abs(snapshot.elapsed - expected) <= seekTolerance else {
                     return
                 }
-                self.pendingSeek = nil
+                clearPendingSeek()
             }
         }
 
@@ -260,6 +268,12 @@ final class NowPlayingService {
         } else {
             stopTimer()
         }
+    }
+
+    private func clearPendingSeek() {
+        seekTimeoutHandle?.cancel()
+        seekTimeoutHandle = nil
+        pendingSeek = nil
     }
 
     private func updateLiveActivityState() {

@@ -410,6 +410,74 @@ final class NowPlayingPendingSeekTests: XCTestCase {
         service.stop()
     }
 
+    func testSilentProviderClearsPendingAfterTimeoutAndAcceptsNextPosition() {
+        let provider = FakeNowPlayingProvider(identifier: "fake")
+        let scheduler = NotchStateTestScheduler()
+        var currentDate = Date(timeIntervalSince1970: 2_000)
+        let service = NowPlayingService(
+            providers: [provider],
+            timerEnabled: false,
+            now: { currentDate },
+            scheduler: scheduler
+        )
+        service.start()
+        provider.emit(makeSnapshot(elapsed: 10))
+        service.seek(to: 50)
+
+        currentDate = currentDate.addingTimeInterval(2)
+        scheduler.advance(by: 2)
+
+        XCTAssertNil(service.pendingSeek)
+        provider.emit(makeSnapshot(elapsed: 10))
+        XCTAssertEqual(service.snapshot?.elapsed, 10)
+        service.stop()
+    }
+
+    func testConfirmationCancelsSeekTimeout() {
+        let provider = FakeNowPlayingProvider(identifier: "fake")
+        let scheduler = NotchStateTestScheduler()
+        let issuedAt = Date(timeIntervalSince1970: 2_000)
+        let service = NowPlayingService(
+            providers: [provider],
+            timerEnabled: false,
+            now: { issuedAt.addingTimeInterval(0.4) },
+            scheduler: scheduler
+        )
+        service.start()
+        provider.emit(makeSnapshot(elapsed: 10))
+        service.seek(to: 50)
+        provider.emit(makeSnapshot(elapsed: 50.4))
+        XCTAssertNil(service.pendingSeek)
+
+        scheduler.advance(by: 10)
+        provider.emit(makeSnapshot(elapsed: 10))
+
+        XCTAssertEqual(service.snapshot?.elapsed, 10)
+        service.stop()
+    }
+
+    func testTrackChangeClearsPendingSeekAndCancelsTimeout() {
+        let provider = FakeNowPlayingProvider(identifier: "fake")
+        let scheduler = NotchStateTestScheduler()
+        let issuedAt = Date(timeIntervalSince1970: 2_000)
+        let service = NowPlayingService(
+            providers: [provider],
+            timerEnabled: false,
+            now: { issuedAt },
+            scheduler: scheduler
+        )
+        service.start()
+        provider.emit(makeSnapshot(elapsed: 10))
+        service.seek(to: 50)
+
+        provider.emit(makeSnapshot(elapsed: 0, title: "Next Song"))
+
+        XCTAssertNil(service.pendingSeek)
+        scheduler.advance(by: 10)
+        XCTAssertEqual(service.snapshot?.title, "Next Song")
+        service.stop()
+    }
+
     func testUnsupportedSeekDoesNotEnterPendingOrSendCommand() {
         let provider = FakeNowPlayingProvider(identifier: "fake")
         let service = NowPlayingService(
