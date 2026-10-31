@@ -1,0 +1,101 @@
+# Step 8 — Structure cleanup and project repair
+
+Baseline tag: `pre-structure-fix` (`644f65d`)
+Final state: `HEAD` after `Phase1-P9`
+
+## What changed
+
+### Project wiring (`BilouNook.xcodeproj/project.pbxproj`)
+- Removed stale `ScaleBlur.swift` references.
+- Removed stale `CoordinateSpace.swift` references.
+- Repointed debug tooling file references to the real `Debug/` files.
+- Removed eight broken symlinks left by the old layout:
+  `Notch/DebugOverlay.swift`, `Notch/Debug/DebugOverlay.swift`,
+  `Utils/HotKeyManager.swift`, `Utils/Debug/HotKeyManager.swift`,
+  `Window/NotchAttachDiagnostics.swift`, `Window/Debug/NotchAttachDiagnostics.swift`,
+  `Modules/Media/MediaSeekDebugLog.swift`, `Modules/Media/Debug/MediaSeekDebugLog.swift`.
+- Added `AppDelegate`, `NotchPanelController`, `DebugLaunchModes`, `DebugTools`,
+  `MotionBench`, `NotchAttachDiagnostics`, and `SettingsStoreTests` to the correct targets.
+- `scripts/check-project.py` passes.
+
+### App / DEBUG isolation
+- Removed the duplicate `AppDelegate` from `BilouNookApp.swift`; the canonical
+  delegate is `App/AppDelegate.swift`.
+- Rewrote `Debug/DebugTools.swift` against the real `HotKeyManager.register()` and
+  `AnimationLabWindow.shared.state`.
+- Debug tooling remains behind `#if DEBUG`; the nested duplicate `#if DEBUG`
+  wrappers in the `Debug/` files were removed.
+- `NotchRootView` body decomposed into `closedOverlays`, `notchContent`,
+  `calibrationOverlay`, `handleAppear`, and `handlePhaseChange` to fix the
+  type-check timeout caused by the large body.
+
+### Dead code / warnings
+- Removed `ScaleBlur.swift`, `ScaleBlurOpacityContentModifier`,
+  `NotchContentTransitionModifier`, `NotchRect`, `CoordinateSpace`,
+  `NotchPresets.peek`, `LiveActivityLayout.minimumContentWidth`,
+  `MediaLayout.metadataHeight`, `MediaLayout.metadataToTitle`,
+  `HapticsService.testAll`, unused `NotchGeometry` locals, unused
+  `NotchRootView` debug helpers, and `NotchState.scheduleClose`.
+- Fixed all compiler warnings in app and test sources (`MotionBench` unused
+  locals/unreachable code and the `MediaSnapshotRenderTests` slow expression).
+  The only remaining warning is `appintentsmetadataprocessor` reporting no
+  `AppIntents.framework` dependency, which is a system tool message.
+
+### Settings
+- Removed dead persisted keys: `handlerEnabled`, `handlerWidth`, `handlerHeight`,
+  `displayMode`, `contentInDelay`, `contentStagger`, `scrubPause`,
+  `scrubProgress`, `openHapticPattern`, `closeHapticPattern`,
+  `contentScale_ASSUMPTION`, `contentBlur_ASSUMPTION`,
+  `contentAnchorY_ASSUMPTION`.
+- `AGENTS.md` settings list and open/close description updated to the current code.
+
+### Modules
+- `NotchPanel.panelSize(registry:)` now derives width from the widest enabled
+  module instead of hardcoded module widths; empty registry falls back to
+  `NotchPresets.open`.
+- Added tests for registry-derived panel width and for the removed settings.
+
+## Protected core line counts
+- `Notch/NotchRootView.swift`: 307 lines before → 297 lines after (-10).
+- `State/NotchState.swift`: 213 lines before `aa5d1e4` → 207 lines after (-6).
+  Changes: peek removal, unused `_gen`, unused `scheduleClose`.
+
+## Commands and results
+
+    python3 scripts/check-project.py
+    -> check-project: PASS (245 objects, 78 file references)
+
+    xcodebuild -project BilouNook/BilouNook.xcodeproj -scheme BilouNook \
+      -configuration Debug -derivedDataPath ./build \
+      -destination 'platform=macOS' clean build
+    -> BUILD SUCCEEDED, no project warnings
+       (only appintentsmetadataprocessor "No AppIntents.framework dependency")
+
+    xcodebuild ... -configuration Release ... clean build
+    -> BUILD SUCCEEDED, no project warnings
+       (only appintentsmetadataprocessor message)
+
+    xcodebuild ... -configuration Debug ... test
+    -> TEST SUCCEEDED, 119 tests, 0 failures, 0 unexpected
+
+    ./scripts/smoke.sh
+    -> PROJECT PASS
+       BUILD PASS
+       TESTS PASS
+
+Release binary symbol check (`nm` + `xcrun swift-demangle`):
+- Debug dylib contains `DebugOverlayWindow`, `AnimationLabWindow`, `HotKeyManager`,
+  `NotchCalibrationState`, `DebugTools`, `MotionBench`, `NotchAttachDiagnostics`,
+  `MediaSeekDebugLog`.
+- Release binary contains none of them.
+
+## Status
+BUILD OK — VISUAL UNVERIFIED
+
+Manual visual checklist:
+1. Hover the notch: it opens once and closes when the pointer leaves.
+2. Click the notch to open and close; no peek state appears.
+3. Open the media module and play/pause/seek; time row and artwork look correct.
+4. Debug: ⌥⌘D overlay and ⌥⌘L Animation Lab still toggle.
+5. Resize the panel by selecting a different module; width follows the module.
+6. Settings window shows only live preferences; no handler/display-mode rows.
