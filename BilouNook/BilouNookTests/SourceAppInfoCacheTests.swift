@@ -38,6 +38,61 @@ final class SourceAppInfoCacheTests: XCTestCase {
         XCTAssertEqual(calls, 2)
     }
 
+    func testParentBundleIdentifierTakesPrecedence() {
+        var requested: [String] = []
+        let cache = SourceAppInfoCache { bundleIdentifier in
+            requested.append(bundleIdentifier)
+            return MediaSourceApp(
+                bundleIdentifier: bundleIdentifier,
+                name: bundleIdentifier,
+                icon: nil
+            )
+        }
+
+        let info = cache.info(
+            for: "com.apple.WebKit.GPU",
+            parentBundleIdentifier: "com.apple.Safari"
+        )
+
+        XCTAssertEqual(info?.bundleIdentifier, "com.apple.Safari")
+        XCTAssertEqual(requested, ["com.apple.Safari"])
+    }
+
+    func testWebKitFallbackResolvesToSafari() {
+        let cache = SourceAppInfoCache { bundleIdentifier in
+            MediaSourceApp(bundleIdentifier: bundleIdentifier, name: bundleIdentifier, icon: nil)
+        }
+
+        XCTAssertEqual(
+            cache.info(for: "com.apple.WebKit.GPU")?.bundleIdentifier,
+            "com.apple.Safari"
+        )
+    }
+
+    func testHelperFallbackResolvesToMainApplication() {
+        let cache = SourceAppInfoCache { bundleIdentifier in
+            MediaSourceApp(bundleIdentifier: bundleIdentifier, name: bundleIdentifier, icon: nil)
+        }
+
+        XCTAssertEqual(
+            cache.info(for: "com.spotify.client.helper")?.bundleIdentifier,
+            "com.spotify.client"
+        )
+    }
+
+    func testParentAndFallbackShareOneCachedLookup() {
+        var calls = 0
+        let cache = SourceAppInfoCache { bundleIdentifier in
+            calls += 1
+            return MediaSourceApp(bundleIdentifier: bundleIdentifier, name: "Safari", icon: nil)
+        }
+
+        _ = cache.info(for: "com.apple.WebKit.GPU", parentBundleIdentifier: "com.apple.Safari")
+        _ = cache.info(for: "com.apple.WebKit.GPU")
+
+        XCTAssertEqual(calls, 1)
+    }
+
     func testMissingApplicationIsNotCachedAsAValue() {
         var calls = 0
         let cache = SourceAppInfoCache { _ in

@@ -19,7 +19,8 @@ final class MediaPlaybackAnchorTests: XCTestCase {
             elapsed: elapsed,
             duration: duration,
             updatedAt: updatedAt,
-            bundleIdentifier: "com.example.player"
+            bundleIdentifier: "com.example.player",
+            parentBundleIdentifier: nil
         )
     }
 

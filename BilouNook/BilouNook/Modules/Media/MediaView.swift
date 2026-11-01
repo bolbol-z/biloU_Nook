@@ -157,10 +157,13 @@ struct MediaView: View {
             return
         }
 
-        if presentation.bundleIdentifier.isEmpty {
+        if presentation.bundleIdentifier.isEmpty && presentation.parentBundleIdentifier == nil {
             sourceApp = nil
         } else {
-            sourceApp = SourceAppInfoCache.shared.info(for: presentation.bundleIdentifier)
+            sourceApp = SourceAppInfoCache.shared.info(
+                for: presentation.bundleIdentifier,
+                parentBundleIdentifier: presentation.parentBundleIdentifier
+            )
         }
 
         guard let artwork = presentation.artwork, !artwork.isEmpty else {

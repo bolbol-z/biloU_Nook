@@ -282,6 +282,22 @@ final class MediaRemoteNowPlayingProviderTests: XCTestCase {
         XCTAssertEqual(snapshot?.elapsed, 12.5)
         XCTAssertEqual(snapshot?.duration, 100)
         XCTAssertEqual(snapshot?.bundleIdentifier, "com.example.player")
+        XCTAssertNil(snapshot?.parentApplicationBundleIdentifier)
+    }
+
+    func testSnapshotCarriesParentApplicationBundleIdentifier() {
+        let payload: [String: Any] = [
+            "title": "Live Stream",
+            "bundleIdentifier": "com.apple.WebKit.GPU",
+            "parentApplicationBundleIdentifier": "com.apple.Safari",
+            "playing": false,
+        ]
+
+        let snapshot = MediaRemoteNowPlayingProvider.snapshot(from: payload)
+
+        XCTAssertEqual(snapshot?.bundleIdentifier, "com.apple.WebKit.GPU")
+        XCTAssertEqual(snapshot?.parentApplicationBundleIdentifier, "com.apple.Safari")
+        XCTAssertEqual(snapshot?.sourceBundleIdentifier, "com.apple.Safari")
     }
 
     func testSnapshotRejectsEmptyOrUntitledPayload() {

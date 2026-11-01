@@ -16,15 +16,41 @@ final class SourceAppInfoCache {
         self.loader = loader
     }
 
-    func info(for bundleIdentifier: String) -> MediaSourceApp? {
-        guard !bundleIdentifier.isEmpty else { return nil }
-        let key = bundleIdentifier as NSString
+    func info(
+        for bundleIdentifier: String,
+        parentBundleIdentifier: String? = nil
+    ) -> MediaSourceApp? {
+        guard let preferred = Self.preferredBundleIdentifier(
+            bundleIdentifier,
+            parentBundleIdentifier: parentBundleIdentifier
+        ) else {
+            return nil
+        }
+        let key = preferred as NSString
         if let entry = cache.object(forKey: key) {
             return entry.value
         }
-        guard let value = loader(bundleIdentifier) else { return nil }
+        guard let value = loader(preferred) else { return nil }
         cache.setObject(Entry(value), forKey: key)
         return value
+    }
+
+    static func preferredBundleIdentifier(
+        _ bundleIdentifier: String,
+        parentBundleIdentifier: String? = nil
+    ) -> String? {
+        let parent = parentBundleIdentifier?
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        if !parent.isEmpty { return parent }
+
+        let bundle = bundleIdentifier.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !bundle.isEmpty else { return nil }
+        if bundle.hasPrefix("com.apple.WebKit.") { return "com.apple.Safari" }
+        if let helperRange = bundle.range(of: ".helper", options: .caseInsensitive) {
+            let main = String(bundle[..<helperRange.lowerBound])
+            if !main.isEmpty { return main }
+        }
+        return bundle
     }
 
     private final class Entry {
@@ -47,7 +73,11 @@ final class SourceAppInfoCache {
         }
 
         guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleIdentifier) else {
-            return nil
+            return MediaSourceApp(
+                bundleIdentifier: bundleIdentifier,
+                name: bundleIdentifier,
+                icon: NSWorkspace.shared.icon(forFileType: "app")
+            )
         }
         let bundle = Bundle(url: url)
         let name = bundle?.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String

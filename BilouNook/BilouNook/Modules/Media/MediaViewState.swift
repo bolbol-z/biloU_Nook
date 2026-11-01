@@ -11,6 +11,7 @@ struct MediaPresentation: Equatable {
     let duration: TimeInterval
     let updatedAt: Date
     let bundleIdentifier: String
+    let parentBundleIdentifier: String?
 
     var progress: Double {
         guard duration > 0 else { return 0 }
@@ -47,7 +48,8 @@ enum MediaViewState: Equatable {
                 elapsed: max(0, snapshot.elapsed),
                 duration: max(0, snapshot.duration),
                 updatedAt: snapshot.updatedAt,
-                bundleIdentifier: snapshot.bundleIdentifier ?? ""
+                bundleIdentifier: snapshot.bundleIdentifier ?? "",
+                parentBundleIdentifier: snapshot.parentApplicationBundleIdentifier
             )
         )
     }

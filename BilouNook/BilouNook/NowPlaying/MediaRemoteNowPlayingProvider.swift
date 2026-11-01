@@ -186,6 +186,7 @@ final class MediaRemoteNowPlayingProvider: NowPlayingProvider {
             elapsed: max(0, doubleValue(payload["elapsedTime"])),
             duration: max(0, doubleValue(payload["duration"])),
             bundleIdentifier: payload["bundleIdentifier"] as? String,
+            parentApplicationBundleIdentifier: payload["parentApplicationBundleIdentifier"] as? String,
             updatedAt: now
         )
     }

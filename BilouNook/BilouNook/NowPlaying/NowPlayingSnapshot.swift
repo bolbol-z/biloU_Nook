@@ -10,6 +10,7 @@ struct NowPlayingSnapshot: Equatable {
     var elapsed: TimeInterval
     var duration: TimeInterval
     var bundleIdentifier: String?
+    var parentApplicationBundleIdentifier: String?
     var updatedAt: Date
 
     init(
@@ -22,6 +23,7 @@ struct NowPlayingSnapshot: Equatable {
         elapsed: TimeInterval = 0,
         duration: TimeInterval = 0,
         bundleIdentifier: String? = nil,
+        parentApplicationBundleIdentifier: String? = nil,
         updatedAt: Date = Date()
     ) {
         self.title = title
@@ -33,6 +35,7 @@ struct NowPlayingSnapshot: Equatable {
         self.elapsed = elapsed
         self.duration = duration
         self.bundleIdentifier = bundleIdentifier
+        self.parentApplicationBundleIdentifier = parentApplicationBundleIdentifier
         self.updatedAt = updatedAt
     }
 
@@ -42,8 +45,15 @@ struct NowPlayingSnapshot: Equatable {
             || !album.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
+    var sourceBundleIdentifier: String {
+        let parent = parentApplicationBundleIdentifier?
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        if !parent.isEmpty { return parent }
+        return bundleIdentifier?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    }
+
     var trackIdentity: String {
-        [bundleIdentifier ?? "", title, artist, album].joined(separator: "\u{1F}")
+        [sourceBundleIdentifier, title, artist, album].joined(separator: "\u{1F}")
     }
 
     var progress: Double {
