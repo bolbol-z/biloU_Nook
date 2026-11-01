@@ -18,6 +18,14 @@ else
     echo "PROJECT FAIL"
 fi
 
+python3 scripts/check-tests.py
+TEST_QUALITY_RESULT=$?
+if [ "$TEST_QUALITY_RESULT" -eq 0 ]; then
+    echo "TEST QUALITY PASS"
+else
+    echo "TEST QUALITY FAIL"
+fi
+
 xcodebuild -project "$PROJECT" -scheme "$SCHEME" -configuration Debug -derivedDataPath ./build build > "$BUILD_LOG" 2>&1
 BUILD_RESULT=$?
 if [ "$BUILD_RESULT" -eq 0 ]; then
@@ -35,4 +43,4 @@ else
 fi
 
 echo "Logs: $BUILD_LOG $TEST_LOG"
-exit $(( CHECK_RESULT != 0 || BUILD_RESULT != 0 || TEST_RESULT != 0 ))
+exit $(( CHECK_RESULT != 0 || TEST_QUALITY_RESULT != 0 || BUILD_RESULT != 0 || TEST_RESULT != 0 ))
