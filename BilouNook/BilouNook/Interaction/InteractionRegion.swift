@@ -19,13 +19,26 @@ enum ZoneMath {
 
 #if DEBUG
 enum MouseLog {
-    static let path = "/tmp/bilounook_mouse.log"
+    static let directory: URL = {
+        let library = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first
+            ?? FileManager.default.temporaryDirectory
+        return library.appendingPathComponent("Logs/BilouNook", isDirectory: true)
+    }()
+
+    static var path: String {
+        directory.appendingPathComponent("bilounook_mouse.log").path
+    }
+
     private static let queue = DispatchQueue(label: "com.bilou.bilounook.mouselog")
 
     static func write(_ message: String) {
         let line = String(format: "%.3f ", Date().timeIntervalSince1970) + message + "\n"
         queue.async {
             guard let data = line.data(using: .utf8) else { return }
+            try? FileManager.default.createDirectory(
+                at: directory,
+                withIntermediateDirectories: true
+            )
             if let handle = FileHandle(forWritingAtPath: path) {
                 handle.seekToEndOfFile()
                 handle.write(data)
