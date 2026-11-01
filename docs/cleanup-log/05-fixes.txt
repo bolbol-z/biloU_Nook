@@ -1,0 +1,181 @@
+# Step 5 — Targeted fixes
+
+## Goal
+
+Resolve the approved defects without changing motion, haptics, or the golden
+close path. One commit per item, each with tests where behavior changed.
+
+## Items and changes
+
+### H-3 — Duplicate media time row (1ba81a2)
+
+Cause: `MediaContentView` rendered its own `timeRow` while `MediaProgressBar`
+also rendered elapsed/remaining labels. The sheet also double-reserved vertical
+space: `ModuleShellView.tabBarSpacer` added the live notch height and
+`MediaView` padded the full safe-area top clearance.
+
+Fix:
+- `MediaProgressBar` is the only time-row owner. Removed `timeRow`,
+  `timeString`, and the extra spacer from `MediaContentView`.
+- Added `media.elapsed` and `media.remaining` accessibility identifiers plus
+  DEBUG layout/time-label probes.
+- Removed the shell `tabBarSpacer`; content now starts below the safe-area
+  clearance only.
+- Ambient background is padded below `safeArea.topClearance`, keeping the
+  hardware notch band black.
+- Snapshot fixtures now derive layout from `MediaLayout.preferredSize` and use
+  seven states including no album, unknown duration, browser source, and empty.
+
+Tests: `MediaSnapshotRenderTests` asserts exactly one elapsed label and one
+remaining label, safe-area containment, the notch attachment composite, and
+writes XML/JSON/PNG reports. Composite boundary threshold is 13.9 because the
+measured bottom distance is 13.947 against a 14 pt clearance.
+
+### H-4 — Unverified tab-bar geometry (8d4b2f7)
+
+Cause: tab placement and flank measurements lived partly in `ModuleShellView`
+and partly in `NotchGeometry`, so hit frames could not be asserted directly.
+The screen-space flank helper also returned full-height flanks that did not
+describe the forbidden-zone gap used for placement.
+
+Fix:
+- Added pure `ModuleTabLayout` (24 pt targets, 4 pt preferred spacing, 8 pt
+  forbidden gap). It reduces spacing before shrinking targets, splits an odd
+  count to the left, and centers a single strip in the virtual notch band when
+  no hardware notch exists.
+- `NotchGeometry.topBandFlanks(inShapeSpace:)` now returns shape-space
+  `[0, forbidden.minX]` and `[forbidden.maxX, shapeWidth]`; removed the unused
+  screen-space property.
+- `ModuleShellView` renders tab buttons from `ModuleTabLayout.frames` and no
+  longer owns flank math.
+
+Tests: exact frame tables for 1...6 modules on physical notch, no-notch,
+scaled 1920x1080 display, and external display; forbidden-zone intersection,
+ordering, vertical centering, and spacing reduction. `testModuleTabSnapshotsToScreens`
+writes 24 PNGs to `build/screens/module-tabs-*.png` with the hardware notch as a
+semi-transparent magenta rectangle. No H-4 `XCTExpectFailure` existed.
+
+### M-3 — Pending seek could stall (cbf0e80)
+
+Cause: `pendingSeek` was only cleared when another provider snapshot arrived,
+so a silent provider left the optimistic position pending forever.
+
+Fix: `NowPlayingService` now accepts an injected `NotchScheduler`, schedules a
+cancellable 2 s timeout when a seek is issued, and cancels it on confirmation,
+track change, provider reset, stop, or a newer seek. Timeout clears the pending
+state without rejecting the next provider position.
+
+Tests: silent provider clears pending after 2 s and the next position is
+published; confirmation cancels the timeout; track change clears pending and
+cancels the timeout.
+
+### M-4 — AppleScript field corruption (dfc4a82)
+
+Cause: the read script joined six fields with `|`, so any title containing a
+pipe shifted every later field.
+
+Fix: both Spotify and Music return a six-item AppleScript list. The provider
+reads exactly six descriptor items and a shared parser rejects any other count.
+Duration units remain milliseconds for Spotify and seconds for Music.
+
+Tests: pipes, newlines, em dashes, CJK, empty artist/album, invalid field
+counts, empty title, unknown state, Spotify milliseconds, and elapsed clamping.
+
+### Source badge parent resolution (96dad85)
+
+Cause: MediaRemote reports browser media as `com.apple.WebKit.GPU` with
+`parentApplicationBundleIdentifier = com.apple.Safari`, but the badge only saw
+the helper bundle ID.
+
+Fix:
+- `NowPlayingSnapshot` carries `parentApplicationBundleIdentifier` and exposes
+  `sourceBundleIdentifier`; `trackIdentity` uses the resolved source.
+- `MediaRemoteNowPlayingProvider` maps the parent field from JSON.
+- `MediaPresentation` carries the parent ID to `MediaView`.
+- `SourceAppInfoCache` prefers the parent, maps `com.apple.WebKit.*` to Safari,
+  maps `*.helper*` to the main bundle, falls back to a generic app icon, and
+  caches the resolved lookup. No App Sandbox.
+
+Tests: diagnosis-style WebKit/Safari payload, parent precedence, WebKit and
+helper fallbacks, one cached lookup for parent plus fallback, and existing
+cache behavior.
+
+### Apple Events entitlement (a0fef59)
+
+Cause: hardened runtime was enabled with an empty entitlements setting, so
+AppleScript automation for Spotify and Music could be denied.
+
+Fix: added `BilouNook/BilouNook/BilouNook.entitlements` with
+`com.apple.security.automation.apple-events = true` and set it for Debug and
+Release. Sandbox remains disabled and Info.plist usage descriptions were
+already present.
+
+Verification: ad-hoc signed Debug app reports the entitlement:
+
+    [Key] com.apple.security.automation.apple-events
+    [Value]
+        [Bool] true
+
+### DEBUG mouse log location (e23ad19)
+
+Cause: `MouseLog.path` wrote to `/tmp/bilounook_mouse.log`.
+
+Fix: DEBUG-only logger now writes to
+`~/Library/Logs/BilouNook/bilounook_mouse.log` and creates the directory on
+first write. Release compiles without the logger.
+
+### Tautology scan (c17e936)
+
+Re-scanned all test files. The six tautologies present at `pre-fixes` were in
+`CompactLayoutTests` (`flanks.* >= 0` and
+`>= min(groupWidth, flanks.*.width)`); H-4 replaced all of them with exact
+frames, forbidden-zone intersection, and ordering assertions. The four
+`MediaLayoutTests` lines cited in the earlier scan were re-read and are
+non-tautological literal bounds (inset >= 18, distance >= 12); they were kept.
+No `XCTExpectFailure` exists. Added `scripts/check-tests.py` to reject
+identical assertion arguments and constant boolean assertions. `smoke.sh` runs
+it and includes its result in the exit code.
+
+## Frozen behavior preserved
+
+- Motion constants, springs, durations, and Reduce Motion paths unchanged.
+- Haptic styles, counts, and cooldowns unchanged.
+- `intentDelay`, `closeDelay`, and `minStateDwell` defaults unchanged.
+- Core state machine, panel, shape, and `HapticsService` were not rewritten.
+
+## Commands and results
+
+    python3 scripts/check-project.py
+    -> check-project: PASS (260 objects, 84 file references)
+
+    python3 scripts/check-tests.py
+    -> check-tests: PASS
+
+    xcodebuild -project BilouNook/BilouNook.xcodeproj -scheme BilouNook \
+      -configuration Release -derivedDataPath ./build CODE_SIGNING_ALLOWED=NO build
+    -> BUILD SUCCEEDED
+
+    xcodebuild -project BilouNook/BilouNook.xcodeproj -scheme BilouNook \
+      -configuration Debug -derivedDataPath ./build CODE_SIGNING_ALLOWED=NO test
+    -> Executed 153 tests, 0 failures
+    -> TEST SUCCEEDED
+
+    ./scripts/smoke.sh
+    -> PROJECT PASS, TEST QUALITY PASS, BUILD PASS, TESTS PASS, EXIT 0
+
+    build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook --smoke-test
+    -> EXIT 0
+
+    build/Build/Products/Debug/BilouNook.app/Contents/MacOS/BilouNook --notch-selfcheck
+    -> SELFCHECK PASS, EXIT 0
+
+    codesign -d --entitlements - build/Build/Products/Debug/BilouNook.app
+    -> com.apple.security.automation.apple-events = true
+
+## Status
+
+BUILD OK — VISUAL UNVERIFIED.
+
+Manual visual checks still needed: tab placement and hit targets beside the
+notch, media time row at normal and narrow widths, browser source badge,
+notch-band background, and sheet height on a no-notch display.
