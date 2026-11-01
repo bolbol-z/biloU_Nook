@@ -1,4 +1,5 @@
 import AppKit
+import UniformTypeIdentifiers
 
 struct MediaSourceApp {
     let bundleIdentifier: String
@@ -76,7 +77,7 @@ final class SourceAppInfoCache {
             return MediaSourceApp(
                 bundleIdentifier: bundleIdentifier,
                 name: bundleIdentifier,
-                icon: NSWorkspace.shared.icon(forFileType: "app")
+                icon: NSWorkspace.shared.icon(for: .application)
             )
         }
         let bundle = Bundle(url: url)
