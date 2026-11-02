@@ -1,0 +1,62 @@
+# Step 9 — Current documentation
+
+## What changed
+
+- Added `docs/ARCHITECTURE.md`: runtime layers, ownership, panel sizing,
+  geometry, interaction, coordinator, module system, now-playing pipeline,
+  settings, build integration, source map.
+- Added `docs/STATE_MACHINE.md`: four phases, triggers/reasons, transition
+  table, haptics, delayed work, watchdog, timing settings, interaction rects,
+  sleep/teardown, test coverage.
+- Added `docs/MOTION.md`: current coordinator plans, legacy declared animations,
+  content timing, live activity, media motion, slow motion, Reduce Motion,
+  frozen constants.
+- Added `docs/TESTING.md`: 22 test files/153 tests, coverage table, fakes,
+  commands, project checks, DEBUG smoke modes, test rules.
+- Added `docs/DEVELOPMENT.md`: build/run/test, permissions, MediaRemote runtime,
+  change map, debugging, repository hygiene.
+- Added `docs/DECISIONS.md`: ten current decisions plus deferred items.
+- Replaced stale `docs/README.md` TODO list with an index of current docs and
+  historical folders.
+- Updated `AGENTS.md` architecture from the old root-view/peek/CoordinateSpace
+  model to the current AppDelegate/panel-controller/coordinator/registry model.
+- Updated `README.md` requirements, repository layout, and docs index wording.
+
+## Source of truth used
+
+- `NotchState.swift` for phase, timing, generation, haptics.
+- `NotchCoordinator.swift` for lifecycle, metrics, content, click-through.
+- `InteractionRegion.swift`, `MouseMonitor.swift`, `Watchdog.swift` for rects.
+- `NotchGeometry.swift`, `ModuleTabLayout.swift` for geometry.
+- `Animations.swift`, `MediaMotion.swift` for motion.
+- `NowPlayingService.swift`, provider files for media behavior.
+- `project.pbxproj`, `Info.plist`, entitlements, scripts for build integration.
+- `docs/cleanup-log/` and `docs/archive/` for historical context only.
+
+## Commands and results
+
+    python3 scripts/check-project.py
+    -> check-project: PASS (260 objects, 84 file references)
+
+    python3 scripts/check-tests.py
+    -> check-tests: PASS
+
+    ./scripts/smoke.sh
+    -> PROJECT PASS
+    -> TEST QUALITY PASS
+    -> BUILD PASS
+    -> TESTS PASS
+
+    build/logs/smoke-build.log
+    -> ** BUILD SUCCEEDED **
+
+    build/logs/smoke-test.log
+    -> Executed 153 tests, with 0 failures (0 unexpected)
+    -> ** TEST SUCCEEDED **
+
+## Status
+
+BUILD OK — VISUAL UNVERIFIED.
+
+Documentation is aligned with the current code. Visual behavior still requires
+the user's checklist.

@@ -11,7 +11,7 @@ in this repository today.
 
 - macOS 14.6 or later (`MACOSX_DEPLOYMENT_TARGET = 14.6`)
 - Xcode (open `BilouNook/BilouNook.xcodeproj`)
-- The project builds in Debug; Release is not part of this README
+- Python 3 for the project and test checks
 
 ## Build
 
@@ -79,13 +79,13 @@ Hotkeys are registered in DEBUG builds:
         NowPlaying/            Now-playing providers and service
         Settings/              SettingsStore and settings window
         Haptics/               HapticsService
-        Utils/                 Screen, hotkey, coordinate helpers
-        Debug/                 DEBUG-only diagnostics
+        Utils/                 Screen resolution
+        Debug/                 DEBUG-only diagnostics and hotkeys
         Animations/            Motion constants
       BilouNookTests/          Unit and render tests
     Vendor/MediaRemoteAdapter/ Vendored MediaRemote bridge (see VENDOR.md)
     scripts/                   Project check, build, smoke, icon helpers
-    docs/                      Documentation index (docs/README.md)
+    docs/                      Current docs, cleanup logs, archive, references
 
 ## Notes
 
